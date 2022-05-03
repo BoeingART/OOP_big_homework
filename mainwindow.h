@@ -28,6 +28,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    const int width_of_window = 300;
+    const int height_of_window = 500;
+
     void menuBarSetting();
     void toolBarSetting();
     void statusBarSetting();

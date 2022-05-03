@@ -6,22 +6,17 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    this->resize(600, 480);
-    backgroundSetting();
-
-    menuBarSetting();
-    toolBarSetting();
-    statusBarSetting();
-    //update();
-    //paintEvent();
+    this->resize(480, 600);
+    backgroundSetting();//设置背景
+    menuBarSetting();//设置菜单栏（在左上方）
+    toolBarSetting();//设置工具栏（在左侧，后可删去）
+    statusBarSetting();//设置状态栏（在左下方，后可删去）
 }
 
 
 MainWindow::~MainWindow(){
     std::cout << "mainwindow is deleted" << std::endl;
 }
-
-
 
 void MainWindow::menuBarSetting(){
     QMenuBar * mainwindow_menu = this->menuBar();
@@ -50,15 +45,14 @@ void MainWindow::statusBarSetting(){
     mainwindow_status->showMessage("欢迎进入游戏",1000);
 }
 
-void MainWindow::mainwindowSetting(){
-
-}
 
 void MainWindow::backgroundSetting(){
     QPixmap pixmap(testPic);
     QLabel *label = new QLabel(this);
     label->setPixmap(pixmap.scaled(QSize(geometry().width(), geometry().height()), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     label->resize(QSize(geometry().width(), geometry().height()));
-    label->lower();
+    //label->lower();
+    this->setMinimumSize(width_of_window, height_of_window);
+    this->setMaximumSize(width_of_window, height_of_window);
 }
 
