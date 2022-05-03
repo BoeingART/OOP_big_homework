@@ -384,11 +384,19 @@
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QMenu \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QMenuBar \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QStatusBar \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QToolBar \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/QVBoxLayout \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qboxlayout.h \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qgridlayout.h \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qlayout.h \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qlayoutitem.h \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qmenu.h \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qmenubar.h \
+  /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qstatusbar.h \
   /opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \

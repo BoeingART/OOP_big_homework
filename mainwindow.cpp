@@ -1,16 +1,18 @@
 
 #include "mainwindow.h"
 
+
 #include <iostream>
 #include <QLabel>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    this->resize(480, 600);
+    this->resize(window);
     backgroundSetting();//设置背景
     menuBarSetting();//设置菜单栏（在左上方）
-    toolBarSetting();//设置工具栏（在左侧，后可删去）
-    statusBarSetting();//设置状态栏（在左下方，后可删去）
+    //toolBarSetting();//设置工具栏（在左侧，后可删去）
+    //statusBarSetting();//设置状态栏（在左下方，后可删去）
+    widgetSetting();//设置按钮选项
 }
 
 
@@ -47,12 +49,39 @@ void MainWindow::statusBarSetting(){
 
 
 void MainWindow::backgroundSetting(){
-    QPixmap pixmap(testPic);
+    QPixmap pixmap("/Users/boeingart/OOP_big_homework/source/pictures/background.png");
     QLabel *label = new QLabel(this);
     label->setPixmap(pixmap.scaled(QSize(geometry().width(), geometry().height()), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     label->resize(QSize(geometry().width(), geometry().height()));
     //label->lower();
-    this->setMinimumSize(width_of_window, height_of_window);
-    this->setMaximumSize(width_of_window, height_of_window);
+    this->setMinimumSize(window);
+    this->setMaximumSize(window);
 }
 
+void MainWindow::widgetSetting(){
+    QWidget *botton_widget = new QWidget(this);
+    botton_widget->setGeometry(0,0,300,500);
+    /*
+    QPushButtonFixedSize *start_game = new QPushButtonFixedSize(botton_widget);
+    QPushButtonFixedSize *exit_game = new QPushButtonFixedSize(botton_widget);
+    */
+    QPushButton *start_game = new QPushButton(botton_widget);
+    QPushButton *exit_game = new QPushButton(botton_widget);
+    //std::cout << start_game->sizeHint().height() << std::endl;
+    //start_game->setFixedSize(botton);
+    start_game->setGeometry({100,100,100,50});
+    start_game->setText("开始游戏");
+    //exit_game->setFixedSize(botton);
+    exit_game->setGeometry({100,350,100,50});
+    exit_game->setText("退出游戏");
+    //QObject::connect(&exit_game,&clicked,&MainWindow,&close);
+    //QVBoxLayout *mainwindow_layout = new QVBoxLayout(botton_widget);
+    //mainwindow_layout->addWidget(start_game, Qt::AlignCenter);
+    //mainwindow_layout->addWidget(exit_game, Qt::AlignCenter);
+}
+
+/*
+const QSize QPushButtonFixedSize::sizeHint(){
+    return {300,500}
+}
+*/

@@ -13,6 +13,10 @@
 #include <QStatusBar>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QPushButton>
+#include <QVBoxLayout>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,16 +30,33 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    const QSize getBottonSize(){
+        return botton;
+    }
+
 private:
     Ui::MainWindow *ui;
 
-    const int width_of_window = 300;
-    const int height_of_window = 500;
+    const QSize window {300,500};
+    const QSize botton {100,100};
 
     void menuBarSetting();
     void toolBarSetting();
     void statusBarSetting();
     void mainwindowSetting();
     void backgroundSetting();
+    void widgetSetting();
 };
+
+/*
+class QPushButtonFixedSize: public QPushButton
+{
+public:
+    QPushButtonFixedSize(*QWidget test): QPushButton(*QWidget test){
+
+    }
+    const QSize sizeHint();
+};
+*/
+
 #endif // MAINWINDOW_H
