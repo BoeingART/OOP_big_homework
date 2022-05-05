@@ -15,6 +15,9 @@
 #include <QPainter>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QLabel>
+#include <QAbstractButton>
+#include <QMessageBox>
 
 
 
@@ -30,15 +33,21 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    const QSize getBottonSize(){
-        return botton;
+    const QSize getbuttonSize(){
+        return button;
     }
+
+    void showAbout();
+
+    QPushButton *start_game;
+    QPushButton *about_game;
+    QPushButton *exit_game;
 
 private:
     Ui::MainWindow *ui;
 
     const QSize window {300,500};
-    const QSize botton {100,100};
+    const QSize button {100,100};
 
     void menuBarSetting();
     void toolBarSetting();
@@ -46,6 +55,10 @@ private:
     void mainwindowSetting();
     void backgroundSetting();
     void widgetSetting();
+
+
+    void closeEvent(QCloseEvent *event);
+
 };
 
 /*

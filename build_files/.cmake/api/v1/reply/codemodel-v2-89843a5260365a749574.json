@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-MinSizeRel-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "OOP_big_homework",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "OOP_big_homework::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OOP_big_homework-MinSizeRel-56a9951419bf677395a0.json",
+					"name" : "OOP_big_homework",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "OOP_big_homework_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OOP_big_homework_autogen-MinSizeRel-a1a2f16f68a954e030be.json",
+					"name" : "OOP_big_homework_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "OOP_big_homework_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OOP_big_homework_autogen_timestamp_deps-MinSizeRel-66b057808f3ffc6c88ba.json",
+					"name" : "OOP_big_homework_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/boeingart/OOP_big_homework/build_files",
+		"source" : "/Users/boeingart/OOP_big_homework"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -1,5 +1,6 @@
 
 #include "mainwindow.h"
+#include "mainwindowclose.h"
 
 
 #include <iostream>
@@ -13,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     //toolBarSetting();//设置工具栏（在左侧，后可删去）
     //statusBarSetting();//设置状态栏（在左下方，后可删去）
     widgetSetting();//设置按钮选项
+    //MainwindowClose mainwindowExitRemainder;
 }
 
 
@@ -59,29 +61,44 @@ void MainWindow::backgroundSetting(){
 }
 
 void MainWindow::widgetSetting(){
-    QWidget *botton_widget = new QWidget(this);
-    botton_widget->setGeometry(0,0,300,500);
+    QWidget *button_widget = new QWidget(this);
+    button_widget->setGeometry(0,0,300,500);
     /*
-    QPushButtonFixedSize *start_game = new QPushButtonFixedSize(botton_widget);
-    QPushButtonFixedSize *exit_game = new QPushButtonFixedSize(botton_widget);
+    QPushButtonFixedSize *start_game = new QPushButtonFixedSize(button_widget);
+    QPushButtonFixedSize *exit_game = new QPushButtonFixedSize(button_widget);
     */
-    QPushButton *start_game = new QPushButton(botton_widget);
-    QPushButton *exit_game = new QPushButton(botton_widget);
+    start_game = new QPushButton(button_widget);
+    about_game = new QPushButton(button_widget);
+    exit_game = new QPushButton(button_widget);
     //std::cout << start_game->sizeHint().height() << std::endl;
-    //start_game->setFixedSize(botton);
+    //start_game->setFixedSize(button);
     start_game->setGeometry({100,100,100,50});
     start_game->setText("开始游戏");
-    //exit_game->setFixedSize(botton);
+    //exit_game->setFixedSize(button);
+    about_game->setGeometry({100,225,100,50});
+    about_game->setText("关于游戏");
     exit_game->setGeometry({100,350,100,50});
     exit_game->setText("退出游戏");
-    //QObject::connect(&exit_game,&clicked,&MainWindow,&close);
-    //QVBoxLayout *mainwindow_layout = new QVBoxLayout(botton_widget);
+    //QVBoxLayout *mainwindow_layout = new QVBoxLayout(button_widget);
     //mainwindow_layout->addWidget(start_game, Qt::AlignCenter);
     //mainwindow_layout->addWidget(exit_game, Qt::AlignCenter);
 }
 
-/*
-const QSize QPushButtonFixedSize::sizeHint(){
-    return {300,500}
+void MainWindow::closeEvent(QCloseEvent *event){
+    int choose;
+    choose = QMessageBox::question(this, tr("退出游戏"),
+                                   QString(tr("确认退出游戏?")),
+                                   QMessageBox::Yes | QMessageBox::No);
+
+    if (choose == QMessageBox::No){
+          event->ignore();
+    }
+    else if (choose == QMessageBox::Yes){
+          event->accept();
+    }
 }
-*/
+
+void MainWindow::showAbout(){
+    QMessageBox About(this);
+    About.about(this, "关于游戏", "本游戏由栗嘉伟和谭臻至开发");
+}
