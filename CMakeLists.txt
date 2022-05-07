@@ -19,8 +19,11 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        mainwindowclose.cpp
-        mainwindowclose.h
+        gamewindow.cpp
+        gamewindow.h
+        chess.cpp
+        chess.h
+        global.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
