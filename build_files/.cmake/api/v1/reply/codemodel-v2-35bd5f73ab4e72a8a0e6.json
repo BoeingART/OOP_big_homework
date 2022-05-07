@@ -29,7 +29,7 @@
 					[
 						0
 					],
-					"name" : "OOP_big_homework",
+					"name" : "Test",
 					"targetIndexes" : 
 					[
 						0,
@@ -42,23 +42,23 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "OOP_big_homework::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OOP_big_homework-MinSizeRel-58b249097965e1f8266c.json",
-					"name" : "OOP_big_homework",
+					"id" : "Test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Test-MinSizeRel-d8a1771de29b95e33326.json",
+					"name" : "Test",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "OOP_big_homework_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OOP_big_homework_autogen-MinSizeRel-a1a2f16f68a954e030be.json",
-					"name" : "OOP_big_homework_autogen",
+					"id" : "Test_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Test_autogen-MinSizeRel-0db5f56a7be8755a7c0d.json",
+					"name" : "Test_autogen",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "OOP_big_homework_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OOP_big_homework_autogen_timestamp_deps-MinSizeRel-66b057808f3ffc6c88ba.json",
-					"name" : "OOP_big_homework_autogen_timestamp_deps",
+					"id" : "Test_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Test_autogen_timestamp_deps-MinSizeRel-25abe48f819508823061.json",
+					"name" : "Test_autogen_timestamp_deps",
 					"projectIndex" : 0
 				}
 			]
