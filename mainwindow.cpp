@@ -1,19 +1,23 @@
 
 #include "mainwindow.h"
-#include "mainwindowclose.h"
 
 
 #include <iostream>
 #include <QLabel>
+using namespace std;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    this->setWindowTitle("华容道-开始游戏");
     this->resize(window);
     backgroundSetting();//设置背景
-    menuBarSetting();//设置菜单栏（在左上方）
+    //menuBarSetting();//设置菜单栏（在左上方）
     //toolBarSetting();//设置工具栏（在左侧，后可删去）
     //statusBarSetting();//设置状态栏（在左下方，后可删去）
     widgetSetting();//设置按钮选项
+
+    gamewindowSetting();
     //MainwindowClose mainwindowExitRemainder;
 }
 
@@ -79,9 +83,18 @@ void MainWindow::widgetSetting(){
     about_game->setText("关于游戏");
     exit_game->setGeometry({100,350,100,50});
     exit_game->setText("退出游戏");
-    //QVBoxLayout *mainwindow_layout = new QVBoxLayout(button_widget);
-    //mainwindow_layout->addWidget(start_game, Qt::AlignCenter);
-    //mainwindow_layout->addWidget(exit_game, Qt::AlignCenter);
+
+    QObject::connect(this->about_game, &QPushButton::clicked, this, &MainWindow::showAbout);
+    QObject::connect(this->exit_game, &QPushButton::clicked, this, &MainWindow::close);
+}
+
+void MainWindow::gamewindowSetting(){
+    gameWindow *gamer = new gameWindow;
+    gamer->setWindowTitle("华容道");
+    gamer->setWindowModality(Qt::ApplicationModal);//设置了当gamer打开后主窗体不可移动
+    QObject::connect(this->start_game, &QPushButton::clicked, gamer, &gameWindow::show);
+
+    std::cout << "connect second window" << std::endl;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
@@ -102,3 +115,4 @@ void MainWindow::showAbout(){
     QMessageBox About(this);
     About.about(this, "关于游戏", "本游戏由栗嘉伟和谭臻至开发");
 }
+

@@ -3,23 +3,8 @@
 
 #define testPic "/Users/boeingart/OOP_big_homework/source/pictures/test.jpg"
 
-#include <QMainWindow>
-#include <QMenuBar>
-#include <QMenu>
-#include <QIcon>
-#include <QKeySequence>
-#include <QToolBar>
-#include <QIcon>
-#include <QStatusBar>
-#include <QPaintEvent>
-#include <QPainter>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QAbstractButton>
-#include <QMessageBox>
-
-
+#include "global.h"
+#include "gamewindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,6 +27,7 @@ public:
     QPushButton *start_game;
     QPushButton *about_game;
     QPushButton *exit_game;
+    gameWindow test;
 
 private:
     Ui::MainWindow *ui;
@@ -55,8 +41,7 @@ private:
     void mainwindowSetting();
     void backgroundSetting();
     void widgetSetting();
-
-
+    void gamewindowSetting();
     void closeEvent(QCloseEvent *event);
 
 };

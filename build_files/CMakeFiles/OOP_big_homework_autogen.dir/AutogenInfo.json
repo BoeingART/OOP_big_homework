@@ -288,7 +288,33 @@
 	"CMAKE_SOURCE_DIR" : "/Users/boeingart/OOP_big_homework",
 	"DEP_FILE" : "/Users/boeingart/OOP_big_homework/build_files/OOP_big_homework_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "OOP_big_homework_autogen/timestamp",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"/Users/boeingart/OOP_big_homework/chess.h",
+			"MU",
+			"EWIEGA46WW/moc_chess.cpp",
+			null
+		],
+		[
+			"/Users/boeingart/OOP_big_homework/gamewindow.h",
+			"MU",
+			"EWIEGA46WW/moc_gamewindow.cpp",
+			null
+		],
+		[
+			"/Users/boeingart/OOP_big_homework/global.h",
+			"MU",
+			"EWIEGA46WW/moc_global.cpp",
+			null
+		],
+		[
+			"/Users/boeingart/OOP_big_homework/mainwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/Users/boeingart/OOP_big_homework/build_files/OOP_big_homework_autogen/include",
 	"MOC_COMPILATION_FILE" : "/Users/boeingart/OOP_big_homework/build_files/OOP_big_homework_autogen/mocs_compilation.cpp",
@@ -339,7 +365,13 @@
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 2,
 	"SETTINGS_FILE" : "/Users/boeingart/OOP_big_homework/build_files/CMakeFiles/OOP_big_homework_autogen.dir/AutogenUsed.txt",
-	"SOURCES" : [],
+	"SOURCES" : 
+	[
+		[ "/Users/boeingart/OOP_big_homework/chess.cpp", "MU", null ],
+		[ "/Users/boeingart/OOP_big_homework/gamewindow.cpp", "MU", null ],
+		[ "/Users/boeingart/OOP_big_homework/main.cpp", "MU", null ],
+		[ "/Users/boeingart/OOP_big_homework/mainwindow.cpp", "MU", null ]
+	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
 	"UIC_SKIP" : [],
