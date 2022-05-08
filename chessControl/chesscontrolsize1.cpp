@@ -4,6 +4,7 @@ using namespace std;
 chessControlSize1::chessControlSize1(std::string name): 
     chessControl(name)
 {
+    size = 1;
     if(name == "兵A" || name == "兵B" || name == "兵C" || name == "兵D"){
         chessCurrentCor = new Cor[1];
         if(name == "兵A"){

@@ -15,7 +15,7 @@ class chessControl
 public:
     chessControl(std::string name = "none");
     ~chessControl();
-    bool chessCorChange();//移动棋子的函数，如果可以移动棋子则返回true，否则返回false
+    bool chessCorChange(Cor direction);//移动棋子的函数，如果可以移动棋子则返回true，否则返回false
     static bool reachDestination();
     void chessReset();
     static void testPrint();
@@ -23,10 +23,10 @@ public:
     const static int row = 5;
 
 protected:
-
+    int size;
     static bool corOccupied[4][5];
     static bool finishInit;
-    static void recordChessMove(int direction);
+    static void recordChessMove();
     std::string chessName;
     Cor *chessCurrentCor;
 };

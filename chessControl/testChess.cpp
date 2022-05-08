@@ -15,7 +15,8 @@ int main(){
     chessControlSize1 bB("兵B");
     chessControlSize1 bC("兵C");
     chessControlSize1 bD("兵D");
-    cc.chessCorChange();
+    Cor dir = {1, 0};
+    cc.chessCorChange(dir);
     cc.testPrint();
     return 0;
 }
