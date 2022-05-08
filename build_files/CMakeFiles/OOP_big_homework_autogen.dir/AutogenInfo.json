@@ -297,6 +297,12 @@
 			null
 		],
 		[
+			"/Users/boeingart/OOP_big_homework/chesscontrol.h",
+			"MU",
+			"EWIEGA46WW/moc_chesscontrol.cpp",
+			null
+		],
+		[
 			"/Users/boeingart/OOP_big_homework/gamewindow.h",
 			"MU",
 			"EWIEGA46WW/moc_gamewindow.cpp",
@@ -368,6 +374,7 @@
 	"SOURCES" : 
 	[
 		[ "/Users/boeingart/OOP_big_homework/chess.cpp", "MU", null ],
+		[ "/Users/boeingart/OOP_big_homework/chesscontrol.cpp", "MU", null ],
 		[ "/Users/boeingart/OOP_big_homework/gamewindow.cpp", "MU", null ],
 		[ "/Users/boeingart/OOP_big_homework/main.cpp", "MU", null ],
 		[ "/Users/boeingart/OOP_big_homework/mainwindow.cpp", "MU", null ]

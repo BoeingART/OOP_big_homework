@@ -18,5 +18,6 @@
 #include <QMessageBox>
 #include <QLayout>
 #include <QKeyEvent>
+#include <cstring>
 
 #endif // GLOBAL_H

@@ -78,7 +78,6 @@ void MainWindow::widgetSetting(){
     //start_game->setFixedSize(button);
     start_game->setGeometry({100,100,100,50});
     start_game->setText("开始游戏");
-    //exit_game->setFixedSize(button);
     about_game->setGeometry({100,225,100,50});
     about_game->setText("关于游戏");
     exit_game->setGeometry({100,350,100,50});

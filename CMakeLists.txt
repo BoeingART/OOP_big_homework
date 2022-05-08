@@ -23,6 +23,8 @@ set(PROJECT_SOURCES
         gamewindow.h
         chess.cpp
         chess.h
+        chesscontrol.cpp
+        chesscontrol.h
         global.h
 )
 
