@@ -22,7 +22,7 @@ public:
     const static int line = 4;
     const static int row = 5;
 
-private:
+protected:
 
     static bool corOccupied[4][5];
     static bool finishInit;
