@@ -19,7 +19,10 @@ public:
 
 
 private:
-    static bool **corOccupied;
+    const int line = 4;
+    const int row = 5;
+    static bool corOccupied[4][5];
+    static bool finishInit;
     static void recordChessMove();
     std::string chessName;
     Cor *chessCurrentCor;

@@ -1,10 +1,17 @@
 #include "chesscontrol.h"
 #include <iostream>
 
-bool **chessControl::corOccupied = new bool*[4];
+bool chessControl::finishInit = false;
 
 chessControl::chessControl(std::string name): chessName(name)
 {
+    if(!finishInit){
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < line; j++){
+                corOccupied[i][j] = false;
+            }
+        }
+    }
     if(name == "none"){
         std::cerr << "please put a name in" << std::endl;
         return;
@@ -48,5 +55,7 @@ chessControl::chessControl(std::string name): chessName(name)
             chessCurrentCor[0] = {4, 5};
         }
     }
-
+    for(int i = 0; i < size; i++){
+        corOccupied[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1] = true;
+    }
 }

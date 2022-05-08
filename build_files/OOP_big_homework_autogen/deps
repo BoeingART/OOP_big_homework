@@ -263,6 +263,8 @@ OOP_big_homework_autogen/timestamp: \
 	/Users/boeingart/OOP_big_homework/build_files/OOP_big_homework_autogen/moc_predefs.h \
 	/Users/boeingart/OOP_big_homework/chess.cpp \
 	/Users/boeingart/OOP_big_homework/chess.h \
+	/Users/boeingart/OOP_big_homework/chesscontrol.cpp \
+	/Users/boeingart/OOP_big_homework/chesscontrol.h \
 	/Users/boeingart/OOP_big_homework/gamewindow.cpp \
 	/Users/boeingart/OOP_big_homework/gamewindow.h \
 	/Users/boeingart/OOP_big_homework/global.h \

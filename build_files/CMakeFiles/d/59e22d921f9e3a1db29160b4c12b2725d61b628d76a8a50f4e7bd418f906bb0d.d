@@ -263,6 +263,8 @@ OOP_big_homework_autogen/timestamp: \
   OOP_big_homework_autogen/moc_predefs.h \
   ../chess.cpp \
   ../chess.h \
+  ../chesscontrol.cpp \
+  ../chesscontrol.h \
   ../gamewindow.cpp \
   ../gamewindow.h \
   ../global.h \

@@ -2,6 +2,8 @@
 /Users/boeingart/OOP_big_homework/main.cpp
 /Users/boeingart/OOP_big_homework/gamewindow.cpp
 /Users/boeingart/OOP_big_homework/chess.cpp
+/Users/boeingart/OOP_big_homework/global.h
+/Users/boeingart/OOP_big_homework/chesscontrol.cpp
 /Users/boeingart/OOP_big_homework/mainwindow.cpp
 /Users/boeingart/OOP_big_homework/mainwindow.h
  mmc:Q_OBJECT
@@ -425,6 +427,6 @@
  mdp:/opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h
  mdp:/opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsglobal.h
  mdp:/opt/homebrew/Cellar/qt/6.2.3_1/lib/QtWidgets.framework/Versions/A/Headers/qwidget.h
-/Users/boeingart/OOP_big_homework/global.h
+/Users/boeingart/OOP_big_homework/chesscontrol.h
 /Users/boeingart/OOP_big_homework/gamewindow.h
 /Users/boeingart/OOP_big_homework/chess.h
