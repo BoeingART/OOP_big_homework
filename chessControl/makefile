@@ -7,7 +7,7 @@ $(exec): $(Objects)
 	$(CXX) $^ -o $@ 
 
 $(Objects): %.o: %.cpp $(Headers)
-	$(CXX) -c $< -o $@ -I $(Headers)
+	$(CXX) -c $< -o $@ -I %.h
 
 clean: 
 	rm *.o $(exec)

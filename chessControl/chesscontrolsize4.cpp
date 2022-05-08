@@ -15,6 +15,6 @@ chessControlSize4::chessControlSize4(std::string name):
     }
     for(int i = 0; i < size; i++){
         corOccupied[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1] = true;
-        cout << size << endl;
+        cout << i << ": " << size << endl;
     }
 }

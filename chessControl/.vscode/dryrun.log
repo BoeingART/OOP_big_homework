@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/boeingart/OOP_big_homework/chessControl'
+c++ chesscontrol.o chesscontrolsize1.o chesscontrolsize2.o chesscontrolsize4.o testChess.o -o testRun 
+make: Leaving directory `/Users/boeingart/OOP_big_homework/chessControl'
+ 
