@@ -16,6 +16,11 @@ chessControlSize4::chessControlSize4(std::string name):
         chessCurrentCor[1].x = 1, chessCurrentCor[1].y = 2;//左下
         chessCurrentCor[2].x = 2, chessCurrentCor[2].y = 1;//右上
         chessCurrentCor[3].x = 2, chessCurrentCor[3].y = 2;//右下
+    }else if(name == "block1"){
+        chessCurrentCor[0].x = 3, chessCurrentCor[0].y = 1;//左上
+        chessCurrentCor[1].x = 3, chessCurrentCor[1].y = 2;//左下
+        chessCurrentCor[2].x = 4, chessCurrentCor[2].y = 1;//右上
+        chessCurrentCor[3].x = 4, chessCurrentCor[3].y = 2;//右下  
     }
     else{
         cerr << "error" << endl;

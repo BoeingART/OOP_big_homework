@@ -18,7 +18,7 @@ public:
     bool chessCorChange(Cor direction);//移动棋子的函数，如果可以移动棋子则返回true，否则返回false
     static bool reachDestination();
     void chessReset();
-    static void testPrint();
+    void testPrint();
     const static int line = 4;
     const static int row = 5;
     static Cor dir_left;
@@ -35,6 +35,7 @@ protected:
     Cor *chessCurrentCor;
     bool whetherOnSide(Cor direction);
     bool whetherMove(Cor &direction);
+    bool checkCor(int x, int y);
 };
 
 

@@ -127,14 +127,26 @@ void chessControl::recordChessMove(){
 }
 
 void chessControl::testPrint(){
+    
     for(int i = 0; i < row; i++){
         for(int j = 0; j < line; j++){
-            if(corOccupied[j][i] == true){
+            if(checkCor(j, i)){
                 std::cout << "*";
+            }else if(corOccupied[j][i] == true){
+                std::cout << "·";
             }else{
                 std::cout << "-";
             }
         }
         std::cout << std::endl;
     }
+}
+
+bool chessControl::checkCor(int x, int y){
+    for(int i = 0; i < size; i++){
+        if(x == chessCurrentCor[i].x - 1 && y == chessCurrentCor[i].y - 1){
+            return true;
+        }
+    }
+    return false;
 }
