@@ -24,6 +24,10 @@ int main(){
         test.chessCorChange(chessControl::dir_right);
     }
     test.testPrint();
+    test.chessCorChange(chessControl::dir_up);
+    test.chessCorChange(chessControl::dir_down);
+    test.chessCorChange(chessControl::dir_down);
+    test.testPrint();
     // test.chessCorChange(chessControl::dir_left);
     // test.testPrint();
     // test.chessCorChange(chessControl::dir_right);
