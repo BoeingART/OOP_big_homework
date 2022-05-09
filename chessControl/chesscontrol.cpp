@@ -122,10 +122,6 @@ void chessControl::chessReset(){
     std::cout << "reseted" << std::endl;
 }
 
-void chessControl::recordChessMove(){
-    std::cout << "chessMove" << std::endl;
-}
-
 void chessControl::testPrint(){
     
     for(int i = 0; i < row; i++){

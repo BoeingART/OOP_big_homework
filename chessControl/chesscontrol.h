@@ -30,7 +30,6 @@ protected:
     int size;
     static bool corOccupied[4][5];
     static bool finishInit;
-    static void recordChessMove();
     std::string chessName;
     Cor *chessCurrentCor;
     bool whetherOnSide(Cor direction);
