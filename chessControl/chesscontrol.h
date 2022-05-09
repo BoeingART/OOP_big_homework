@@ -21,6 +21,10 @@ public:
     static void testPrint();
     const static int line = 4;
     const static int row = 5;
+    static Cor dir_left;
+    static Cor dir_right;
+    static Cor dir_up;
+    static Cor dir_down;
 
 protected:
     int size;
@@ -29,6 +33,8 @@ protected:
     static void recordChessMove();
     std::string chessName;
     Cor *chessCurrentCor;
+    bool whetherOnSide(Cor direction);
+    bool whetherMove(Cor &direction);
 };
 
 
