@@ -9,6 +9,9 @@ Cor chessControl::dir_right = {1, 0};
 Cor chessControl::dir_up = {0, -1};
 Cor chessControl::dir_down = {0, 1};
 
+
+
+
 chessControl::chessControl(std::string name): chessName(name)
 {
     if(!finishInit){
@@ -113,10 +116,10 @@ bool chessControl::whetherOnSide(Cor direction){
     return onSide;
 }
 
-bool chessControl::reachDestination(){
-    std::cout << "not reach destination" << std::endl;
-    return false;
-}
+// bool chessControl::reachDestination(){
+//     std::cout << "这不是应该判断的棋子" << std::endl;
+//     return false;
+// }
 
 void chessControl::chessReset(){
     std::cout << "reseted" << std::endl;

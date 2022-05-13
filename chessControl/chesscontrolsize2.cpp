@@ -8,20 +8,30 @@ chessControlSize2::chessControlSize2(std::string name):
     if(name == "张飞" || name == "黄忠" || name == "关羽" || name == "赵云" || name == "马超"){
         chessCurrentCor = new Cor[size];
         if(name == "张飞"){
-            chessCurrentCor[0].x = 1, chessCurrentCor[0].y = 1;
-            chessCurrentCor[1].x = 1, chessCurrentCor[1].y = 2;
+            chessName = "张飞";
+            for(int i = 0; i < size; i++){
+                chessCurrentCor[i] = cor_zf[i];
+            }
         }else if(name == "黄忠"){
-            chessCurrentCor[0].x = 1, chessCurrentCor[0].y = 3;
-            chessCurrentCor[1].x = 1, chessCurrentCor[1].y = 4;
+            chessName = "黄忠";
+            for(int i = 0; i < size; i++){
+                chessCurrentCor[i] = cor_hz[i];
+            }
         }else if(name == "关羽"){
-            chessCurrentCor[0].x = 2, chessCurrentCor[0].y = 4;
-            chessCurrentCor[1].x = 3, chessCurrentCor[1].y = 4;
+            chessName = "关羽";
+            for(int i = 0; i < size; i++){
+                chessCurrentCor[i] = cor_gy[i];
+            }
         }else if(name == "赵云"){
-            chessCurrentCor[0].x = 4, chessCurrentCor[0].y = 3;
-            chessCurrentCor[1].x = 4, chessCurrentCor[1].y = 4;
+            chessName = "赵云";
+            for(int i = 0; i < size; i++){
+                chessCurrentCor[i] = cor_zy[i];
+            }
         }else if(name == "马超"){
-            chessCurrentCor[0].x = 4, chessCurrentCor[0].y = 1;
-            chessCurrentCor[1].x = 4, chessCurrentCor[1].y = 2;
+            chessName = "马超";
+            for(int i = 0; i < size; i++){
+                chessCurrentCor[i] = cor_mc[i];
+            }
         }
     }
     for(int i = 0; i < size; i++){
