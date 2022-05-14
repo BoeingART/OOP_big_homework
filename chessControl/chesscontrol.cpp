@@ -2,7 +2,10 @@
 using namespace std;
 
 bool chessControl::finishInit = false;
-bool chessControl::corOccupied[4][5] = {false};
+globalConflict chessControl::chessBoard[4][5] = {{originChessBoard[0]},
+                                                 {originChessBoard[1]}, 
+                                                 {originChessBoard[2]}, 
+                                                 {originChessBoard[3]}};
 
 Cor chessControl::dir_left = {-1, 0};
 Cor chessControl::dir_right = {1, 0};
@@ -14,15 +17,13 @@ Cor chessControl::dir_down = {0, 1};
 
 chessControl::chessControl(std::string name): chessName(name)
 {
-    if(!finishInit){
-        for(int i = 0; i < line; i++){
-            for(int j = 0; j < row; j++){
-                corOccupied[i][j] = false;
-                //cout << i << "-" << j << " ";
-            }
-            //cout << endl;
+    finishInit = true;
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < line; j++){
+            chessBoard[j][i] = originChessBoard[j][i];
+            cout << chessBoard[j][i].name << " ";    
         }
-        finishInit = true;
+        cout << endl;
     }
     if(name == "none"){
         std::cerr << "please put a name in" << std::endl;
@@ -58,7 +59,8 @@ bool chessControl::whetherMove(Cor &direction){
         tempCor[i] = chessCurrentCor[i];
     }
     for(int i = 0; i < size; i++){
-        corOccupied[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1] = false;
+        chessBoard[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1].occ = false;
+        chessBoard[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1].name = "\0";
     }
     //将棋子坐标向该方向移动
 
@@ -70,18 +72,20 @@ bool chessControl::whetherMove(Cor &direction){
     //判断新的位置占用处是否有棋子被占用
 
     for(int i = 0; i < size; i++){
-        if(corOccupied[tempCor[i].x - 1][tempCor[i].y - 1]){
+        if(chessBoard[tempCor[i].x - 1][tempCor[i].y - 1].occ){
             cout << "(" << tempCor[i].x << "," << tempCor[i].y << ")" <<"处重叠了" << endl;
             for(int j = 0; j < size; j++){
-                corOccupied[chessCurrentCor[j].x - 1][chessCurrentCor[j].y - 1] = true;
+                chessBoard[chessCurrentCor[j].x - 1][chessCurrentCor[j].y - 1].occ = true;
+                chessBoard[chessCurrentCor[j].x - 1][chessCurrentCor[j].y - 1].name = this->chessName;
             }
             return false;
-            //如果有棋子占用则返回当前坐标，，同时将图中的信息进行添加，返回false
+            //如果有棋子占用则返回当前坐标，同时将图中的信息进行添加，返回false
         }
     }
     for(int i = 0; i < size; i++){
         chessCurrentCor[i] = tempCor[i];
-        corOccupied[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1] = true;
+        chessBoard[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1].occ = true;
+        chessBoard[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1].name = this->chessName;
     }
     
     
@@ -116,28 +120,105 @@ bool chessControl::whetherOnSide(Cor direction){
     return onSide;
 }
 
-// bool chessControl::reachDestination(){
-//     std::cout << "这不是应该判断的棋子" << std::endl;
-//     return false;
-// }
-
 void chessControl::chessReset(){
-    std::cout << "reseted" << std::endl;
+
+    if(chessName == "cc"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_cc[i];
+        }
+    }else if(chessName == "zf"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_zf[i];
+        }
+    }else if(chessName == "hz"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_hz[i];
+        }
+    }else if(chessName == "gy"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_gy[i];
+        }
+    }else if(chessName == "mc"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_mc[i];
+        }
+    }else if(chessName == "zy"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_zy[i];
+        }
+    }else if(chessName == "ba"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_ba[i];
+        }
+    }else if(chessName == "bb"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_bb[i];
+        }
+    }else if(chessName == "bc"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_bc[i];
+        }
+    }else if(chessName == "bd"){
+        for(int i = 0; i < size; i++){
+            chessCurrentCor[i] = cor_bd[i];
+        }
+    }
+    
+    std::cout << chessName << ": reseted" << std::endl;
+}
+
+void chessControl::chessBoardReset(){
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 5; j++){
+            chessBoard[i][j] = originChessBoard[i][j];
+        }
+    }
 }
 
 void chessControl::testPrint(){
-    
+    cout << "┏━━━┳━━━┳━━━┳━━━┓" << endl;
     for(int i = 0; i < row; i++){
+        cout << "┃";
         for(int j = 0; j < line; j++){
-            if(checkCor(j, i)){
-                std::cout << "*";
-            }else if(corOccupied[j][i] == true){
-                std::cout << "·";
+        //     if(checkCor(j, i)){
+        //         std::cout << "*";
+        //     }else if(chessBoard[j][i] == true){
+        //         std::cout << "·";
+        //     }else{
+        //         std::cout << "-";
+        //     }
+            if(chessBoard[j][i].occ){
+                if(chessBoard[j][i].name == "cc"){
+                    cout << "\033[31;1m" << " C " << "\033[0m";
+                }else if(chessBoard[j][i].name == "zf"){
+                    cout << "\033[32;1m" << " F " << "\033[0m";
+                }else if(chessBoard[j][i].name == "mc"){
+                    cout << "\033[33;1m" << " M " << "\033[0m";
+                }else if(chessBoard[j][i].name == "gy"){
+                    cout << "\033[34;1m" << " G " << "\033[0m";
+                }else if(chessBoard[j][i].name == "hz"){
+                    cout << "\033[35;1m" << " H " << "\033[0m";
+                }else if(chessBoard[j][i].name == "zy"){
+                    cout << "\033[36;1m" << " Y " << "\033[0m";
+                }else if(chessBoard[j][i].name == "ba"){
+                    cout << " a ";
+                }else if(chessBoard[j][i].name == "bb"){
+                    cout << " b ";
+                }else if(chessBoard[j][i].name == "bc"){
+                    cout << " c ";
+                }else if(chessBoard[j][i].name == "bd"){
+                    cout << " d ";
+                }
             }else{
-                std::cout << "-";
+                cout << "   ";
             }
+            cout << "┃";
         }
-        std::cout << std::endl;
+        cout << endl;
+        if(i != row - 1)
+            cout << "┣━━━╋━━━╋━━━╋━━━┫" << endl;
+        else
+            cout << "┗━━━┻━━━┻━━━┻━━━┛" << endl;
     }
 }
 
