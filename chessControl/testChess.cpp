@@ -42,19 +42,19 @@ void inputChessInfo(string name, char direction){
     if(name == "cc"){
         cc.chessCorChange(dir);
         cc.testPrint();
-    }else if(name == "zf"){
+    }else if(name == "f"){
         zf.chessCorChange(dir);
         zf.testPrint();
-    }else if(name == "mc"){
+    }else if(name == "m"){
         mc.chessCorChange(dir);
         mc.testPrint();
-    }else if(name == "gy"){
+    }else if(name == "g"){
         gy.chessCorChange(dir);
         gy.testPrint();
-    }else if(name == "zy"){
+    }else if(name == "y"){
         zy.chessCorChange(dir);
         zy.testPrint();
-    }else if(name == "hz"){
+    }else if(name == "h"){
         hz.chessCorChange(dir);
         hz.testPrint();
     }else if(name == "a"){
@@ -73,31 +73,6 @@ void inputChessInfo(string name, char direction){
 }
 
 int main(){
-
-    //chessControlSize4 cc("曹操");
-    // chessControlSize2 zf("张飞");
-    // chessControlSize2 hz("黄忠");
-    // chessControlSize2 gy("关羽");
-    // chessControlSize2 mc("马超");
-    // chessControlSize2 zy("赵云");
-    // chessControlSize1 bA("兵A");
-    // chessControlSize1 bB("兵B");
-    // chessControlSize1 bC("兵C");
-    // chessControlSize1 bD("兵D");
-    
-    // test.testPrint();
-    // test.chessCorChange(chessControl::dir_down);
-    
-    // test.testPrint();
-    // test.chessCorChange(chessControl::dir_down);
-    // for(int i = 0; i < 2; i++){
-    //     test.chessCorChange(chessControl::dir_right);
-    // }
-    // test.testPrint();
-    // test.chessCorChange(chessControl::dir_up);
-    // test.chessCorChange(chessControl::dir_down);
-    // test.chessCorChange(chessControl::dir_down);
-    // test.testPrint();
     cc.testPrint();
     while(true){
         string name;

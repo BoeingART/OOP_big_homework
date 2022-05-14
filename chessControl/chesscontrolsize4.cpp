@@ -37,7 +37,7 @@ chessControlSize4::chessControlSize4(std::string name):
 }
 
 bool chessControlSize4::reachDestination(){
-    if(chessName == "曹操"){
+    if(chessName == "cc"){
         if(this->chessCurrentCor[0].x == 2 && this->chessCurrentCor[0].y == 4){
             return true;
         }
