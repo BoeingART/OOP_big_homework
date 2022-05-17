@@ -21,7 +21,7 @@ chessControl::chessControl(std::string name): chessName(name)
     for(int i = 0; i < row; i++){
         for(int j = 0; j < line; j++){
             chessBoard[j][i] = originChessBoard[j][i];
-            cout << chessBoard[j][i].name << " ";    
+            //cout << chessBoard[j][i].name << " ";    
         }
         cout << endl;
     }

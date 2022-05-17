@@ -2,7 +2,7 @@
 #include "chesscontrolsize1.h"
 #include "chesscontrolsize2.h"
 #include "chesscontrolsize4.h"
-#include <stdlib.h>
+#include <stdio.h>
 using namespace std;
 
 
@@ -77,7 +77,20 @@ int main(){
     while(true){
         string name;
         char dir;
-        cin >> name;
+        cout << "put name and direction: ";
+        getline(cin, name, ' ').get(dir).get();
+        if(name != "cc" && name != "zf" && name != "mc" && name != "gy" && name != "zy"
+        && name != "hz" && name != "ba" && name != "bb" && name != "bc" && name != "bd"
+        && name != "reset" && name != "end"){
+            cout << "name is " << name << endl;
+            cout << "error input in name" << endl;
+            continue;
+        }else if(dir != 'u' && dir != 'd' && dir != 'l' && dir != 'r'){
+            cout << "direction is " << dir << endl;
+            cout << "error input in direction" << endl;
+            continue;
+        }
+        cout << "the input is: " << name << " " << dir << endl;
         if(name == "end"){
             break;
         }else if(name == "reset"){
@@ -95,24 +108,15 @@ int main(){
             cc.testPrint();
             continue;
         }
-        cin >> dir;
+
         inputChessInfo(name, dir);
         if(cc.reachDestination()){
             cout << "到达世界最高城——理塘！" << endl;
             break;
         }
         cin.clear();
-        //system("clear");
     }
 
-    // test.chessCorChange(chessControl::dir_left);
-    // test.testPrint();
-    // test.chessCorChange(chessControl::dir_right);
-    // test.testPrint();
-    // test.chessCorChange(chessControl::dir_up);
-    // test.testPrint()
-    // test.chessCorChange(chessControl::dir_down);
-    // test.testPrint();
     return 0;
 }
 
