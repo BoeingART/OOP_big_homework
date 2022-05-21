@@ -1,6 +1,7 @@
 #include "chesscontrol.h"
 using namespace std;
 
+
 bool chessControl::finishInit = false;
 globalConflict chessControl::chessBoard[4][5] = {{originChessBoard[0]},
                                                  {originChessBoard[1]}, 
@@ -175,7 +176,7 @@ void chessControl::chessBoardReset(){
     }
 }
 
-void chessControl::testPrint(){
+void chessControl::display(){
     cout << "┏━━━┳━━━┳━━━┳━━━┓" << endl;
     for(int i = 0; i < row; i++){
         cout << "┃";

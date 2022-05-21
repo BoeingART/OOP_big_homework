@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sat May 14 19:19:46 2022
+# Make data base, printed on Thu May 19 16:07:20 2022
 
 # Variables
 
@@ -31,7 +31,7 @@ CURDIR := /Users/boeingart/OOP_big_homework/chessControl
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/da15b6fd3ef856477bf6f4fb29ba1b7af717770d","_corruptedFile":"/Users/boeingart/Library/Application Support/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `makefile', line 1)
@@ -41,13 +41,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/vscode-ipc-0d2d0907-080d-4b8e-8b07-ffa7dc1cb6eb.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/vscode-ipc-97c94e40-65f1-4964-86e6-024563f36289.sock
 # environment
 VSCODE_CWD = /
 # environment
 PATH = /usr/bin:/bin:/usr/sbin:/sbin
 # environment
-LaunchInstanceID = B1E9B252-9554-45E8-A79B-ADAAE6F738E0
+LaunchInstanceID = 21CA4616-B040-473B-8D24-B9568BDF48F2
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -55,11 +55,11 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.l1iDFEM8n7/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.q4xbATcHJW/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.H11rvtxTcu/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.F38klbLpIB/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -75,7 +75,7 @@ Headers = $(wildcard *.h)
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/boeingart/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+VSCODE_CODE_CACHE_PATH = /Users/boeingart/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
 # environment
 LOGNAME = BoeingART
 # environment
@@ -109,7 +109,7 @@ TMPDIR = /var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/boeingart/Library/Application Support/Code/1.67.0-main.sock
+VSCODE_IPC_HOOK = /Users/boeingart/Library/Application Support/Code/1.67.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -117,7 +117,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.15430745.15430751
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.18279307.18279313
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -149,7 +149,7 @@ LANG = C
 # makefile (from `makefile', line 3)
 Objects = $(Sources:%.cpp=%.o)
 # environment
-VSCODE_PID = 597
+VSCODE_PID = 611
 # variable set hash-table stats:
 # Load=68/1024=7%, Rehash=0, Collisions=1/98=1%
 
@@ -159,9 +159,9 @@ VSCODE_PID = 597
 
 # Directories
 
-# . (device 16777232, inode 15886386): 14 files, no impossibilities.
+# . (device 16777233, inode 15886386): 19 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -352,6 +352,6 @@ chesscontrolsize2.cpp:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat May 14 19:19:46 2022
+# Finished Make data base on Thu May 19 16:07:20 2022
 
  
