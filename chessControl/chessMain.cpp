@@ -24,7 +24,8 @@ int main(){
         cout << "put name and direction: ";
 
         cin >> name;
-
+        
+        //system("reset");
         if(name != "cc" && name != "f" && name != "m" && name != "g" && name != "y"
         && name != "h" && name != "a" && name != "b" && name != "c" && name != "d"
         && name != "reset" && name != "end" && name != "undo"){
@@ -61,7 +62,7 @@ int main(){
             continue;
         }
         cout << "the input is: " << name << " " << dir << endl;
-
+        //printf("\33[2J");
 
         inputChessInfo(name, dir, if_undo);
         if(cc.reachDestination()){

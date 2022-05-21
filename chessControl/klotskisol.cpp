@@ -12,32 +12,12 @@
 #include <strings.h>
 
 int board[5][4] = {
-    //  0  1  2  3
-    {
-        1,
-        2,
-        2,
-        3,
-    }, // 0
-    {
-        1,
-        2,
-        2,
-        3,
-    }, // 1
-    {
-        4,
-        5,
-        5,
-        6,
-    }, // 2
-    {
-        4,
-        7,
-        8,
-        6,
-    },              // 3
-    {9, 0, 0, 10}}; // 4
+//  0  1  2  3
+  { 1, 2, 2, 3, },   // 0
+  { 1, 2, 2, 3, },   // 1
+  { 4, 5, 5, 6, },   // 2
+  { 4, 7, 8, 6, },   // 3
+  { 9, 0, 0, 10 } }; // 4
 
 struct Mask;
 
@@ -57,19 +37,19 @@ enum class Shape // : int8_t
 struct Block
 {
   Shape shape;
-  int left, top; // int8_t
+  int left, top;  // int8_t
 
   Block()
-      : shape(Shape::kInvalid),
-        left(-1),
-        top(-1)
+    : shape(Shape::kInvalid),
+      left(-1),
+      top(-1)
   {
   }
 
   Block(Shape s, int left, int top)
-      : shape(s),
-        left(left),
-        top(top)
+    : shape(s),
+      left(left),
+      top(top)
   {
     assert(shape != Shape::kInvalid);
     assert(left >= 0 && left < kColumns);
@@ -78,31 +58,19 @@ struct Block
 
   int bottom() const
   {
-    const static int delta[] = {
-        0,
-        0,
-        0,
-        1,
-        1,
-    };
+    const static int delta[] = { 0, 0, 0, 1, 1, };
     assert(shape != Shape::kInvalid);
     return top + delta[static_cast<int>(shape)];
   }
 
   int right() const
   {
-    const static int delta[] = {
-        0,
-        0,
-        1,
-        0,
-        1,
-    };
+    const static int delta[] = { 0, 0, 1, 0, 1, };
     assert(shape != Shape::kInvalid);
     return left + delta[static_cast<int>(shape)];
   }
 
-  void mask(int8_t value, Mask *mask) const;
+  void mask(int8_t value, Mask* mask) const;
 };
 
 struct Mask
@@ -112,14 +80,14 @@ struct Mask
     bzero(board_, sizeof(board_));
   }
 
-  bool operator==(const Mask &rhs) const
+  bool operator==(const Mask& rhs) const
   {
     return memcmp(board_, rhs.board_, sizeof board_) == 0;
   }
 
   size_t hashValue() const
   {
-    const int8_t *begin = board_[0];
+    const int8_t* begin = board_[0];
     return boost::hash_range(begin, begin + sizeof(board_));
   }
 
@@ -151,41 +119,40 @@ struct Mask
     return board_[y][x] == 0;
   }
 
-private:
+ private:
   int8_t board_[kRows][kColumns];
 };
 
 namespace std
 {
-  template <>
-  struct hash<Mask>
+  template<> struct hash<Mask>
   {
-    size_t operator()(const Mask &x) const
+    size_t operator()(const Mask& x) const
     {
       return x.hashValue();
     }
   };
 }
 
-inline void Block::mask(int8_t value, Mask *mask) const
+inline void Block::mask(int8_t value, Mask* mask) const
 {
   mask->set(value, top, left);
   switch (shape)
   {
-  case Shape::kHorizon:
-    mask->set(value, top, left + 1);
-    break;
-  case Shape::kVertical:
-    mask->set(value, top + 1, left);
-    break;
-  case Shape::kSquare:
-    mask->set(value, top, left + 1);
-    mask->set(value, top + 1, left);
-    mask->set(value, top + 1, left + 1);
-    break;
-  default:
-    assert(shape == Shape::kSingle);
-    ;
+    case Shape::kHorizon:
+      mask->set(value, top, left+1);
+      break;
+    case Shape::kVertical:
+      mask->set(value, top+1, left);
+      break;
+    case Shape::kSquare:
+      mask->set(value, top, left+1);
+      mask->set(value, top+1, left);
+      mask->set(value, top+1, left+1);
+      break;
+    default:
+      assert(shape == Shape::kSingle);
+      ;
   }
 }
 
@@ -210,10 +177,10 @@ struct State
     return (square.left == 1 && square.top == 3);
   }
 
-  template <typename FUNC>
-  void move(const FUNC &func) const
+  template<typename FUNC>
+  void move(const FUNC& func) const
   {
-    static_assert(std::is_convertible<FUNC, std::function<void(const State &)>>::value,
+    static_assert(std::is_convertible<FUNC, std::function<void(const State&)>>::value,
                   "func must be callable with a 'const State&' parameter.");
     const Mask mask = toMask();
 
@@ -222,7 +189,8 @@ struct State
       Block b = blocks_[i];
 
       // move up
-      if (b.top > 0 && mask.empty(b.top - 1, b.left) && mask.empty(b.top - 1, b.right()))
+      if (b.top > 0 && mask.empty(b.top-1, b.left)
+                    && mask.empty(b.top-1, b.right()))
       {
         State next = *this;
         next.step++;
@@ -231,7 +199,8 @@ struct State
       }
 
       // move down
-      if (b.bottom() < kRows - 1 && mask.empty(b.bottom() + 1, b.left) && mask.empty(b.bottom() + 1, b.right()))
+      if (b.bottom() < kRows-1 && mask.empty(b.bottom()+1, b.left)
+                               && mask.empty(b.bottom()+1, b.right()))
       {
         State next = *this;
         next.step++;
@@ -240,7 +209,8 @@ struct State
       }
 
       // move left
-      if (b.left > 0 && mask.empty(b.top, b.left - 1) && mask.empty(b.bottom(), b.left - 1))
+      if (b.left > 0 && mask.empty(b.top,      b.left-1)
+                     && mask.empty(b.bottom(), b.left-1))
       {
         State next = *this;
         next.step++;
@@ -249,7 +219,8 @@ struct State
       }
 
       // move right
-      if (b.right() < kColumns - 1 && mask.empty(b.top, b.right() + 1) && mask.empty(b.bottom(), b.right() + 1))
+      if (b.right() < kColumns-1 && mask.empty(b.top,      b.right()+1)
+                                 && mask.empty(b.bottom(), b.right()+1))
       {
         State next = *this;
         next.step++;
@@ -273,10 +244,10 @@ int main()
 
   State initial;
   initial.blocks_[0] = Block(Shape::kVertical, 0, 0);
-  initial.blocks_[1] = Block(Shape::kSquare, 1, 0);
+  initial.blocks_[1] = Block(Shape::kSquare,   1, 0);
   initial.blocks_[2] = Block(Shape::kVertical, 3, 0);
   initial.blocks_[3] = Block(Shape::kVertical, 0, 2);
-  initial.blocks_[4] = Block(Shape::kHorizon, 1, 2);
+  initial.blocks_[4] = Block(Shape::kHorizon,  1, 2);
   initial.blocks_[5] = Block(Shape::kVertical, 3, 2);
   initial.blocks_[6] = Block(Shape::kSingle, 1, 3);
   initial.blocks_[7] = Block(Shape::kSingle, 2, 3);
@@ -302,11 +273,11 @@ int main()
       break;
     }
 
-    curr.move([&seen, &queue](const State &next)
-              {
+    curr.move([&seen, &queue](const State& next) {
       auto result = seen.insert(next.toMask());
       if (result.second)
-        queue.push_back(next); });
+        queue.push_back(next);
+    });
 
     // for (const State& next : curr.moves())
     // {
