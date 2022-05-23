@@ -2,21 +2,12 @@
 #include "chessdirection.h"
 using namespace std;
 
-bool chessControl::finishInit = false;
 //globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { originChessBoard[ 0 ] }, { originChessBoard[ 1 ] }, { originChessBoard[ 2 ] }, { originChessBoard[ 3 ] } };
 globalConflict chessControl::chessBoard[4][5] = {originChessBoard};
 
 
 
 chessControl::chessControl( std::string name ) : chessName( name ) {
-    finishInit = true;
-    for ( int i = 0; i < row; i++ ) {
-        for ( int j = 0; j < line; j++ ) {
-            chessBoard[ j ][ i ] = originChessBoard[ j ][ i ];
-            // cout << chessBoard[j][i].name << " ";
-        }
-        cout << endl;
-    }
     if ( name == "none" ) {
         std::cerr << "please put a name in" << std::endl;
         return;

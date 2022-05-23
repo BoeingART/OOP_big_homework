@@ -21,7 +21,6 @@ protected:
     static globalConflict chessBoard[4][5]; //棋盘的占据情况
     //将corOccupied替换为chessBoard[4][5]，包含.occ(bool)和.name(string)
     
-    static bool finishInit;            // corOccupied是否被初始化
     std::string chessName;             //棋子的名称
     Cor *chessCurrentCor;              //棋子目前的坐标
 

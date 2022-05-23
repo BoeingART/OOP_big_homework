@@ -25,9 +25,4 @@ chessControlSize1::chessControlSize1(std::string name):
             }
         }
     }
-    // for(int i = 0; i < size; i++){
-    //     chessBoard[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1].occ = true;
-    //     chessBoard[chessCurrentCor[i].x - 1][chessCurrentCor[i].y - 1].name = this->chessName;
-    //     cout << size << endl;
-    // }
 }
