@@ -79,21 +79,21 @@ int main(){
 
 
 void inputChessInfo(string name, char direction, bool if_undo){
-    Cor dir;
+    chessDirection dir(0, 0);
     cout << "doing info" << endl;
     switch (direction)
     {
     case 'u':
-        dir = chessControl::dir_up;
+        dir = dir_up;
         break;
     case 'd':
-        dir = chessControl::dir_down;
+        dir = dir_down;
         break;
     case 'l':
-        dir = chessControl::dir_left;
+        dir = dir_left;
         break;
     case 'r':
-        dir = chessControl::dir_right;
+        dir = dir_right;
         break;
     default:
         cout << "错误输入指令" << endl;
