@@ -12,6 +12,7 @@ int main(){
         char dir;
         cin >> name;
         if(name == "end"){
+            cout << "通关失败www" << endl;
             break;
         }else if(name == "undo"){
             test.chessUndo();
@@ -22,9 +23,22 @@ int main(){
         }else if(name == "reset"){
             test.chessReset();
             continue;
-        }else{
+        }else if(name != "cc" && name != "f" && name != "m" && name != "g" && name != "y"
+        && name != "h" && name != "a" && name != "b" && name != "c" && name != "d"
+        && name != "reset" && name != "end" && name != "undo" && name != "redo"){
+            cout << "name is " << name << endl;
+            cout << "error input in name" << endl;
+            continue;}
+        else{
             cin >> dir;
             test.chessInput(name, dir);
+        }
+        if(test.ReachDestination()){
+            cout << "到达世界最高城——理塘！" << endl;
+            cout << "太美丽啦理塘" << endl;
+            cout << "诶，这不是丁真吗" << endl;
+            cout << "还是再看看远处的雪山吧家人们" << endl;
+            break;
         }
     }
     return 0;

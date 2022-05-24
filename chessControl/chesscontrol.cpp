@@ -16,7 +16,7 @@ chessControl::chessControl( std::string name ) : chessName( name ) {
 
 chessControl::~chessControl() {
     delete[] chessCurrentCor;
-    std::cout << "main:delete" << std::endl;
+    //std::cout << "main:delete" << std::endl;
 }
 
 bool chessControl::chessCorChange( chessDirection direction ) {
