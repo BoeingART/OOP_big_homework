@@ -16,11 +16,13 @@ chessMoveRecorder Recorder;
 
 int main(){
     chessReset();
-    chessControl::display();
+    //chessControl::display();
+    Recorder.last_undo = false;
     while(true){
+        chessControl::display();
         string name, empty;
         char dir;
-        bool if_undo = false;
+        Recorder.if_UR = false;
         cout << "put name and direction: ";
 
         cin >> name;
@@ -28,10 +30,10 @@ int main(){
         //system("reset");
         if(name != "cc" && name != "f" && name != "m" && name != "g" && name != "y"
         && name != "h" && name != "a" && name != "b" && name != "c" && name != "d"
-        && name != "reset" && name != "end" && name != "undo"){
+        && name != "reset" && name != "end" && name != "undo" && name != "redo"){
             cout << "name is " << name << endl;
             cout << "error input in name" << endl;
-            chessControl::display();
+            //chessControl::display();
             continue;
         }
 
@@ -39,32 +41,43 @@ int main(){
             break;
         }else if(name == "reset"){
             chessReset();
-            chessControl::display();
+            //chessControl::display();
             continue;
         }else if(name == "undo"){
-            if(!Recorder.pullChessMove(name, dir)){
-                cout << "cannot undo." << endl;
-                chessControl::display();
+            if(!Recorder.pullChessMoveLast(name, dir)){
+                //cout << "cannot undo." << endl;
+                //chessControl::display();
                 continue;
             }else{
-                if_undo = true;
+                Recorder.if_UR = true;
+                //last_undo = true;
+                Recorder.last_undo = true;
                 dirChange(dir);
             }
-            cout << "the last time: " << name << " " << dir << endl;
-        }else{
+            //cout << "the last time: " << name << " " << dir << endl;
+        }else if(name == "redo"){
+            if(!Recorder.pullChessMoveNext(name, dir)){
+                //chessControl::display();
+                continue;
+            }else{
+                Recorder.if_UR = true;
+            }             
+        }else{  
+            if(Recorder.last_undo)
+                Recorder.stepListClearPart();
             cin >> dir;
         }
         
         if(dir != 'u' && dir != 'd' && dir != 'l' && dir != 'r'){
             cout << "direction is " << dir << endl;
             cout << "error input in direction" << endl;
-            chessControl::display();
+            //chessControl::display();
             continue;
         }
-        cout << "the input is: " << name << " " << dir << endl;
+        //cout << "the input is: " << name << " " << dir << endl;
         //printf("\33[2J");
 
-        inputChessInfo(name, dir, if_undo);
+        inputChessInfo(name, dir, Recorder.if_UR);
         if(cc.reachDestination()){
             cout << "到达世界最高城——理塘！" << endl;
             break;
@@ -78,9 +91,9 @@ int main(){
 
 
 
-void inputChessInfo(string name, char direction, bool if_undo){
+void inputChessInfo(string name, char direction, bool if_UR){
     chessDirection dir(0, 0);
-    cout << "doing info" << endl;
+    //cout << "doing info" << endl;
     switch (direction)
     {
     case 'u':
@@ -97,7 +110,7 @@ void inputChessInfo(string name, char direction, bool if_undo){
         break;
     default:
         cout << "错误输入指令" << endl;
-        chessControl::display();
+        //chessControl::display();
         return;
     }
    
@@ -123,9 +136,9 @@ void inputChessInfo(string name, char direction, bool if_undo){
     }else if(name == "d"){
         if_move = bD.chessCorChange(dir);
     }
-    if(!if_undo && if_move)
+    if(!if_UR && if_move)
         Recorder.pushChessMove(name, direction);
-    chessControl::display();
+    //chessControl::display();
 }
 
 void dirChange(char &Dir){

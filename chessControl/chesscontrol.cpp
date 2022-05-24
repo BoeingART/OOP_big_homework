@@ -26,6 +26,7 @@ bool chessControl::chessCorChange( chessDirection direction ) {
          << "(" << direction.dir.y << ")";
     if ( onSide ) {
         cout << ": on the side, cannot move" << endl;
+        cout << "please reinput." << endl;
     }
     else {
         cout << ": not on the side, can move" << endl;
