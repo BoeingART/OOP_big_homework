@@ -1,7 +1,7 @@
 #ifndef CHESSDIRECTION_H
 #define CHESSDIRECTION_H
 
-#include "global.h"
+#include "chessglobal.h"
 
 class chessDirection{
 public:

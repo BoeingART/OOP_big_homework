@@ -1,7 +1,8 @@
 #ifndef CHESSMAIN_H
 #define CHESSMAIN_H
 
-#include "global.h"
+
+#include "chessglobal.h"
 
 #include "chesscontrol.h"
 #include "chesscontrolsize1.h"
@@ -11,7 +12,17 @@
 #include "chessdirection.h"
 #include <stdio.h>
 
-void inputChessInfo(std::string name, char direction, bool if_undo);
-void dirChange(char &Dir);
-void chessReset();
+
+class chessMain{
+public:
+    bool chessInput(std::string name, char directionn);
+    bool chessReset();
+    bool chessRedu();
+    bool chessUndo();
+    bool ReachDestination();
+private:
+    bool inputChessInfo(std::string name, char direction);
+    void dirChange(char &Dir);
+};
+
 #endif

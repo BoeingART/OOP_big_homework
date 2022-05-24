@@ -1,8 +1,9 @@
 #ifndef CHESSCONTROL_H
 #define CHESSCONTROL_H
 
-#include "global.h"
+#include "chessglobal.h"
 #include "chessdirection.h"
+
 
 class chessControl
 {

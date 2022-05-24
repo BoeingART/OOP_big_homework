@@ -56,9 +56,7 @@ void chessMoveRecorder::stepListClearPart(){
     for(vector<steps>::iterator i = stepList.begin() + curStep; i != stepList.end(); ){
         i = stepList.erase(i);
     }
-    for(int i = curStep; i < stepList.size(); i++){
-        //stepList[i].clear();
-    }
+    last_undo = false;
 }
 
 void chessMoveRecorder::stepListClear(){
