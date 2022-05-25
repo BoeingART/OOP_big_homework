@@ -15,11 +15,12 @@
 
 class chessMain{
 public:
-    bool chessInput(std::string name, char directionn);
+    bool chessMove(std::string name, char directionn);
     bool chessReset();
     bool chessRedu();
     bool chessUndo();
-    bool ReachDestination();
+    bool chessReachDestination();
+    void chessEnd();
 private:
     bool inputChessInfo(std::string name, char direction);
     void dirChange(char &Dir);

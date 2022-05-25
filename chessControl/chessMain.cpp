@@ -15,7 +15,7 @@ chessControlSize1 bD( "bd" );
 
 chessMoveRecorder Recorder;
 
-bool chessMain::chessInput(std::string name, char direction){
+bool chessMain::chessMove(std::string name, char direction){
     if(Recorder.last_undo) Recorder.stepListClearPart();
     return inputChessInfo(name, direction);
 }
@@ -150,8 +150,16 @@ bool chessMain::chessUndo() {
     }
 }
 
-bool chessMain::ReachDestination() {
+void chessMain::chessEnd(){
+    cout << "游戏结束" << endl;
+}
+
+bool chessMain::chessReachDestination() {
     if ( cc.reachDestination() ) {
+        cout << "到达世界最高城——理塘！" << endl;
+        cout << "太美丽啦理塘" << endl;
+        cout << "诶，这不是丁真吗" << endl;
+        cout << "还是再看看远处的雪山吧家人们" << endl;
         return true;
     }
     else {

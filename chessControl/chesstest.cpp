@@ -1,4 +1,5 @@
 #include "chessmain.h"
+#include "unistd.h"
 using namespace std;
 
 
@@ -7,12 +8,13 @@ int main(){
     chessMain test;
     test.chessReset();
     while(true){
+        usleep(200000);
         chessControl::display();
         string name;
         char dir;
         cin >> name;
         if(name == "end"){
-            cout << "通关失败www" << endl;
+            test.chessEnd();
             break;
         }else if(name == "undo"){
             test.chessUndo();
@@ -31,13 +33,9 @@ int main(){
             continue;}
         else{
             cin >> dir;
-            test.chessInput(name, dir);
+            test.chessMove(name, dir);
         }
-        if(test.ReachDestination()){
-            cout << "到达世界最高城——理塘！" << endl;
-            cout << "太美丽啦理塘" << endl;
-            cout << "诶，这不是丁真吗" << endl;
-            cout << "还是再看看远处的雪山吧家人们" << endl;
+        if(test.chessReachDestination()){
             break;
         }
     }
