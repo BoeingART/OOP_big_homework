@@ -1,4 +1,0 @@
-/Users/boeingart/OOP_big_homework/CMakeFiles/OOP_big_homework.dir
-/Users/boeingart/OOP_big_homework/CMakeFiles/edit_cache.dir
-/Users/boeingart/OOP_big_homework/CMakeFiles/rebuild_cache.dir
-/Users/boeingart/OOP_big_homework/CMakeFiles/OOP_big_homework_autogen.dir

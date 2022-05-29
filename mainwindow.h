@@ -1,10 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define testPic "/Users/boeingart/OOP_big_homework/source/pictures/test.jpg"
+#include <QMainWindow>
 
-#include "global.h"
-#include "gamewindow.h"
+#include "chessmain.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,43 +17,36 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    const QSize getbuttonSize(){
-        return button;
-    }
+private slots:
+    void on_actionstart_triggered();
 
-    void showAbout();
+    void on_Guanyu_clicked();
 
-    QPushButton *start_game;
-    QPushButton *about_game;
-    QPushButton *exit_game;
-    gameWindow test;
+    void on_Caocao_clicked();
+
+    void on_Zhangfei_clicked();
+
+    void on_Machao_clicked();
+
+    void on_Huangzhong_clicked();
+
+    void on_Zhaoyun_clicked();
+
+    void on_Infantry_1_clicked();
+
+    void on_Infantry_2_clicked();
+
+    void on_Infantry_3_clicked();
+
+    void on_Infantry_4_clicked();
 
 private:
     Ui::MainWindow *ui;
-
-    const QSize window {300,500};
-    const QSize button {100,100};
-
-    void menuBarSetting();
-    void toolBarSetting();
-    void statusBarSetting();
-    void mainwindowSetting();
-    void backgroundSetting();
-    void widgetSetting();
-    void gamewindowSetting();
-    void closeEvent(QCloseEvent *event);
-
+    chessMain* core;
+protected:
+    virtual void keyPressEvent(QKeyEvent *ev);
 };
-
-/*
-class QPushButtonFixedSize: public QPushButton
-{
-public:
-    QPushButtonFixedSize(*QWidget test): QPushButton(*QWidget test){
-
-    }
-    const QSize sizeHint();
-};
-*/
 
 #endif // MAINWINDOW_H
+
+
