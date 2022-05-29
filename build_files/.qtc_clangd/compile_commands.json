@@ -7,7 +7,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -75,7 +79,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -143,7 +151,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -211,7 +223,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -279,7 +295,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -347,7 +367,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -415,7 +439,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",
@@ -483,7 +511,11 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
+<<<<<<< HEAD
         "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-gIMUIE/clang-uiheader-sKaAqR",
+=======
+        "/private/var/folders/tb/0h46d37s49z7c1qkkms7fdbh0000gn/T/QtCreator-dAtPXJ/clang-uiheader-fiIveW",
+>>>>>>> work
         "-nostdinc",
         "-nostdinc++",
         "-DNDEBUG",

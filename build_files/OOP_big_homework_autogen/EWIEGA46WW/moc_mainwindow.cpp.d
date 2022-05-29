@@ -1,5 +1,6 @@
 /Users/boeingart/OOP_big_homework/build_files/OOP_big_homework_autogen/EWIEGA46WW/moc_mainwindow.cpp: /Users/boeingart/OOP_big_homework/mainwindow.h \
   /Users/boeingart/OOP_big_homework/build_files/OOP_big_homework_autogen/moc_predefs.h \
+<<<<<<< HEAD
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h \
@@ -257,6 +258,8 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include/stdarg.h \
+=======
+>>>>>>> work
   /Users/boeingart/OOP_big_homework/chess.h \
   /Users/boeingart/OOP_big_homework/gamewindow.h \
   /Users/boeingart/OOP_big_homework/global.h \

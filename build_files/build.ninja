@@ -153,7 +153,11 @@ build OOP_big_homework_autogen/timestamp OOP_big_homework_autogen/mocs_compilati
 #############################################
 # Phony custom command for CMakeFiles/OOP_big_homework_autogen_timestamp_deps
 
+<<<<<<< HEAD
 build CMakeFiles/OOP_big_homework_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/OOP_big_homework_autogen_timestamp_deps: phony /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore
+=======
+build CMakeFiles/OOP_big_homework_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/OOP_big_homework_autogen_timestamp_deps: phony /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
+>>>>>>> work
 
 
 #############################################

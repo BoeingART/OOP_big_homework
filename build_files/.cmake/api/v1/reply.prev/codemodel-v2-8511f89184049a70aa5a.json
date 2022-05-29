@@ -42,21 +42,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-<<<<<<< HEAD:build_files/.cmake/api/v1/reply.prev/codemodel-v2-35bd5f73ab4e72a8a0e6.json
-<<<<<<< HEAD:build_files/.cmake/api/v1/reply/codemodel-v2-bfa0b4585acff77971b2.json
 					"id" : "OOP_big_homework::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OOP_big_homework-MinSizeRel-a933c624c00ea8c89e7c.json",
+					"jsonFile" : "target-OOP_big_homework-MinSizeRel-0f90cb4e4c2223d75524.json",
 					"name" : "OOP_big_homework",
-=======
-					"id" : "Test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Test-MinSizeRel-d8a1771de29b95e33326.json",
-					"name" : "Test",
->>>>>>> cf6932a (temp):build_files/.cmake/api/v1/reply/codemodel-v2-35bd5f73ab4e72a8a0e6.json
-=======
-					"id" : "OOP_big_homework::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OOP_big_homework-MinSizeRel-a933c624c00ea8c89e7c.json",
-					"name" : "OOP_big_homework",
->>>>>>> work:build_files/.cmake/api/v1/reply/codemodel-v2-bfa0b4585acff77971b2.json
 					"projectIndex" : 0
 				},
 				{

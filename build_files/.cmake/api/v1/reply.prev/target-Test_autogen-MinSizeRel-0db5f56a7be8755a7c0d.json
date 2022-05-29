@@ -17,12 +17,12 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "Test_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"id" : "OOP_big_homework_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "Test_autogen::@6890427a1f51a3e7e1df",
+	"id" : "OOP_big_homework_autogen::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
-	"name" : "Test_autogen",
+	"name" : "OOP_big_homework_autogen",
 	"paths" : 
 	{
 		"build" : ".",
@@ -51,19 +51,19 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build_files/CMakeFiles/Test_autogen",
+			"path" : "build_files/CMakeFiles/OOP_big_homework_autogen",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build_files/CMakeFiles/Test_autogen.rule",
+			"path" : "build_files/CMakeFiles/OOP_big_homework_autogen.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build_files/Test_autogen/timestamp.rule",
+			"path" : "build_files/OOP_big_homework_autogen/timestamp.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

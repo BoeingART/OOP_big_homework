@@ -763,7 +763,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Test"
+			"value" : "OOP_big_homework"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",
@@ -5532,42 +5532,6 @@
 			],
 			"type" : "PATH",
 			"value" : "/opt/homebrew/lib/cmake/Qt6"
-		},
-		{
-			"name" : "Test_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/boeingart/OOP_big_homework/build_files"
-		},
-		{
-			"name" : "Test_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "Test_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/boeingart/OOP_big_homework"
 		},
 		{
 			"name" : "WrapOpenGL_AGL",
