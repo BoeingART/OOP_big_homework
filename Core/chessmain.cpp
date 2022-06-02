@@ -15,9 +15,10 @@ chessControlSize1 bD( "bd" );
 
 chessMoveRecorder Recorder;
 
-bool chessMain::chessMove(std::string name, char direction){
-    if(Recorder.last_undo) Recorder.stepListClearPart();
-    return inputChessInfo(name, direction);
+bool chessMain::chessMove( std::string name, char direction ) {
+    if ( Recorder.last_undo )
+        Recorder.stepListClearPart();
+    return inputChessInfo( name, direction );
 }
 
 bool chessMain::inputChessInfo( std::string name, char direction ) {
@@ -81,7 +82,8 @@ bool chessMain::inputChessInfo( std::string name, char direction ) {
     else if ( name == "d" ) {
         if_move = bD.chessCorChange( dir );
     }
-    if ( !Recorder.if_UR && if_move ) Recorder.pushChessMove( name, direction );
+    if ( !Recorder.if_UR && if_move )
+        Recorder.pushChessMove( name, direction );
     Recorder.if_UR = false;
     if ( if_move ) {
         return true;
@@ -92,7 +94,7 @@ bool chessMain::inputChessInfo( std::string name, char direction ) {
 }
 
 bool chessMain::chessReset() {
-    try{
+    try {
         chessControl::chessBoardReset();
         cc.chessReset();
         zf.chessReset();
@@ -106,7 +108,8 @@ bool chessMain::chessReset() {
         bD.chessReset();
         Recorder.stepListClear();
         return true;
-    }catch(...){
+    }
+    catch ( ... ) {
         return false;
     }
 }
@@ -150,7 +153,7 @@ bool chessMain::chessUndo() {
     }
 }
 
-void chessMain::chessEnd(){
+void chessMain::chessEnd() {
     cout << "游戏结束" << endl;
 }
 

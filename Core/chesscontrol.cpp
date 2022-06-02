@@ -18,7 +18,6 @@ chessControl::chessControl( std::string name )
 
 chessControl::~chessControl() {
     delete[] chessCurrentCor;
-    // std::cout << "main:delete" << std::endl;
 }
 
 bool chessControl::chessCorChange( chessDirection direction ) {
@@ -86,7 +85,8 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
     bool onSide = false;
     if ( direction == dir_left )  //向左方
     {
-        if ( chessCurrentCor[ 0 ].x <= 1 ) onSide = true;
+        if ( chessCurrentCor[ 0 ].x <= 1 )
+            onSide = true;
     }
     else if ( direction == dir_right )  //向右方
     {
@@ -96,11 +96,13 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
     }
     else if ( direction == dir_up )  //向上方
     {
-        if ( chessCurrentCor[ 0 ].y <= 1 ) onSide = true;
+        if ( chessCurrentCor[ 0 ].y <= 1 )
+            onSide = true;
     }
     else if ( direction == dir_down )  //向下方
     {
-        if ( chessCurrentCor[ size - 1 ].y >= row ) onSide = true;
+        if ( chessCurrentCor[ size - 1 ].y >= row )
+            onSide = true;
     }
     return onSide;
 }
@@ -174,13 +176,6 @@ void chessControl::display() {
     for ( int i = 0; i < row; i++ ) {
         cout << "┃";
         for ( int j = 0; j < line; j++ ) {
-            //     if(checkCor(j, i)){
-            //         std::cout << "*";
-            //     }else if(chessBoard[j][i] == true){
-            //         std::cout << "·";
-            //     }else{
-            //         std::cout << "-";
-            //     }
             if ( chessBoard[ j ][ i ].occ ) {
                 if ( chessBoard[ j ][ i ].name == "cc" ) {
                     cout << "\033[31;1m"

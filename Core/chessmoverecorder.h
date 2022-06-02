@@ -6,7 +6,9 @@
 struct steps {
     char dir;
     std::string name;
-    steps( std::string Name = "empty", char Dir = '\0' ) : name( Name ), dir( Dir ){};
+    steps( std::string Name = "empty", char Dir = '\0' )
+        : name( Name )
+        , dir( Dir ){};
 };
 
 class chessMoveRecorder {

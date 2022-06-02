@@ -3,12 +3,9 @@
 
 #include "chesscontrol.h"
 
-class chessControlSize2: public chessControl
-{
+class chessControlSize2 : public chessControl {
 public:
-    chessControlSize2(std::string name = "none");
-    //~chessControlSize2();
-
+    chessControlSize2( std::string name = "none" );
 };
 
 #endif

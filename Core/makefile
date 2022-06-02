@@ -4,7 +4,7 @@ Objects = $(Sources:%.cpp=%.o)
 exec = testRun#可执行文件的名称
 
 $(exec): $(Objects)
-	$(CXX) $^ -o $@ 
+	$(CXX) $^ -o $@	
 
 $(Objects): %.o: %.cpp $(Headers)
 	$(CXX) -c $< -o $@ 
