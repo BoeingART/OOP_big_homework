@@ -2,15 +2,14 @@
 #include "chessdirection.h"
 using namespace std;
 
-//globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { originChessBoard[ 0 ] }, { originChessBoard[ 1 ] }, { originChessBoard[ 2 ] }, { originChessBoard[ 3 ] } };
-globalConflict chessControl::chessBoard[4][5] = {{{true, "zf"}, {true, "zf"}, {true, "hz"}, {true, "hz"}, {true, "ba"}},
-                                                 {{true, "cc"}, {true, "cc"}, {false, "\0"}, {true, "gy"},{true, "bb"}},
-                                                 {{true, "cc"}, {true, "cc"}, {false, "\0"}, {true, "gy"},{true, "bc"}},
-                                                 {{true, "mc"}, {true, "mc"}, {true, "zy"}, {true, "zy"}, {true, "bd"}}};
+// globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { originChessBoard[ 0 ] }, { originChessBoard[ 1 ] }, { originChessBoard[ 2 ] }, { originChessBoard[ 3 ] } };
+globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { { true, "zf" }, { true, "zf" }, { true, "hz" }, { true, "hz" }, { true, "ba" } },
+                                                      { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bb" } },
+                                                      { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bc" } },
+                                                      { { true, "mc" }, { true, "mc" }, { true, "zy" }, { true, "zy" }, { true, "bd" } } };
 
-
-
-chessControl::chessControl( std::string name ) : chessName( name ) {
+chessControl::chessControl( std::string name )
+    : chessName( name ) {
     if ( name == "none" ) {
         std::cerr << "please put a name in" << std::endl;
         return;
@@ -19,7 +18,7 @@ chessControl::chessControl( std::string name ) : chessName( name ) {
 
 chessControl::~chessControl() {
     delete[] chessCurrentCor;
-    //std::cout << "main:delete" << std::endl;
+    // std::cout << "main:delete" << std::endl;
 }
 
 bool chessControl::chessCorChange( chessDirection direction ) {
@@ -85,7 +84,7 @@ bool chessControl::whetherMove( chessDirection& direction ) {
 
 bool chessControl::whetherOnSide( chessDirection direction ) {
     bool onSide = false;
-    if ( direction == dir_left)  //向左方
+    if ( direction == dir_left )  //向左方
     {
         if ( chessCurrentCor[ 0 ].x <= 1 ) onSide = true;
     }
