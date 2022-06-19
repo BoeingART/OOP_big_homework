@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include "chessmain.h"
+#include "Core/chessmain.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

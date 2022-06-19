@@ -19,21 +19,21 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        chesscontrol.cpp
-        chesscontrol.h
-        chesscontrolsize1.cpp
-        chesscontrolsize1.h
-        chesscontrolsize2.cpp
-        chesscontrolsize2.h
-        chesscontrolsize4.cpp
-        chesscontrolsize4.h
-        chessdirection.cpp
-        chessdirection.h
-        chessglobal.h
-        chessmain.cpp
-        chessmain.h
-        chessmoverecorder.cpp
-        chessmoverecorder.h
+        Core/chesscontrol.cpp
+        Core/chesscontrol.h
+        Core/chesscontrolsize1.cpp
+        Core/chesscontrolsize1.h
+        Core/chesscontrolsize2.cpp
+        Core/chesscontrolsize2.h
+        Core/chesscontrolsize4.cpp
+        Core/chesscontrolsize4.h
+        Core/chessdirection.cpp
+        Core/chessdirection.h
+        Core/chessglobal.h
+        Core/chessmain.cpp
+        Core/chessmain.h
+        Core/chessmoverecorder.cpp
+        Core/chessmoverecorder.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
