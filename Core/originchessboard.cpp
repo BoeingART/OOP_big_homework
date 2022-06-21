@@ -49,6 +49,14 @@ Cor* chessCor::chessPlace( std::string chessName ) {
 globalConflict chessCor::chessBoard( std::string chessBoardName, int i, int j ) {
     if ( chessBoardName == "horizontal_knife" )
         return chessBoard_horizontal_knife[ i ][ j ];
+    else if ( chessBoardName == "neck_and_neck" )
+        return chessBoard_neck_and_neck[ i ][ j ];
+    else if ( chessBoardName == "three_road" )
+        return chessBoard_three_road[ i ][ j ];
+    else if ( chessBoardName == "station_troops" )
+        return chessBoard_station_troops[ i ][ j ];
+    else if ( chessBoardName == "left_and_right" )
+        return chessBoard_left_and_right[ i ][ j ];
     else
         return chessBoard_horizontal_knife[ i ][ j ];
 }
@@ -58,14 +66,36 @@ void chessCor::changeChessPlace( std::string chessBoardName ) {
     if ( chessBoardName == "horizontal_knife" ) {
         for ( int i = 0; i < 4; i++ ) {
             for ( int j = 0; j < 5; j++ ) {
-                cout << chessBoard_horizontal_knife[ i ][ j ] << ", ";
                 chessBoardTemp[ i ][ j ] = chessBoard_horizontal_knife[ i ][ j ];
             }
-            cout << endl;
+        }
+    } else if ( chessBoardName == "neck_and_neck" ) {
+        for ( int i = 0; i < 4; i++ ) {
+            for ( int j = 0; j < 5; j++ ) {
+                chessBoardTemp[ i ][ j ] = chessBoard_neck_and_neck[ i ][ j ];
+            }
+        }
+    } else if ( chessBoardName == "three_road" ) {
+        for ( int i = 0; i < 4; i++ ) {
+            for ( int j = 0; j < 5; j++ ) {
+                chessBoardTemp[ i ][ j ] = chessBoard_three_road[ i ][ j ];
+            }
+        }
+    } else if ( chessBoardName == "station_troops" ) {
+        for ( int i = 0; i < 4; i++ ) {
+            for ( int j = 0; j < 5; j++ ) {
+                chessBoardTemp[ i ][ j ] = chessBoard_station_troops[ i ][ j ];
+            }
+        }
+    } else if ( chessBoardName == "left_and_right" ) {
+        for ( int i = 0; i < 4; i++ ) {
+            for ( int j = 0; j < 5; j++ ) {
+                chessBoardTemp[ i ][ j ] = chessBoard_left_and_right[ i ][ j ];
+            }
         }
     }
-    cout << "XXXXXXXXXXXXXX" << endl;
-    cout << chessBoardTemp[ 0 ][ 0 ].name;
+    // cout << "XXXXXXXXXXXXXX" << endl;
+    // cout << chessBoardTemp[ 0 ][ 0 ].name;
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0, BA = 0, BB = 0, BC = 0, BD = 0;
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ ) {

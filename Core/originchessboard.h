@@ -37,10 +37,30 @@ public:
     void changeChessPlace( std::string chessBoardName );
     globalConflict chessBoard( std::string name, int i, int j );
     const globalConflict chessBoard_horizontal_knife[ 4 ][ 5 ] = {
-        { { true, "zf" }, { true, "zf" }, { true, "hz" }, { true, "hz" }, { true, "ba" } },
-        { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bb" } },
-        { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bc" } },
-        { { true, "mc" }, { true, "mc" }, { true, "zy" }, { true, "zy" }, { true, "bd" } } };
+        { { true, "zf" }, { true, "zf" }, { true, "mc" }, { true, "mc" }, { true, "ba" } },
+        { { true, "cc" }, { true, "cc" }, { true, "gy" }, { true, "bb" }, { false, "\0" } },
+        { { true, "cc" }, { true, "cc" }, { true, "gy" }, { true, "bc" }, { false, "\0" } },
+        { { true, "zy" }, { true, "zy" }, { true, "hz" }, { true, "hz" }, { true, "bd" } } };
+    const globalConflict chessBoard_neck_and_neck[ 4 ][ 5 ]{
+        { { true, "zf" }, { true, "zf" }, { true, "ba" }, { true, "mc" }, { true, "mc" } },
+        { { true, "cc" }, { true, "cc" }, { true, "bb" }, { true, "gy" }, { false, "\0" } },
+        { { true, "cc" }, { true, "cc" }, { true, "bc" }, { true, "gy" }, { false, "\0" } },
+        { { true, "zy" }, { true, "zy" }, { true, "bd" }, { true, "hz" }, { true, "hz" } } };
+    const globalConflict chessBoard_three_road[ 4 ][ 5 ]{
+        { { true, "ba" }, { true, "zf" }, { true, "zf" }, { true, "mc" }, { true, "mc" } },
+        { { true, "cc" }, { true, "cc" }, { true, "gy" }, { true, "bb" }, { false, "\0" } },
+        { { true, "cc" }, { true, "cc" }, { true, "gy" }, { true, "bc" }, { false, "\0" } },
+        { { true, "ba" }, { true, "zy" }, { true, "zy" }, { true, "hz" }, { true, "hz" } } };
+    const globalConflict chessBoard_station_troops[ 4 ][ 5 ]{
+        { { true, "cc" }, { true, "cc" }, { true, "gy" }, { true, "mc" }, { true, "mc" } },
+        { { true, "cc" }, { true, "cc" }, { true, "gy" }, { true, "hz" }, { false, "hz" } },
+        { { true, "zf" }, { true, "zf" }, { true, "ba" }, { true, "bb" }, { false, "\0" } },
+        { { true, "zy" }, { true, "zy" }, { true, "bc" }, { true, "bd" }, { false, "\0" } } };
+    const globalConflict chessBoard_left_and_right[ 4 ][ 5 ]{
+        { { true, "zf" }, { true, "zf" }, { false, "\0" }, { true, "ba" }, { true, "bb" } },
+        { { true, "cc" }, { true, "cc" }, { true, "hz" }, { true, "hz" }, { true, "gy" } },
+        { { true, "cc" }, { true, "cc" }, { true, "mc" }, { true, "mc" }, { true, "gy" } },
+        { { true, "zy" }, { true, "zy" }, { false, "\0" }, { true, "bc" }, { true, "bd" } } };
 };
 
 #endif

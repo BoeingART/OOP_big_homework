@@ -109,64 +109,17 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
 }
 
 void chessControl::chessReset() {
-
     chessCurrentCor = chessCorRecorder.chessPlace( chessName );
-    if ( chessCorRecorder.chessPlace( chessName ) == nullptr )
-        cout << "xxx" << endl;
     for ( int i = 0; i < size; i++ )
         cout << chessCurrentCor[ i ].x << " " << chessCurrentCor[ i ].y << endl;
-    /*
-    if ( chessName == "cc" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = chessCorRecorder.chessePlace(chessName)[ i ];
-        }
-    } else if ( chessName == "zf" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_zf[ i ];
-        }
-    } else if ( chessName == "hz" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_hz[ i ];
-        }
-    } else if ( chessName == "gy" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_gy[ i ];
-        }
-    } else if ( chessName == "mc" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_mc[ i ];
-        }
-    } else if ( chessName == "zy" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_zy[ i ];
-        }
-    } else if ( chessName == "ba" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_ba[ i ];
-        }
-    } else if ( chessName == "bb" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_bb[ i ];
-        }
-    } else if ( chessName == "bc" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_bc[ i ];
-        }
-    } else if ( chessName == "bd" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_bd[ i ];
-        }
-    }
-    */
-
     std::cout << chessName << ": reseted" << std::endl;
 }
 
-void chessControl::chessBoardReset(std::string chessBoardName) {
+void chessControl::chessBoardReset( std::string chessBoardName ) {
     chessCorRecorder.changeChessPlace( chessBoardName );
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ ) {
-            chessBoard[ i ][ j ] = chessCorRecorder.chessBoard(chessBoardName, i, j);
+            chessBoard[ i ][ j ] = chessCorRecorder.chessBoard( chessBoardName, i, j );
             cout << chessBoard[ i ][ j ].name << " ";
         }
         cout << "\n";
