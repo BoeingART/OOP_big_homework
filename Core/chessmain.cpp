@@ -83,9 +83,9 @@ bool chessMain::inputChessInfo( std::string name, char direction ) {
     }
 }
 
-bool chessMain::chessReset() {
+bool chessMain::chessReset( std::string chessBoardName ) {
     try {
-        chessControl::chessBoardReset();
+        chessControl::chessBoardReset( chessBoardName );
         cc.chessReset();
         zf.chessReset();
         mc.chessReset();

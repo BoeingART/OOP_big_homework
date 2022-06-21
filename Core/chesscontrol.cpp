@@ -1,13 +1,17 @@
 #include "chesscontrol.h"
 #include "chessdirection.h"
 using namespace std;
-
-// globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { originChessBoard[ 0 ] }, { originChessBoard[ 1 ] }, { originChessBoard[ 2 ] }, { originChessBoard[ 3 ] } };
+/*
 globalConflict chessControl::chessBoard[ 4 ][ 5 ] = {
     { { true, "zf" }, { true, "zf" }, { true, "hz" }, { true, "hz" }, { true, "ba" } },
     { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bb" } },
     { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bc" } },
     { { true, "mc" }, { true, "mc" }, { true, "zy" }, { true, "zy" }, { true, "bd" } } };
+*/
+
+globalConflict chessControl::chessBoard[ 4 ][ 5 ];
+
+chessCor chessControl::chessCorRecorder;
 
 chessControl::chessControl( std::string name )
     : chessName( name ) {
@@ -61,21 +65,21 @@ bool chessControl::whetherMove( chessDirection& direction ) {
     for ( int i = 0; i < size; i++ ) {
         if ( chessBoard[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].occ ) {
             cout << "(" << tempCor[ i ].x << "," << tempCor[ i ].y << ")"
-                 << "处重叠了" << endl;
+                 << "处重叠了，是" << chessBoard[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].name << endl;
             for ( int j = 0; j < size; j++ ) {
                 chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].occ = true;
                 chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].name = this->chessName;
             }
             return false;
-            //如果有棋子占用则返回当前坐标，同时将图中的信息进行添加，返回false
         }
     }
+    //如果有棋子占用则返回当前坐标，同时将图中的信息进行添加，返回false
+
     for ( int i = 0; i < size; i++ ) {
         chessCurrentCor[ i ] = tempCor[ i ];
         chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = true;
         chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = this->chessName;
     }
-
     //如果没有棋子占用则直接更新类中的坐标信息，并同时更新图的信息，返回true
 
     return true;
@@ -106,9 +110,15 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
 
 void chessControl::chessReset() {
 
+    chessCurrentCor = chessCorRecorder.chessPlace( chessName );
+    if ( chessCorRecorder.chessPlace( chessName ) == nullptr )
+        cout << "xxx" << endl;
+    for ( int i = 0; i < size; i++ )
+        cout << chessCurrentCor[ i ].x << " " << chessCurrentCor[ i ].y << endl;
+    /*
     if ( chessName == "cc" ) {
         for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_cc[ i ];
+            chessCurrentCor[ i ] = chessCorRecorder.chessePlace(chessName)[ i ];
         }
     } else if ( chessName == "zf" ) {
         for ( int i = 0; i < size; i++ ) {
@@ -147,15 +157,19 @@ void chessControl::chessReset() {
             chessCurrentCor[ i ] = cor_bd[ i ];
         }
     }
+    */
 
     std::cout << chessName << ": reseted" << std::endl;
 }
 
-void chessControl::chessBoardReset() {
+void chessControl::chessBoardReset(std::string chessBoardName) {
+    chessCorRecorder.changeChessPlace( chessBoardName );
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ ) {
-            chessBoard[ i ][ j ] = originChessBoard[ i ][ j ];
+            chessBoard[ i ][ j ] = chessCorRecorder.chessBoard(chessBoardName, i, j);
+            cout << chessBoard[ i ][ j ].name << " ";
         }
+        cout << "\n";
     }
 }
 

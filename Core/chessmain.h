@@ -14,7 +14,7 @@
 class chessMain {
 public:
     bool chessMove( std::string name, char directionn );
-    bool chessReset();
+    bool chessReset(std::string chessBoardName);
     bool chessRedu();
     bool chessUndo();
     bool chessReachDestination();

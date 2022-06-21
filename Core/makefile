@@ -4,10 +4,10 @@ Objects = $(Sources:%.cpp=%.o)
 exec = testRun#可执行文件的名称
 
 $(exec): $(Objects)
-	$(CXX) $^ -o $@	
+	$(CXX) $^ -o $@	--std=c++11
 
 $(Objects): %.o: %.cpp $(Headers)
-	$(CXX) -c $< -o $@ 
+	$(CXX) -c $< -o $@ --std=c++11
 
 clean: 
 	rm *.o $(exec)

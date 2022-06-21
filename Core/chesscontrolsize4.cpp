@@ -5,13 +5,15 @@ chessControlSize4::chessControlSize4( std::string name )
     : chessControl( name ) {
     size = 4;
     chessCurrentCor = new Cor[ size ];
-    if ( name == "cc" ) {
-        for ( int i = 0; i < size; i++ ) {
-            chessCurrentCor[ i ] = cor_cc[ i ];
-        }
-    } else {
-        cerr << "error" << endl;
-    }
+    for ( int i = 0; i < size; i++ )
+        chessCurrentCor[ i ] = chessCorRecorder.chessPlace( name )[ i ];
+    // if ( name == "cc" ) {
+    //     for ( int i = 0; i < size; i++ ) {
+    //         chessCurrentCor[ i ] = cor_cc[ i ];
+    //     }
+    // } else {
+    //     cerr << "error" << endl;
+    // }
 }
 
 bool chessControlSize4::reachDestination() {
