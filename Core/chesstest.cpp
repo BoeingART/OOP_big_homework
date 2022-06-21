@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     chessMain test;
-    test.chessReset( "horizontal_knife" );
+    test.chessReset();
     while ( true ) {
         // usleep(200000);
         chessControl::display();
@@ -34,7 +34,7 @@ int main() {
             else if ( number == 4 )
                 test.chessReset( "left_and_right" );
             else
-                test.chessReset( "horizontal_knife" );
+                test.chessReset();
             continue;
         } else if (
             name != "cc" && name != "f" && name != "m" && name != "g" && name != "y" && name != "h" && name != "a" && name != "b" && name != "c" && name != "d" && name != "reset" && name != "end"
