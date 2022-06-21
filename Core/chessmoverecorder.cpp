@@ -21,8 +21,7 @@ bool chessMoveRecorder::pullChessMoveLast( string& Name, char& Dir ) {
         cout << "back to the origin state." << endl;
         cout << "cannot undo." << endl;
         return false;
-    }
-    else {
+    } else {
         curStep--;
         Name = stepList[ curStep ].name;
         Dir = stepList[ curStep ].dir;
@@ -36,9 +35,7 @@ bool chessMoveRecorder::pullChessMoveNext( string& Name, char& Dir ) {
         cout << "back to the lastest state." << endl;
         cout << "cannot redo." << endl;
         return false;
-    }
-    else {
-
+    } else {
         Name = stepList[ curStep ].name;
         Dir = stepList[ curStep ].dir;
         curStep++;

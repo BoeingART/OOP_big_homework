@@ -10,23 +10,19 @@ chessControlSize2::chessControlSize2( std::string name )
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_zf[ i ];
             }
-        }
-        else if ( name == "hz" ) {
+        } else if ( name == "hz" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_hz[ i ];
             }
-        }
-        else if ( name == "gy" ) {
+        } else if ( name == "gy" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_gy[ i ];
             }
-        }
-        else if ( name == "zy" ) {
+        } else if ( name == "zy" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_zy[ i ];
             }
-        }
-        else if ( name == "mc" ) {
+        } else if ( name == "mc" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_mc[ i ];
             }

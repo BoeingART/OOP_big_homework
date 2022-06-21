@@ -14,27 +14,22 @@ int main() {
         if ( name == "end" ) {
             test.chessEnd();
             break;
-        }
-        else if ( name == "undo" ) {
+        } else if ( name == "undo" ) {
             test.chessUndo();
             continue;
-        }
-        else if ( name == "redo" ) {
+        } else if ( name == "redo" ) {
             test.chessRedu();
             continue;
-        }
-        else if ( name == "reset" ) {
+        } else if ( name == "reset" ) {
             test.chessReset();
             continue;
-        }
-        else if (
+        } else if (
             name != "cc" && name != "f" && name != "m" && name != "g" && name != "y" && name != "h" && name != "a" && name != "b" && name != "c" && name != "d" && name != "reset" && name != "end"
             && name != "undo" && name != "redo" ) {
             cout << "name is " << name << endl;
             cout << "error input in name" << endl;
             continue;
-        }
-        else {
+        } else {
             cin >> dir;
             test.chessMove( name, dir );
         }

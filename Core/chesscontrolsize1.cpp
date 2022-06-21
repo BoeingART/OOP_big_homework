@@ -10,18 +10,15 @@ chessControlSize1::chessControlSize1( std::string name )
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_ba[ i ];
             }
-        }
-        else if ( name == "bb" ) {
+        } else if ( name == "bb" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_bb[ i ];
             }
-        }
-        else if ( name == "bc" ) {
+        } else if ( name == "bc" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_bc[ i ];
             }
-        }
-        else if ( name == "bd" ) {
+        } else if ( name == "bd" ) {
             for ( int i = 0; i < size; i++ ) {
                 chessCurrentCor[ i ] = cor_bd[ i ];
             }

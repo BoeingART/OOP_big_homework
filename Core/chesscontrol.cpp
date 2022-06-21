@@ -3,10 +3,11 @@
 using namespace std;
 
 // globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { originChessBoard[ 0 ] }, { originChessBoard[ 1 ] }, { originChessBoard[ 2 ] }, { originChessBoard[ 3 ] } };
-globalConflict chessControl::chessBoard[ 4 ][ 5 ] = { { { true, "zf" }, { true, "zf" }, { true, "hz" }, { true, "hz" }, { true, "ba" } },
-                                                      { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bb" } },
-                                                      { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bc" } },
-                                                      { { true, "mc" }, { true, "mc" }, { true, "zy" }, { true, "zy" }, { true, "bd" } } };
+globalConflict chessControl::chessBoard[ 4 ][ 5 ] = {
+    { { true, "zf" }, { true, "zf" }, { true, "hz" }, { true, "hz" }, { true, "ba" } },
+    { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bb" } },
+    { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bc" } },
+    { { true, "mc" }, { true, "mc" }, { true, "zy" }, { true, "zy" }, { true, "bd" } } };
 
 chessControl::chessControl( std::string name )
     : chessName( name ) {
@@ -28,8 +29,7 @@ bool chessControl::chessCorChange( chessDirection direction ) {
     if ( onSide ) {
         cout << ": on the side, cannot move" << endl;
         cout << "please reinput." << endl;
-    }
-    else {
+    } else {
         cout << ": not on the side, can move" << endl;
     }
     // std::cout << "move" << std::endl;
@@ -87,19 +87,16 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
     {
         if ( chessCurrentCor[ 0 ].x <= 1 )
             onSide = true;
-    }
-    else if ( direction == dir_right )  //向右方
+    } else if ( direction == dir_right )  //向右方
     {
         if ( chessCurrentCor[ size - 1 ].x >= line ) {
             onSide = true;
         }
-    }
-    else if ( direction == dir_up )  //向上方
+    } else if ( direction == dir_up )  //向上方
     {
         if ( chessCurrentCor[ 0 ].y <= 1 )
             onSide = true;
-    }
-    else if ( direction == dir_down )  //向下方
+    } else if ( direction == dir_down )  //向下方
     {
         if ( chessCurrentCor[ size - 1 ].y >= row )
             onSide = true;
@@ -113,48 +110,39 @@ void chessControl::chessReset() {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_cc[ i ];
         }
-    }
-    else if ( chessName == "zf" ) {
+    } else if ( chessName == "zf" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_zf[ i ];
         }
-    }
-    else if ( chessName == "hz" ) {
+    } else if ( chessName == "hz" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_hz[ i ];
         }
-    }
-    else if ( chessName == "gy" ) {
+    } else if ( chessName == "gy" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_gy[ i ];
         }
-    }
-    else if ( chessName == "mc" ) {
+    } else if ( chessName == "mc" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_mc[ i ];
         }
-    }
-    else if ( chessName == "zy" ) {
+    } else if ( chessName == "zy" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_zy[ i ];
         }
-    }
-    else if ( chessName == "ba" ) {
+    } else if ( chessName == "ba" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_ba[ i ];
         }
-    }
-    else if ( chessName == "bb" ) {
+    } else if ( chessName == "bb" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_bb[ i ];
         }
-    }
-    else if ( chessName == "bc" ) {
+    } else if ( chessName == "bc" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_bc[ i ];
         }
-    }
-    else if ( chessName == "bd" ) {
+    } else if ( chessName == "bd" ) {
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_bd[ i ];
         }
@@ -181,46 +169,36 @@ void chessControl::display() {
                     cout << "\033[31;1m"
                          << " C "
                          << "\033[0m";
-                }
-                else if ( chessBoard[ j ][ i ].name == "zf" ) {
+                } else if ( chessBoard[ j ][ i ].name == "zf" ) {
                     cout << "\033[32;1m"
                          << " F "
                          << "\033[0m";
-                }
-                else if ( chessBoard[ j ][ i ].name == "mc" ) {
+                } else if ( chessBoard[ j ][ i ].name == "mc" ) {
                     cout << "\033[33;1m"
                          << " M "
                          << "\033[0m";
-                }
-                else if ( chessBoard[ j ][ i ].name == "gy" ) {
+                } else if ( chessBoard[ j ][ i ].name == "gy" ) {
                     cout << "\033[34;1m"
                          << " G "
                          << "\033[0m";
-                }
-                else if ( chessBoard[ j ][ i ].name == "hz" ) {
+                } else if ( chessBoard[ j ][ i ].name == "hz" ) {
                     cout << "\033[35;1m"
                          << " H "
                          << "\033[0m";
-                }
-                else if ( chessBoard[ j ][ i ].name == "zy" ) {
+                } else if ( chessBoard[ j ][ i ].name == "zy" ) {
                     cout << "\033[36;1m"
                          << " Y "
                          << "\033[0m";
-                }
-                else if ( chessBoard[ j ][ i ].name == "ba" ) {
+                } else if ( chessBoard[ j ][ i ].name == "ba" ) {
                     cout << " a ";
-                }
-                else if ( chessBoard[ j ][ i ].name == "bb" ) {
+                } else if ( chessBoard[ j ][ i ].name == "bb" ) {
                     cout << " b ";
-                }
-                else if ( chessBoard[ j ][ i ].name == "bc" ) {
+                } else if ( chessBoard[ j ][ i ].name == "bc" ) {
                     cout << " c ";
-                }
-                else if ( chessBoard[ j ][ i ].name == "bd" ) {
+                } else if ( chessBoard[ j ][ i ].name == "bd" ) {
                     cout << " d ";
                 }
-            }
-            else {
+            } else {
                 cout << "   ";
             }
             cout << "┃";

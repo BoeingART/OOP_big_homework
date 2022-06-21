@@ -3,8 +3,7 @@
 bool chessDirection::operator==( const chessDirection& _direction ) {
     if ( dir.x == _direction.dir.x && dir.y == _direction.dir.y ) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }

@@ -54,32 +54,23 @@ bool chessMain::inputChessInfo( std::string name, char direction ) {
     bool if_move = true;
     if ( name == "cc" ) {
         if_move = cc.chessCorChange( dir );
-    }
-    else if ( name == "f" ) {
+    } else if ( name == "f" ) {
         if_move = zf.chessCorChange( dir );
-    }
-    else if ( name == "m" ) {
+    } else if ( name == "m" ) {
         if_move = mc.chessCorChange( dir );
-    }
-    else if ( name == "g" ) {
+    } else if ( name == "g" ) {
         if_move = gy.chessCorChange( dir );
-    }
-    else if ( name == "y" ) {
+    } else if ( name == "y" ) {
         if_move = zy.chessCorChange( dir );
-    }
-    else if ( name == "h" ) {
+    } else if ( name == "h" ) {
         if_move = hz.chessCorChange( dir );
-    }
-    else if ( name == "a" ) {
+    } else if ( name == "a" ) {
         if_move = bA.chessCorChange( dir );
-    }
-    else if ( name == "b" ) {
+    } else if ( name == "b" ) {
         if_move = bB.chessCorChange( dir );
-    }
-    else if ( name == "c" ) {
+    } else if ( name == "c" ) {
         if_move = bC.chessCorChange( dir );
-    }
-    else if ( name == "d" ) {
+    } else if ( name == "d" ) {
         if_move = bD.chessCorChange( dir );
     }
     if ( !Recorder.if_UR && if_move )
@@ -87,8 +78,7 @@ bool chessMain::inputChessInfo( std::string name, char direction ) {
     Recorder.if_UR = false;
     if ( if_move ) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -119,13 +109,11 @@ bool chessMain::chessRedu() {
     char dir;
     if ( !Recorder.pullChessMoveNext( name, dir ) ) {
         return false;
-    }
-    else {
+    } else {
         Recorder.if_UR = true;
         if ( inputChessInfo( name, dir ) ) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -138,8 +126,7 @@ bool chessMain::chessUndo() {
         // cout << "cannot undo." << endl;
         // chessControl::display();
         return false;
-    }
-    else {
+    } else {
         Recorder.if_UR = true;
         // last_undo = true;
         Recorder.last_undo = true;
@@ -147,8 +134,7 @@ bool chessMain::chessUndo() {
     }
     if ( inputChessInfo( name, dir ) ) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -164,8 +150,7 @@ bool chessMain::chessReachDestination() {
         cout << "诶，这不是丁真吗" << endl;
         cout << "还是再看看远处的雪山吧家人们" << endl;
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }

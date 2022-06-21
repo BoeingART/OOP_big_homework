@@ -9,8 +9,7 @@ chessControlSize4::chessControlSize4( std::string name )
         for ( int i = 0; i < size; i++ ) {
             chessCurrentCor[ i ] = cor_cc[ i ];
         }
-    }
-    else {
+    } else {
         cerr << "error" << endl;
     }
 }
