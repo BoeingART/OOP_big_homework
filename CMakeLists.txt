@@ -34,6 +34,8 @@ set(PROJECT_SOURCES
         Core/chessmain.h
         Core/chessmoverecorder.cpp
         Core/chessmoverecorder.h
+        Core/originchessboard.cpp
+        Core/originchessboard.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
