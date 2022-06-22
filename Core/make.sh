@@ -1,2 +1,2 @@
-make
+make -j10
 ./testRun

@@ -1,17 +1,11 @@
 #include "chesscontrol.h"
 #include "chessdirection.h"
+
 using namespace std;
-/*
-globalConflict chessControl::chessBoard[ 4 ][ 5 ] = {
-    { { true, "zf" }, { true, "zf" }, { true, "hz" }, { true, "hz" }, { true, "ba" } },
-    { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bb" } },
-    { { true, "cc" }, { true, "cc" }, { false, "\0" }, { true, "gy" }, { true, "bc" } },
-    { { true, "mc" }, { true, "mc" }, { true, "zy" }, { true, "zy" }, { true, "bd" } } };
-*/
 
-globalConflict chessControl::chessBoard[ 4 ][ 5 ];
+globalConflict chessControl::chessBoard[ 4 ][ 5 ];  //棋盘局面的全局变量
 
-chessCor chessControl::chessCorRecorder;
+originChessCor chessControl::chessCorRecorder;  //
 
 chessControl::chessControl( std::string name )
     : chessName( name ) {

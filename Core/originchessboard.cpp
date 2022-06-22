@@ -1,9 +1,7 @@
 #include "originchessboard.h"
 using namespace std;
 
-// const globalConflict test[ 1 ][ 1 ] = { { { false, "hallo" } } };
-
-chessCor::chessCor() {
+originChessCor::originChessCor() {
     cc = new Cor[ 4 ];
     zf = new Cor[ 2 ];
     zy = new Cor[ 2 ];
@@ -14,14 +12,10 @@ chessCor::chessCor() {
     bb = new Cor[ 1 ];
     bc = new Cor[ 1 ];
     bd = new Cor[ 1 ];
-    cout << "----------------" << endl;
     changeChessPlace( "horizontal_knife" );
-    cout << "-----------------" << endl;
-    cout << cc[ 0 ].x << " " << cc[ 0 ].y << endl;
-    cout << "-----------------" << endl;
 }
 
-Cor* chessCor::chessPlace( std::string chessName ) {
+Cor* originChessCor::chessPlace( std::string chessName ) {
     if ( chessName == "cc" )
         return cc;
     else if ( chessName == "zf" )
@@ -46,7 +40,7 @@ Cor* chessCor::chessPlace( std::string chessName ) {
         return nullptr;
 }
 
-globalConflict chessCor::chessBoard( std::string chessBoardName, int i, int j ) {
+globalConflict originChessCor::chessBoard( std::string chessBoardName, int i, int j ) {
     if ( chessBoardName == "horizontal_knife" )
         return chessBoard_horizontal_knife[ i ][ j ];
     else if ( chessBoardName == "neck_and_neck" )
@@ -58,10 +52,10 @@ globalConflict chessCor::chessBoard( std::string chessBoardName, int i, int j ) 
     else if ( chessBoardName == "left_and_right" )
         return chessBoard_left_and_right[ i ][ j ];
     else
-        return chessBoard_horizontal_knife[ i ][ j ];
+        return chessBoard_horizontal_knife[ i ][ j ];  //默认使用横刀立马局面
 }
 
-void chessCor::changeChessPlace( std::string chessBoardName ) {
+void originChessCor::changeChessPlace( std::string chessBoardName ) {
     globalConflict chessBoardTemp[ 4 ][ 5 ];
     if ( chessBoardName == "horizontal_knife" ) {
         for ( int i = 0; i < 4; i++ ) {
@@ -94,8 +88,6 @@ void chessCor::changeChessPlace( std::string chessBoardName ) {
             }
         }
     }
-    // cout << "XXXXXXXXXXXXXX" << endl;
-    // cout << chessBoardTemp[ 0 ][ 0 ].name;
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0, BA = 0, BB = 0, BC = 0, BD = 0;
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ ) {
