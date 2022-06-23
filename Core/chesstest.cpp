@@ -2,75 +2,42 @@
 
 using namespace std;
 
-int scanKeyboard() {
-    int input;
-    struct termios new_settings;
-    struct termios stored_settings;
-    tcgetattr( 0, &stored_settings );
-    new_settings = stored_settings;
-    new_settings.c_lflag &= ( ~ICANON );
-    new_settings.c_cc[ VTIME ] = 0;
-    tcgetattr( 0, &stored_settings );
-    new_settings.c_cc[ VMIN ] = 1;
-    tcsetattr( 0, TCSANOW, &new_settings );
-    system( "stty -echo" );
-    input = getchar();
-    system( "stty echo" );
-    tcsetattr( 0, TCSANOW, &stored_settings );
-    return input;
-}
-
 int main() {
-    printf( "\033[?25l" );
-    chessMain test;
-    char chessName = 'f';
-    test.chessReset();
+    printf( "\033[?25l" );  //隐藏光标
+    chessMain test;         //棋子类
+    char chessName = 'f';   //当前活跃的棋子名称
+    test.chessReset();      //初始化棋盘并显示
     chessControl::display( chessName );
     while ( true ) {
-        // usleep( 3000 );
-        char name;
-        name = scanKeyboard();
-        printf( "\n" );
-        if ( name == 'q' ) {
+        char input;
+        input = scanKeyboard();
+        if ( input == 'q' ) {
             test.chessEnd();
             break;
-        } else if ( name == 'u' ) {
+        } else if ( input == 'u' ) {
             test.chessUndo();
             chessControl::display();
             continue;
-        } else if ( name == 'r' ) {
+        } else if ( input == 'r' ) {
             test.chessRedu();
             chessControl::display();
             continue;
-        } else if ( name == 'n' ) {
-            char number = '0';
-            number = scanKeyboard();
-            if ( number == '0' )
-                test.chessReset( "horizontal_knife" );
-            else if ( number == '1' )
-                test.chessReset( "neck_and_neck" );
-            else if ( number == '2' )
-                test.chessReset( "three_road" );
-            else if ( number == '3' )
-                test.chessReset( "station_troops" );
-            else if ( number == '4' )
-                test.chessReset( "left_and_right" );
-            else if ( number == '~' )
-                test.chessReset( "test" );
-            else
-                test.chessReset();
+        } else if ( input == 'n' ) {
+            char chessBoardNumber = scanKeyboard();
+            test.chessReset( chessBoardNumber );
             chessControl::display();
             continue;
-        } else if ( name == 'w' || name == 'a' || name == 's' || name == 'd' ) {
-            test.chessMove( chessName, name );
-            chessControl::display( chessName );
-        } else if ( name == 'A' || name == 'B' || name == 'C' || name == 'D' ) {
-            chessName = chessControl::chooseChess( name );
+        } else if ( input == 'w' || input == 'a' || input == 's' || input == 'd' ) {
+            test.chessMove( input );
+            chessControl::display();
+        } else if ( input == 'A' || input == 'B' || input == 'C' || input == 'D' ) {
+            chessName = test.chessChoose( input );
             chessControl::display( chessName );
         }
         if ( test.chessReachDestination() ) {
             break;
         }
     }
+    printf( "\033[?25h" );
     return 0;
 }

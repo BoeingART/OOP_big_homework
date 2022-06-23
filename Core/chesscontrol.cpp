@@ -148,19 +148,21 @@ char chessControl::chooseChess( char dir ) {
         return chessBoard[ currentFocus.x ][ currentFocus.y ].name;
 }
 
-void chessControl::space_print( int number ) {
-    for ( int i = 0; i < number; i++ ) {
-        printf( " " );
+bool chessControl::checkCor( int x, int y ) {
+    for ( int i = 0; i < size; i++ ) {
+        if ( x == chessCurrentCor[ i ].x - 1 && y == chessCurrentCor[ i ].y - 1 ) {
+            return true;
+        }
     }
+    return false;
 }
 
-void chessControl::enter_print( int number ) {
-    for ( int i = 0; i < number; i++ ) {
-        printf( "\n" );
-    }
-}
+#include "chessdisplay.h"
+#include "ctime"
 
-void chessControl::display( char name ) {
+void chessControl::display( char chessName ) {
+    printf( "???" );
+    int timer = clock();
     system( "clear" );
     struct winsize size;
     ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
@@ -172,13 +174,13 @@ void chessControl::display( char name ) {
     space_print( left_right_space );
     printf( "\n" );
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0;
-    for ( int i = 0; i < row; i++ ) {
+    for ( int i = 0; i < chessControl::row; i++ ) {
         space_print( left_right_space );
         printf( "┃" );
-        for ( int j = 0; j < line; j++ ) {
-            if ( chessBoard[ j ][ i ].occ ) {
-                if ( chessBoard[ j ][ i ].name == 'c' ) {
-                    if ( name == 'c' )
+        for ( int j = 0; j < chessControl::line; j++ ) {
+            if ( chessControl::chessBoard[ j ][ i ].occ ) {
+                if ( chessControl::chessBoard[ j ][ i ].name == 'c' ) {
+                    if ( chessName == 'c' )
                         printf( "\033[1;31m" );
                     else
                         printf( "\033[31m" );
@@ -200,8 +202,8 @@ void chessControl::display( char name ) {
                     }
                     printf( "\033[0m" );
                     CC++;
-                } else if ( chessBoard[ j ][ i ].name == 'f' ) {
-                    if ( name == 'f' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == 'f' ) {
+                    if ( chessName == 'f' )
                         printf( "\033[1;32m" );
                     else
                         printf( "\033[32m" );
@@ -215,8 +217,8 @@ void chessControl::display( char name ) {
                     }
                     printf( "\033[0m" );
                     ZF++;
-                } else if ( chessBoard[ j ][ i ].name == 'm' ) {
-                    if ( name == 'm' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == 'm' ) {
+                    if ( chessName == 'm' )
                         printf( "\033[1;33m" );
                     else
                         printf( "\033[33m" );
@@ -230,8 +232,8 @@ void chessControl::display( char name ) {
                     }
                     printf( "\033[0m" );
                     MC++;
-                } else if ( chessBoard[ j ][ i ].name == 'g' ) {
-                    if ( name == 'g' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == 'g' ) {
+                    if ( chessName == 'g' )
                         printf( "\033[1;34m" );
                     else
                         printf( "\033[34m" );
@@ -245,8 +247,8 @@ void chessControl::display( char name ) {
                     }
                     printf( "\033[0m" );
                     GY++;
-                } else if ( chessBoard[ j ][ i ].name == 'h' ) {
-                    if ( name == 'h' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == 'h' ) {
+                    if ( chessName == 'h' )
                         printf( "\033[1;35m" );
                     else
                         printf( "\033[35m" );
@@ -260,8 +262,8 @@ void chessControl::display( char name ) {
                     }
                     printf( "\033[0m" );
                     HZ++;
-                } else if ( chessBoard[ j ][ i ].name == 'y' ) {
-                    if ( name == 'y' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == 'y' ) {
+                    if ( chessName == 'y' )
                         printf( "\033[1;36m" );
                     else
                         printf( "\033[36m" );
@@ -275,29 +277,29 @@ void chessControl::display( char name ) {
                     }
                     printf( "\033[0m" );
                     ZY++;
-                } else if ( chessBoard[ j ][ i ].name == '1' ) {
-                    if ( name == '1' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == '1' ) {
+                    if ( chessName == '1' )
                         printf( "\033[1;37m" );
                     else
                         printf( "\033[37m" );
                     printf( " 兵 " );
                     printf( "\033[0m" );
-                } else if ( chessBoard[ j ][ i ].name == '2' ) {
-                    if ( name == '2' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == '2' ) {
+                    if ( chessName == '2' )
                         printf( "\033[1;37m" );
                     else
                         printf( "\033[37m" );
                     printf( " 兵 " );
                     printf( "\033[0m" );
-                } else if ( chessBoard[ j ][ i ].name == '3' ) {
-                    if ( name == '3' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == '3' ) {
+                    if ( chessName == '3' )
                         printf( "\033[1;37m" );
                     else
                         printf( "\033[37m" );
                     printf( " 兵 " );
                     printf( "\033[0m" );
-                } else if ( chessBoard[ j ][ i ].name == '4' ) {
-                    if ( name == '4' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == '4' ) {
+                    if ( chessName == '4' )
                         printf( "\033[1;37m" );
                     else
                         printf( "\033[37m" );
@@ -305,13 +307,13 @@ void chessControl::display( char name ) {
                     printf( "\033[0m" );
                 }
             } else {
-                if ( chessBoard[ j ][ i ].name == 'p' ) {
-                    if ( name == 'p' )
+                if ( chessControl::chessBoard[ j ][ i ].name == 'p' ) {
+                    if ( chessName == 'p' )
                         printf( "\033[1;30m ██ \033[0m" );
                     else
                         printf( "\033[1;30m    \033[0m" );
-                } else if ( chessBoard[ j ][ i ].name == 'q' ) {
-                    if ( name == 'q' )
+                } else if ( chessControl::chessBoard[ j ][ i ].name == 'q' ) {
+                    if ( chessName == 'q' )
                         printf( "\033[1;30m ██ \033[0m" );
                     else
                         printf( "\033[1;30m    \033[0m" );
@@ -321,7 +323,7 @@ void chessControl::display( char name ) {
         }
         space_print( left_right_space );
         printf( "\n" );
-        if ( i != row - 1 ) {
+        if ( i != chessControl::row - 1 ) {
             space_print( left_right_space );
             printf( "┣━━━━╋━━━━╋━━━━╋━━━━┫" );
             space_print( left_right_space );
@@ -333,14 +335,18 @@ void chessControl::display( char name ) {
             printf( "\n" );
         }
     }
-    //enter_print( up_down_space );
+    int timer_ = clock();
+    printf( "%d\n", timer_ - timer );
 }
 
-bool chessControl::checkCor( int x, int y ) {
-    for ( int i = 0; i < size; i++ ) {
-        if ( x == chessCurrentCor[ i ].x - 1 && y == chessCurrentCor[ i ].y - 1 ) {
-            return true;
-        }
+void chessControl::space_print( int number ) {
+    for ( int i = 0; i < number; i++ ) {
+        printf( " " );
     }
-    return false;
+}
+
+void chessControl::enter_print( int number ) {
+    for ( int i = 0; i < number; i++ ) {
+        printf( "\n" );
+    }
 }

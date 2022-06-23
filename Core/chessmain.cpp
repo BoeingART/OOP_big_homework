@@ -15,11 +15,14 @@ chessControlSize1 bD( '4' );
 
 chessMoveRecorder Recorder;
 
+chessMain::chessMain()
+    : chessName( 'f' ) {}
+
 void chessMain::chessHighLight( char name ) {
-    chessControl::display( name );
+    //chessControl::display( name );
 }
 
-bool chessMain::chessMove( char name, char dir ) {
+bool chessMain::chessMove( char dir ) {
     if ( Recorder.last_undo )
         Recorder.stepListClearPart();
     char direction;
@@ -31,7 +34,9 @@ bool chessMain::chessMove( char name, char dir ) {
         direction = 'l';
     else if ( dir == 'd' )
         direction = 'r';
-    return inputChessInfo( name, direction );
+    bool if_move = inputChessInfo( chessName, direction );
+    //chessControl::display( chessName );
+    return if_move;
 }
 
 bool chessMain::inputChessInfo( char name, char direction ) {
@@ -86,8 +91,23 @@ bool chessMain::inputChessInfo( char name, char direction ) {
     }
 }
 
-bool chessMain::chessReset( std::string chessBoardName ) {
+bool chessMain::chessReset( char chessBoardNumber ) {
     try {
+        string chessBoardName;
+        if ( chessBoardNumber == '0' )
+            chessBoardName = "horizontal_knife";
+        else if ( chessBoardNumber == '1' )
+            chessBoardName = "neck_and_neck";
+        else if ( chessBoardNumber == '2' )
+            chessBoardName = "three_road";
+        else if ( chessBoardNumber == '3' )
+            chessBoardName = "station_troops";
+        else if ( chessBoardNumber == '4' )
+            chessBoardName = "left_and_right";
+        else if ( chessBoardNumber == '~' )
+            chessBoardName = "test";
+        else
+            chessBoardName = "\0";
         chessControl::chessBoardReset( chessBoardName );
         cc.chessReset();
         zf.chessReset();
@@ -100,6 +120,7 @@ bool chessMain::chessReset( std::string chessBoardName ) {
         bC.chessReset();
         bD.chessReset();
         Recorder.stepListClear();
+        //chessControl::display();
         return true;
     }
     catch ( ... ) {
@@ -115,8 +136,10 @@ bool chessMain::chessRedu() {
     } else {
         Recorder.if_UR = true;
         if ( inputChessInfo( name, dir ) ) {
+            //chessControl::display();
             return true;
         } else {
+            //chessControl::display();
             return false;
         }
     }
@@ -133,8 +156,10 @@ bool chessMain::chessUndo() {
         dirChange( dir );
     }
     if ( inputChessInfo( name, dir ) ) {
+        //chessControl::display();
         return true;
     } else {
+        //chessControl::display();
         return false;
     }
 }
@@ -171,4 +196,27 @@ void chessMain::dirChange( char& Dir ) {
     default:
         break;
     }
+}
+
+char chessMain::chessChoose( char dir ) {
+    chessName = chessControl::chooseChess( dir );
+    return chessName;
+}
+
+int scanKeyboard() {
+    int input;
+    struct termios new_settings;
+    struct termios stored_settings;
+    tcgetattr( 0, &stored_settings );
+    new_settings = stored_settings;
+    new_settings.c_lflag &= ( ~ICANON );
+    new_settings.c_cc[ VTIME ] = 0;
+    tcgetattr( 0, &stored_settings );
+    new_settings.c_cc[ VMIN ] = 1;
+    tcsetattr( 0, TCSANOW, &new_settings );
+    system( "stty -echo" );
+    input = getchar();
+    system( "stty echo" );
+    tcsetattr( 0, TCSANOW, &stored_settings );
+    return input;
 }
