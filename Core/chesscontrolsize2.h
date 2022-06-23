@@ -5,7 +5,7 @@
 
 class chessControlSize2 : public chessControl {
 public:
-    chessControlSize2( std::string name = "none" );
+    chessControlSize2( char name = 'n' );
 };
 
 #endif

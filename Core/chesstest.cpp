@@ -23,12 +23,11 @@ int scanKeyboard() {
 
 int main() {
     chessMain test;
+    char chessName = 'f';
     test.chessReset();
+    chessControl::display( chessName );
     while ( true ) {
-        // usleep(200000);
-        chessControl::display();
         char name;
-        char dir;
         name = scanKeyboard();
         printf( "\n" );
         if ( name == 'q' ) {
@@ -36,9 +35,11 @@ int main() {
             break;
         } else if ( name == 'u' ) {
             test.chessUndo();
+            chessControl::display();
             continue;
         } else if ( name == 'r' ) {
             test.chessRedu();
+            chessControl::display();
             continue;
         } else if ( name == 'n' ) {
             char number = '0';
@@ -55,18 +56,17 @@ int main() {
                 test.chessReset( "left_and_right" );
             else
                 test.chessReset();
+            chessControl::display();
             continue;
-        } else if ( name == 'c' || name == 'f' || name == 'm' || name == 'g' || name == 'y' || name == 'h' || name == '1' || name == '2' || name == '3' || name == '4' ) {
-            chessControl::display( name );
-            char dir = scanKeyboard();
-            printf( "\n" );
-            test.chessMove( name, dir );
-        } else {
-            if(name == 'A')
-                printf( "震惊\n" );
-            cout << "name is " << name << endl;
-            cout << "error input in name" << endl;
-            continue;
+        } else if ( name == 'w' || name == 'a' || name == 's' || name == 'd' ) {
+            cout << chessName << endl;
+            if ( !test.chessMove( chessName, name ) ) {
+                cout << "cannot move" << endl;
+            };
+            chessControl::display( chessName );
+        } else if ( name == 'A' || name == 'B' || name == 'C' || name == 'D' ) {
+            chessName = chessControl::chooseChess( name );
+            chessControl::display( chessName );
         }
         if ( test.chessReachDestination() ) {
             break;

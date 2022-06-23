@@ -5,7 +5,7 @@
 
 class chessControlSize4 : public chessControl {
 public:
-    chessControlSize4( std::string name = "none" );
+    chessControlSize4( char name = 'n' );
     bool reachDestination();
 };
 

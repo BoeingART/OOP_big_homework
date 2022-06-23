@@ -15,26 +15,26 @@ originChessCor::originChessCor() {
     changeChessPlace( "horizontal_knife" );
 }
 
-Cor* originChessCor::chessPlace( std::string chessName ) {
-    if ( chessName == "cc" )
+Cor* originChessCor::chessPlace( char chessName ) {
+    if ( chessName == 'c' )
         return cc;
-    else if ( chessName == "zf" )
+    else if ( chessName == 'f' )
         return zf;
-    else if ( chessName == "zy" )
+    else if ( chessName == 'y' )
         return zy;
-    else if ( chessName == "gy" )
+    else if ( chessName == 'g' )
         return gy;
-    else if ( chessName == "mc" )
+    else if ( chessName == 'm' )
         return mc;
-    else if ( chessName == "hz" )
+    else if ( chessName == 'h' )
         return hz;
-    else if ( chessName == "ba" )
+    else if ( chessName == '1' )
         return ba;
-    else if ( chessName == "bb" )
+    else if ( chessName == '2' )
         return bb;
-    else if ( chessName == "bc" )
+    else if ( chessName == '3' )
         return bc;
-    else if ( chessName == "bd" )
+    else if ( chessName == '4' )
         return bd;
     else
         return nullptr;
@@ -91,27 +91,27 @@ void originChessCor::changeChessPlace( std::string chessBoardName ) {
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0, BA = 0, BB = 0, BC = 0, BD = 0;
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ ) {
-            if ( chessBoardTemp[ i ][ j ].name == "cc" ) {
+            if ( chessBoardTemp[ i ][ j ].name == 'c' ) {
                 cout << CC << endl;
                 cc[ CC++ ] = { i + 1, j + 1 };
                 cout << CC << endl;
-            } else if ( chessBoardTemp[ i ][ j ].name == "zf" )
+            } else if ( chessBoardTemp[ i ][ j ].name == 'f' )
                 zf[ ZF++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "zy" )
+            else if ( chessBoardTemp[ i ][ j ].name == 'y' )
                 zy[ ZY++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "gy" )
+            else if ( chessBoardTemp[ i ][ j ].name == 'g' )
                 gy[ GY++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "mc" )
+            else if ( chessBoardTemp[ i ][ j ].name == 'm' )
                 mc[ MC++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "hz" )
+            else if ( chessBoardTemp[ i ][ j ].name == 'h' )
                 hz[ HZ++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "ba" )
+            else if ( chessBoardTemp[ i ][ j ].name == '1' )
                 ba[ BA++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "bb" )
+            else if ( chessBoardTemp[ i ][ j ].name == '2' )
                 bb[ BB++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "bc" )
+            else if ( chessBoardTemp[ i ][ j ].name == '3' )
                 bc[ BC++ ] = { i + 1, j + 1 };
-            else if ( chessBoardTemp[ i ][ j ].name == "bd" )
+            else if ( chessBoardTemp[ i ][ j ].name == '4' )
                 bd[ BD++ ] = { i + 1, j + 1 };
         }
     }

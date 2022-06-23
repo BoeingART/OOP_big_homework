@@ -11,13 +11,13 @@ struct Cor {
 class globalConflict {
 public:
     bool occ;
-    std::string name;
+    char name;
 
 public:
     globalConflict()
         : occ( true )
-        , name( "ENPTY" ) {}
-    globalConflict( bool occ_, std::string name_ )
+        , name( '\0' ) {}
+    globalConflict( bool occ_, char name_ )
         : occ( occ_ )
         , name( name_ ) {}
     void operator=( globalConflict another ) {

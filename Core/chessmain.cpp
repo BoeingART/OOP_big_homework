@@ -2,16 +2,16 @@
 #include "chessmain.h"
 using namespace std;
 
-chessControlSize4 cc( "cc" );
-chessControlSize2 zf( "zf" );
-chessControlSize2 hz( "hz" );
-chessControlSize2 gy( "gy" );
-chessControlSize2 mc( "mc" );
-chessControlSize2 zy( "zy" );
-chessControlSize1 bA( "ba" );
-chessControlSize1 bB( "bb" );
-chessControlSize1 bC( "bc" );
-chessControlSize1 bD( "bd" );
+chessControlSize4 cc( 'c' );
+chessControlSize2 zf( 'f' );
+chessControlSize2 hz( 'h' );
+chessControlSize2 gy( 'g' );
+chessControlSize2 mc( 'm' );
+chessControlSize2 zy( 'y' );
+chessControlSize1 bA( '1' );
+chessControlSize1 bB( '2' );
+chessControlSize1 bC( '3' );
+chessControlSize1 bD( '4' );
 
 chessMoveRecorder Recorder;
 
@@ -23,27 +23,19 @@ bool chessMain::chessMove( char name, char dir ) {
     if ( Recorder.last_undo )
         Recorder.stepListClearPart();
     char direction;
-    if ( dir == 72 || dir == 'w' )
+    cout << "the dir is " << dir << endl;
+    if ( dir == 'w' )
         direction = 'u';
-    else if (  dir == 's' )
+    else if ( dir == 's' )
         direction = 'd';
     else if ( dir == 'a' )
         direction = 'l';
     else if ( dir == 'd' )
         direction = 'r';
-    else
-        return false;
     return inputChessInfo( name, direction );
 }
 
 bool chessMain::inputChessInfo( char name, char direction ) {
-
-    if ( direction != 'u' && direction != 'd' && direction != 'l' && direction != 'r' ) {
-        cout << "direction is " << direction << endl;
-        cout << "error input in direction" << endl;
-        return false;
-    }
-
     chessDirection dir( 0, 0 );
     switch ( direction ) {
     case 'u':
@@ -64,27 +56,28 @@ bool chessMain::inputChessInfo( char name, char direction ) {
     }
 
     bool if_move = true;
-    if ( name == 'c' ) {
+    if ( name == 'c' )
         if_move = cc.chessCorChange( dir );
-    } else if ( name == 'f' ) {
+    else if ( name == 'f' )
         if_move = zf.chessCorChange( dir );
-    } else if ( name == 'm' ) {
+    else if ( name == 'm' )
         if_move = mc.chessCorChange( dir );
-    } else if ( name == 'g' ) {
+    else if ( name == 'g' )
         if_move = gy.chessCorChange( dir );
-    } else if ( name == 'y' ) {
+    else if ( name == 'y' )
         if_move = zy.chessCorChange( dir );
-    } else if ( name == 'h' ) {
+    else if ( name == 'h' )
         if_move = hz.chessCorChange( dir );
-    } else if ( name == '1' ) {
+    else if ( name == '1' )
         if_move = bA.chessCorChange( dir );
-    } else if ( name == '2' ) {
+    else if ( name == '2' )
         if_move = bB.chessCorChange( dir );
-    } else if ( name == '3' ) {
+    else if ( name == '3' )
         if_move = bC.chessCorChange( dir );
-    } else if ( name == '4' ) {
+    else if ( name == '4' )
         if_move = bD.chessCorChange( dir );
-    }
+    else
+        return false;
     if ( !Recorder.if_UR && if_move )
         Recorder.pushChessMove( name, direction );
     Recorder.if_UR = false;
