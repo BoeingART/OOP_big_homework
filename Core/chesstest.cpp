@@ -14,9 +14,9 @@ int scanKeyboard() {
     tcgetattr( 0, &stored_settings );
     new_settings.c_cc[ VMIN ] = 1;
     tcsetattr( 0, TCSANOW, &new_settings );
-
+    system( "stty -echo" );
     input = getchar();
-
+    system( "stty echo" );
     tcsetattr( 0, TCSANOW, &stored_settings );
     return input;
 }
@@ -26,7 +26,9 @@ int main() {
     char chessName = 'f';
     test.chessReset();
     chessControl::display( chessName );
+
     while ( true ) {
+        usleep( 3000 );
         char name;
         name = scanKeyboard();
         printf( "\n" );
@@ -54,6 +56,8 @@ int main() {
                 test.chessReset( "station_troops" );
             else if ( number == '4' )
                 test.chessReset( "left_and_right" );
+            else if ( number == '~' )
+                test.chessReset( "test" );
             else
                 test.chessReset();
             chessControl::display();

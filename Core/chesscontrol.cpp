@@ -5,9 +5,9 @@ using namespace std;
 
 globalConflict chessControl::chessBoard[ 4 ][ 5 ];  //棋盘局面的全局变量
 
-originChessCor chessControl::chessCorRecorder;  //
+originChessCor chessControl::chessCorRecorder;  //初始局面记录
 
-Cor chessControl::currentFocus = { 0, 0 };
+Cor chessControl::currentFocus = { 0, 0 };  //焦点棋子
 
 chessControl::chessControl( char name )
     : chessName( name ) {
@@ -173,6 +173,7 @@ char chessControl::chooseChess( char dir ) {
 }
 
 void chessControl::display( char name ) {
+    system( "clear" );
     printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓\n" );
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0;
     for ( int i = 0; i < row; i++ ) {

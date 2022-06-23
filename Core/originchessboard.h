@@ -60,6 +60,13 @@ public:
         { { true, 'c' }, { true, 'c' }, { true, 'h' }, { true, 'h' }, { true, 'g' } },
         { { true, 'c' }, { true, 'c' }, { true, 'm' }, { true, 'm' }, { true, 'g' } },
         { { true, 'y' }, { true, 'y' }, { false, 'q' }, { true, '3' }, { true, '4' } } };
+
+    //测试
+    const globalConflict chessBoard_test[ 4 ][ 5 ]{
+        { { true, '1' }, { true, 'f' }, { true, 'f' }, { true, 'm' }, { true, 'm' } },
+        { { true, 'g' }, { true, '2' }, { true, 'c' }, { true, 'c' }, { false, 'p' } },
+        { { true, 'g' }, { true, '3' }, { true, 'c' }, { true, 'c' }, { false, 'q' } },
+        { { true, '4' }, { true, 'y' }, { true, 'y' }, { true, 'h' }, { true, 'h' } } };
 };
 
 #endif

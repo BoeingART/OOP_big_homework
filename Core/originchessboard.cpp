@@ -51,6 +51,8 @@ globalConflict originChessCor::chessBoard( std::string chessBoardName, int i, in
         return chessBoard_station_troops[ i ][ j ];
     else if ( chessBoardName == "left_and_right" )
         return chessBoard_left_and_right[ i ][ j ];
+    else if ( chessBoardName == "test" )
+        return chessBoard_test[ i ][ j ];
     else
         return chessBoard_horizontal_knife[ i ][ j ];  //默认使用横刀立马局面
 }
@@ -85,6 +87,12 @@ void originChessCor::changeChessPlace( std::string chessBoardName ) {
         for ( int i = 0; i < 4; i++ ) {
             for ( int j = 0; j < 5; j++ ) {
                 chessBoardTemp[ i ][ j ] = chessBoard_left_and_right[ i ][ j ];
+            }
+        }
+    } else if ( chessBoardName == "test" ) {
+        for ( int i = 0; i < 4; i++ ) {
+            for ( int j = 0; j < 5; j++ ) {
+                chessBoardTemp[ i ][ j ] = chessBoard_test[ i ][ j ];
             }
         }
     }
