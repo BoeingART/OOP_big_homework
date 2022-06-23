@@ -25,52 +25,38 @@ int main() {
     chessMain test;
     char chessName = 'f';
     test.chessReset();
-    chessControl::display( chessName );
+    chessDisplay::display( chessName );
     while ( true ) {
-        char name;
-        name = scanKeyboard();
+        char input;
+        input = scanKeyboard();
         printf( "\n" );
-        if ( name == 'q' ) {
+        if ( input == 'q' ) {
             test.chessEnd();
             break;
-        } else if ( name == 'u' ) {
+        } else if ( input == 'u' ) {
             test.chessUndo();
-            chessControl::display();
+            chessDisplay::display();
             continue;
-        } else if ( name == 'r' ) {
+        } else if ( input == 'r' ) {
             test.chessRedu();
-            chessControl::display();
+            chessDisplay::display();
             continue;
-        } else if ( name == 'n' ) {
-            char number = '0';
-            number = scanKeyboard();
-            if ( number == '0' )
-                test.chessReset( "horizontal_knife" );
-            else if ( number == '1' )
-                test.chessReset( "neck_and_neck" );
-            else if ( number == '2' )
-                test.chessReset( "three_road" );
-            else if ( number == '3' )
-                test.chessReset( "station_troops" );
-            else if ( number == '4' )
-                test.chessReset( "left_and_right" );
-            else if ( number == '~' )
-                test.chessReset( "test" );
-            else
-                test.chessReset();
-            chessControl::display();
+        } else if ( input == 'n' ) {
+            char chessBoardNumber = scanKeyboard();
+            test.chessReset( chessBoardNumber );
+            chessDisplay::display();
             continue;
-        } else if ( name == 'w' || name == 'a' || name == 's' || name == 'd' ) {
-            test.chessMove( chessName, name );
-            chessControl::display( chessName );
-        } else if ( name == 'A' || name == 'B' || name == 'C' || name == 'D' ) {
-            chessName = chessControl::chooseChess( name );
-            chessControl::display( chessName );
+        } else if ( input == 'w' || input == 'a' || input == 's' || input == 'd' ) {
+            test.chessMove( chessName, input );
+            chessDisplay::display( chessName );
+        } else if ( input == 'A' || input == 'B' || input == 'C' || input == 'D' ) {
+            chessName = chessControl::chooseChess( input );
+            chessDisplay::display( chessName );
         }
-        if ( test.chessReachDestination() ) {
+        if ( test.chessReachDestination() )
             break;
-        }
     }
     printf( "\033[?25h" );
+    printf( "\033c" );
     return 0;
 }

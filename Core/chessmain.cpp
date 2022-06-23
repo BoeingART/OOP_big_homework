@@ -15,8 +15,11 @@ chessControlSize1 bD( '4' );
 
 chessMoveRecorder Recorder;
 
+chessMain::chessMain()
+    : chessName( 'c' ) {}
+
 void chessMain::chessHighLight( char name ) {
-    chessControl::display( name );
+    chessDisplay::display( name );
 }
 
 bool chessMain::chessMove( char name, char dir ) {
@@ -86,8 +89,23 @@ bool chessMain::inputChessInfo( char name, char direction ) {
     }
 }
 
-bool chessMain::chessReset( std::string chessBoardName ) {
+bool chessMain::chessReset( char chessBoardNumber ) {
     try {
+        std::string chessBoardName;
+        if ( chessBoardNumber == '0' )
+            chessBoardName = "horizontal_knife";
+        else if ( chessBoardNumber == '1' )
+            chessBoardName = "neck_and_neck";
+        else if ( chessBoardNumber == '2' )
+            chessBoardName = "three_road";
+        else if ( chessBoardNumber == '3' )
+            chessBoardName = "station_troops";
+        else if ( chessBoardNumber == '4' )
+            chessBoardName = "left_and_right";
+        else if ( chessBoardNumber == '~' )
+            chessBoardName = "test";
+        else
+            chessBoardName = "horizontal_knife";
         chessControl::chessBoardReset( chessBoardName );
         cc.chessReset();
         zf.chessReset();
