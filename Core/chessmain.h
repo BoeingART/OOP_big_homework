@@ -28,4 +28,5 @@ private:
     char chessName;
 };
 
+int scanKeyboard();
 #endif
