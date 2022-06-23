@@ -121,54 +121,99 @@ void chessControl::chessBoardReset( std::string chessBoardName ) {
 }
 
 void chessControl::display() {
-    cout << "┏━━━┳━━━┳━━━┳━━━┓" << endl;
+    printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓\n" );
+    int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0, BA = 0, BB = 0, BC = 0, BD = 0;
     for ( int i = 0; i < row; i++ ) {
-        cout << "┃";
+        printf( "┃" );
         for ( int j = 0; j < line; j++ ) {
             if ( chessBoard[ j ][ i ].occ ) {
                 if ( chessBoard[ j ][ i ].name == "cc" ) {
-                    cout << "\033[31;1m"
-                         << " C "
-                         << "\033[0m";
+                    switch ( CC ) {
+                    case 0:
+                        printf( "\033[31;1m 曹 \033[0m" );
+                        break;
+                    case 1:
+                        printf( "\033[31;1m 曹 \033[0m" );
+                        break;
+                    case 2:
+                        printf( "\033[31;1m 操 \033[0m" );
+                        break;
+                    case 3:
+                        printf( "\033[31;1m 操 \033[0m" );
+                        break;
+                    default:
+                        break;
+                    }
+                    CC++;
                 } else if ( chessBoard[ j ][ i ].name == "zf" ) {
-                    cout << "\033[32;1m"
-                         << " F "
-                         << "\033[0m";
+                    switch ( ZF ) {
+                    case 0:
+                        printf( "\033[32;1m 张 \033[0m" );
+                        break;
+                    case 1:
+                        printf( "\033[32;1m 飞 \033[0m" );
+                        break;
+                    }
+                    ZF++;
                 } else if ( chessBoard[ j ][ i ].name == "mc" ) {
-                    cout << "\033[33;1m"
-                         << " M "
-                         << "\033[0m";
+                    switch ( MC ) {
+                    case 0:
+                        printf( "\033[33;1m 马 \033[0m" );
+                        break;
+                    case 1:
+                        printf( "\033[33;1m 超 \033[0m" );
+                        break;
+                    }
+                    MC++;
                 } else if ( chessBoard[ j ][ i ].name == "gy" ) {
-                    cout << "\033[34;1m"
-                         << " G "
-                         << "\033[0m";
+                    switch ( GY ) {
+                    case 0:
+                        printf( "\033[34;1m 关 \033[0m" );
+                        break;
+                    case 1:
+                        printf( "\033[34;1m 羽 \033[0m" );
+                        break;
+                    }
+                    GY++;
                 } else if ( chessBoard[ j ][ i ].name == "hz" ) {
-                    cout << "\033[35;1m"
-                         << " H "
-                         << "\033[0m";
+                    switch ( HZ ) {
+                    case 0:
+                        printf( "\033[35;1m 黄 \033[0m" );
+                        break;
+                    case 1:
+                        printf( "\033[35;1m 忠 \033[0m" );
+                        break;
+                    }
+                    HZ++;
                 } else if ( chessBoard[ j ][ i ].name == "zy" ) {
-                    cout << "\033[36;1m"
-                         << " Y "
-                         << "\033[0m";
+                    switch ( ZY ) {
+                    case 0:
+                        printf( "\033[36;1m 赵 \033[0m" );
+                        break;
+                    case 1:
+                        printf( "\033[36;1m 云 \033[0m" );
+                        break;
+                    }
+                    ZY++;
                 } else if ( chessBoard[ j ][ i ].name == "ba" ) {
-                    cout << " a ";
+                    printf( "\033[37;1m 兵 \033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == "bb" ) {
-                    cout << " b ";
+                    printf( "\033[37;1m 兵 \033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == "bc" ) {
-                    cout << " c ";
+                    printf( "\033[37;1m 兵 \033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == "bd" ) {
-                    cout << " d ";
+                    printf( "\033[37;1m 兵 \033[0m" );
                 }
             } else {
-                cout << "   ";
+                printf( "    " );
             }
-            cout << "┃";
+            printf( "┃" );
         }
-        cout << endl;
+        printf( "\n" );
         if ( i != row - 1 )
-            cout << "┣━━━╋━━━╋━━━╋━━━┫" << endl;
+            printf( "┣━━━━╋━━━━╋━━━━╋━━━━┫\n" );
         else
-            cout << "┗━━━┻━━━┻━━━┻━━━┛" << endl;
+            printf( "┗━━━━┻━━━━┻━━━━┻━━━━┛\n" );
     }
 }
 
