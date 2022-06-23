@@ -122,7 +122,7 @@ void chessControl::chessBoardReset( std::string chessBoardName ) {
 
 void chessControl::display() {
     printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓\n" );
-    int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0, BA = 0, BB = 0, BC = 0, BD = 0;
+    int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0;
     for ( int i = 0; i < row; i++ ) {
         printf( "┃" );
         for ( int j = 0; j < line; j++ ) {
