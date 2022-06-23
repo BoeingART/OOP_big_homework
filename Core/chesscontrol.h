@@ -31,6 +31,8 @@ protected:
 private:
     static Cor currentFocus;
     static bool onside( Cor cor, char dir );
+    static void space_print( int number );
+    static void enter_print( int number );
 };
 
 #endif  // CHESSCONTROL_H

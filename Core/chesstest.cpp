@@ -1,6 +1,5 @@
 #include "chessmain.h"
-#include "unistd.h"
-#include <termios.h>
+
 using namespace std;
 
 int scanKeyboard() {
@@ -22,13 +21,13 @@ int scanKeyboard() {
 }
 
 int main() {
+    printf( "\033[?25l" );
     chessMain test;
     char chessName = 'f';
     test.chessReset();
     chessControl::display( chessName );
-
     while ( true ) {
-        usleep( 3000 );
+        // usleep( 3000 );
         char name;
         name = scanKeyboard();
         printf( "\n" );
@@ -63,10 +62,7 @@ int main() {
             chessControl::display();
             continue;
         } else if ( name == 'w' || name == 'a' || name == 's' || name == 'd' ) {
-            cout << chessName << endl;
-            if ( !test.chessMove( chessName, name ) ) {
-                cout << "cannot move" << endl;
-            };
+            test.chessMove( chessName, name );
             chessControl::display( chessName );
         } else if ( name == 'A' || name == 'B' || name == 'C' || name == 'D' ) {
             chessName = chessControl::chooseChess( name );

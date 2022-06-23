@@ -23,19 +23,8 @@ chessControl::~chessControl() {
 
 bool chessControl::chessCorChange( chessDirection direction ) {
     bool onSide = whetherOnSide( direction );
-    cout << "(" << direction.dir.x << ")"
-         << "-"
-         << "(" << direction.dir.y << ")";
-    if ( onSide ) {
-        cout << ": on the side, cannot move" << endl;
-        cout << "please reinput." << endl;
-    } else {
-        cout << ": not on the side, can move" << endl;
-    }
-    // std::cout << "move" << std::endl;
-    if ( onSide ) {
+    if ( onSide )
         return false;
-    }
     return whetherMove( direction );
 }
 
@@ -60,8 +49,6 @@ bool chessControl::whetherMove( chessDirection& direction ) {
 
     for ( int i = 0; i < size; i++ ) {
         if ( chessBoard[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].occ ) {
-            cout << "(" << tempCor[ i ].x << "," << tempCor[ i ].y << ")"
-                 << "处重叠了，是" << chessBoard[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].name << endl;
             for ( int j = 0; j < size; j++ ) {
                 chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].occ = true;
                 chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].name = this->chessName;
@@ -119,19 +106,13 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
 
 void chessControl::chessReset() {
     chessCurrentCor = chessCorRecorder.chessPlace( chessName );
-    for ( int i = 0; i < size; i++ )
-        cout << chessCurrentCor[ i ].x << " " << chessCurrentCor[ i ].y << endl;
-    std::cout << chessName << ": reseted" << std::endl;
 }
 
 void chessControl::chessBoardReset( std::string chessBoardName ) {
     chessCorRecorder.changeChessPlace( chessBoardName );
     for ( int i = 0; i < 4; i++ ) {
-        for ( int j = 0; j < 5; j++ ) {
+        for ( int j = 0; j < 5; j++ )
             chessBoard[ i ][ j ] = chessCorRecorder.chessBoard( chessBoardName, i, j );
-            cout << chessBoard[ i ][ j ].name << " ";
-        }
-        cout << "\n";
     }
 }
 
@@ -161,22 +142,38 @@ char chessControl::chooseChess( char dir ) {
             currentFocus.x -= 1;
     } else
         return name_pre;
-    cout << currentFocus.x << ", " << currentFocus.y << endl;
-    if ( name_pre == chessBoard[ currentFocus.x ][ currentFocus.y ].name && !onside( currentFocus, dir ) ) {
-        cout << "same" << endl;
+    if ( name_pre == chessBoard[ currentFocus.x ][ currentFocus.y ].name && !onside( currentFocus, dir ) )
         return chooseChess( dir );
-    } else {
-        cout << name_pre << " " << chessBoard[ currentFocus.x ][ currentFocus.y ].name << endl;
-        cout << "dif" << endl;
+    else
         return chessBoard[ currentFocus.x ][ currentFocus.y ].name;
+}
+
+void chessControl::space_print( int number ) {
+    for ( int i = 0; i < number; i++ ) {
+        printf( " " );
+    }
+}
+
+void chessControl::enter_print( int number ) {
+    for ( int i = 0; i < number; i++ ) {
+        printf( "\n" );
     }
 }
 
 void chessControl::display( char name ) {
     system( "clear" );
-    printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓\n" );
+    struct winsize size;
+    ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
+    int up_down_space = ( size.ws_row - 11 ) / 2;
+    int left_right_space = ( size.ws_col - 21 ) / 2;
+    enter_print( up_down_space );
+    space_print( left_right_space );
+    printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓" );
+    space_print( left_right_space );
+    printf( "\n" );
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0;
     for ( int i = 0; i < row; i++ ) {
+        space_print( left_right_space );
         printf( "┃" );
         for ( int j = 0; j < line; j++ ) {
             if ( chessBoard[ j ][ i ].occ ) {
@@ -322,12 +319,21 @@ void chessControl::display( char name ) {
             }
             printf( "┃" );
         }
+        space_print( left_right_space );
         printf( "\n" );
-        if ( i != row - 1 )
-            printf( "┣━━━━╋━━━━╋━━━━╋━━━━┫\n" );
-        else
-            printf( "┗━━━━┻━━━━┻━━━━┻━━━━┛\n" );
+        if ( i != row - 1 ) {
+            space_print( left_right_space );
+            printf( "┣━━━━╋━━━━╋━━━━╋━━━━┫" );
+            space_print( left_right_space );
+            printf( "\n" );
+        } else {
+            space_print( left_right_space );
+            printf( "┗━━━━┻━━━━┻━━━━┻━━━━┛" );
+            space_print( left_right_space );
+            printf( "\n" );
+        }
     }
+    //enter_print( up_down_space );
 }
 
 bool chessControl::checkCor( int x, int y ) {

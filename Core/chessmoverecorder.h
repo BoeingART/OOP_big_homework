@@ -15,8 +15,6 @@ class chessMoveRecorder {
     std::vector< steps > stepList;
     int curStep;
 
-    void testPrint();
-
 public:
     bool if_UR;
     bool last_undo;

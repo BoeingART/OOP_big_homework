@@ -99,11 +99,9 @@ void originChessCor::changeChessPlace( std::string chessBoardName ) {
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0, BA = 0, BB = 0, BC = 0, BD = 0;
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ ) {
-            if ( chessBoardTemp[ i ][ j ].name == 'c' ) {
-                cout << CC << endl;
+            if ( chessBoardTemp[ i ][ j ].name == 'c' )
                 cc[ CC++ ] = { i + 1, j + 1 };
-                cout << CC << endl;
-            } else if ( chessBoardTemp[ i ][ j ].name == 'f' )
+            else if ( chessBoardTemp[ i ][ j ].name == 'f' )
                 zf[ ZF++ ] = { i + 1, j + 1 };
             else if ( chessBoardTemp[ i ][ j ].name == 'y' )
                 zy[ ZY++ ] = { i + 1, j + 1 };

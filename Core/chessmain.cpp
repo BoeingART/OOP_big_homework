@@ -23,7 +23,6 @@ bool chessMain::chessMove( char name, char dir ) {
     if ( Recorder.last_undo )
         Recorder.stepListClearPart();
     char direction;
-    cout << "the dir is " << dir << endl;
     if ( dir == 'w' )
         direction = 'u';
     else if ( dir == 's' )
@@ -51,7 +50,6 @@ bool chessMain::inputChessInfo( char name, char direction ) {
         dir = dir_right;
         break;
     default:
-        cout << "错误输入指令" << endl;
         return false;
     }
 
@@ -128,12 +126,9 @@ bool chessMain::chessUndo() {
     char name;
     char dir;
     if ( !Recorder.pullChessMoveLast( name, dir ) ) {
-        // cout << "cannot undo." << endl;
-        // chessControl::display();
         return false;
     } else {
         Recorder.if_UR = true;
-        // last_undo = true;
         Recorder.last_undo = true;
         dirChange( dir );
     }
@@ -145,19 +140,18 @@ bool chessMain::chessUndo() {
 }
 
 void chessMain::chessEnd() {
-    cout << "游戏结束" << endl;
+    printf( "游戏结束\n" );
 }
 
 bool chessMain::chessReachDestination() {
     if ( cc.reachDestination() ) {
-        cout << "到达世界最高城——理塘！" << endl;
-        cout << "太美丽啦理塘" << endl;
-        cout << "诶，这不是丁真吗" << endl;
-        cout << "还是再看看远处的雪山吧家人们" << endl;
+        printf( "到达世界最高城——理塘！\n" );
+        printf( "太美丽啦理塘\n" );
+        printf( "诶，这不是丁真吗\n" );
+        printf( "还是再看看远处的雪山吧家人们\n" );
         return true;
-    } else {
+    } else
         return false;
-    }
 }
 
 void chessMain::dirChange( char& Dir ) {

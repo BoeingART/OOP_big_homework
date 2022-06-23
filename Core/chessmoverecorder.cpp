@@ -13,33 +13,26 @@ void chessMoveRecorder::pushChessMove( char& Name, char& Dir ) {
     steps temp( Name, Dir );
     stepList.push_back( temp );
     curStep++;
-    testPrint();
 }
 
 bool chessMoveRecorder::pullChessMoveLast( char& Name, char& Dir ) {
-    if ( curStep <= 0 ) {
-        cout << "back to the origin state." << endl;
-        cout << "cannot undo." << endl;
+    if ( curStep <= 0 )
         return false;
-    } else {
+    else {
         curStep--;
         Name = stepList[ curStep ].name;
         Dir = stepList[ curStep ].dir;
-        testPrint();
         return true;
     }
 }
 
 bool chessMoveRecorder::pullChessMoveNext( char& Name, char& Dir ) {
-    if ( curStep >= stepList.size() ) {
-        cout << "back to the lastest state." << endl;
-        cout << "cannot redo." << endl;
+    if ( curStep >= stepList.size() )
         return false;
-    } else {
+    else {
         Name = stepList[ curStep ].name;
         Dir = stepList[ curStep ].dir;
         curStep++;
-        testPrint();
         return true;
     }
 }
@@ -54,12 +47,4 @@ void chessMoveRecorder::stepListClearPart() {
 void chessMoveRecorder::stepListClear() {
     stepList.clear();
     curStep = 0;
-    cout << "stepList is cleared" << endl;
-}
-
-void chessMoveRecorder::testPrint() {
-    for ( int i = 0; i < stepList.size(); i++ ) {
-        cout << stepList[ i ].name << "->";
-    }
-    cout << endl;
 }
