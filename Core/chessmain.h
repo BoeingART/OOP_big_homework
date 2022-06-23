@@ -2,7 +2,6 @@
 #define CHESSMAIN_H
 
 #include "chessglobal.h"
-
 #include "chesscontrol.h"
 #include "chesscontrolsize1.h"
 #include "chesscontrolsize2.h"
@@ -13,7 +12,8 @@
 
 class chessMain {
 public:
-    bool chessMove( std::string name, char directionn );
+    void chessHighLight( char name );
+    bool chessMove( char name, char directionn );
     bool chessReset( std::string chessBoardName = "horizontal_horizontal_knife" );
     bool chessRedu();
     bool chessUndo();
@@ -21,7 +21,7 @@ public:
     void chessEnd();
 
 private:
-    bool inputChessInfo( std::string name, char direction );
+    bool inputChessInfo( char name, char direction );
     void dirChange( char& Dir );
 };
 

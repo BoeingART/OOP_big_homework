@@ -120,7 +120,7 @@ void chessControl::chessBoardReset( std::string chessBoardName ) {
     }
 }
 
-void chessControl::display() {
+void chessControl::display( char name ) {
     printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓\n" );
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0;
     for ( int i = 0; i < row; i++ ) {
@@ -128,81 +128,131 @@ void chessControl::display() {
         for ( int j = 0; j < line; j++ ) {
             if ( chessBoard[ j ][ i ].occ ) {
                 if ( chessBoard[ j ][ i ].name == "cc" ) {
+                    if ( name == 'c' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[31;1m" );
                     switch ( CC ) {
                     case 0:
-                        printf( "\033[31;1m 曹 \033[0m" );
+                        printf( " 曹 " );
                         break;
                     case 1:
-                        printf( "\033[31;1m 曹 \033[0m" );
+                        printf( " 曹 " );
                         break;
                     case 2:
-                        printf( "\033[31;1m 操 \033[0m" );
+                        printf( " 操 " );
                         break;
                     case 3:
-                        printf( "\033[31;1m 操 \033[0m" );
+                        printf( " 操 " );
                         break;
                     default:
                         break;
                     }
+                    printf( "\033[0m" );
                     CC++;
                 } else if ( chessBoard[ j ][ i ].name == "zf" ) {
+                    if ( name == 'f' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[32;1m" );
                     switch ( ZF ) {
                     case 0:
-                        printf( "\033[32;1m 张 \033[0m" );
+                        printf( " 张 " );
                         break;
                     case 1:
-                        printf( "\033[32;1m 飞 \033[0m" );
+                        printf( " 飞 " );
                         break;
                     }
+                    printf( "\033[0m" );
                     ZF++;
                 } else if ( chessBoard[ j ][ i ].name == "mc" ) {
+                    if ( name == 'm' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[33;1m" );
                     switch ( MC ) {
                     case 0:
-                        printf( "\033[33;1m 马 \033[0m" );
+                        printf( " 马 " );
                         break;
                     case 1:
-                        printf( "\033[33;1m 超 \033[0m" );
+                        printf( " 超 " );
                         break;
                     }
+                    printf( "\033[0m" );
                     MC++;
                 } else if ( chessBoard[ j ][ i ].name == "gy" ) {
+                    if ( name == 'g' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[34;1m" );
                     switch ( GY ) {
                     case 0:
-                        printf( "\033[34;1m 关 \033[0m" );
+                        printf( " 关 " );
                         break;
                     case 1:
-                        printf( "\033[34;1m 羽 \033[0m" );
+                        printf( " 羽 " );
                         break;
                     }
+                    printf( "\033[0m" );
                     GY++;
                 } else if ( chessBoard[ j ][ i ].name == "hz" ) {
+                    if ( name == 'h' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[35;1m" );
                     switch ( HZ ) {
                     case 0:
-                        printf( "\033[35;1m 黄 \033[0m" );
+                        printf( " 黄 " );
                         break;
                     case 1:
-                        printf( "\033[35;1m 忠 \033[0m" );
+                        printf( " 忠 " );
                         break;
                     }
+                    printf( "\033[0m" );
                     HZ++;
                 } else if ( chessBoard[ j ][ i ].name == "zy" ) {
+                    if ( name == 'y' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[36;1m" );
                     switch ( ZY ) {
                     case 0:
-                        printf( "\033[36;1m 赵 \033[0m" );
+                        printf( " 赵 " );
                         break;
                     case 1:
-                        printf( "\033[36;1m 云 \033[0m" );
+                        printf( " 云 " );
                         break;
                     }
+                    printf( "\033[0m" );
                     ZY++;
                 } else if ( chessBoard[ j ][ i ].name == "ba" ) {
-                    printf( "\033[37;1m 兵 \033[0m" );
+                    if ( name == '1' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[36;1m" );
+                    printf( " 兵 " );
+                    printf( "\033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == "bb" ) {
-                    printf( "\033[37;1m 兵 \033[0m" );
+                    if ( name == '2' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[36;1m" );
+                    printf( " 兵 " );
+                    printf( "\033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == "bc" ) {
-                    printf( "\033[37;1m 兵 \033[0m" );
+                    if ( name == '3' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[36;1m" );
+                    printf( " 兵 " );
+                    printf( "\033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == "bd" ) {
-                    printf( "\033[37;1m 兵 \033[0m" );
+                    if ( name == '4' )
+                        printf( "\033[5m" );
+                    else
+                        printf( "\033[36;1m" );
+                    printf( " 兵 " );
+                    printf( "\033[0m" );
                 }
             } else {
                 printf( "    " );

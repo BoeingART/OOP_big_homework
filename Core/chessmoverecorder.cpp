@@ -7,7 +7,7 @@ chessMoveRecorder::chessMoveRecorder() {
     last_undo = false;
 }
 
-void chessMoveRecorder::pushChessMove( string& Name, char& Dir ) {
+void chessMoveRecorder::pushChessMove( char& Name, char& Dir ) {
     if ( curStep < 0 )
         curStep = 0;
     steps temp( Name, Dir );
@@ -16,7 +16,7 @@ void chessMoveRecorder::pushChessMove( string& Name, char& Dir ) {
     testPrint();
 }
 
-bool chessMoveRecorder::pullChessMoveLast( string& Name, char& Dir ) {
+bool chessMoveRecorder::pullChessMoveLast( char& Name, char& Dir ) {
     if ( curStep <= 0 ) {
         cout << "back to the origin state." << endl;
         cout << "cannot undo." << endl;
@@ -30,7 +30,7 @@ bool chessMoveRecorder::pullChessMoveLast( string& Name, char& Dir ) {
     }
 }
 
-bool chessMoveRecorder::pullChessMoveNext( string& Name, char& Dir ) {
+bool chessMoveRecorder::pullChessMoveNext( char& Name, char& Dir ) {
     if ( curStep >= stepList.size() ) {
         cout << "back to the lastest state." << endl;
         cout << "cannot redo." << endl;

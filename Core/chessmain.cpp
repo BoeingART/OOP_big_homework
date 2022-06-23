@@ -15,23 +15,36 @@ chessControlSize1 bD( "bd" );
 
 chessMoveRecorder Recorder;
 
-bool chessMain::chessMove( std::string name, char direction ) {
+void chessMain::chessHighLight( char name ) {
+    chessControl::display( name );
+}
+
+bool chessMain::chessMove( char name, char dir ) {
     if ( Recorder.last_undo )
         Recorder.stepListClearPart();
+    char direction;
+    if ( dir == 72 || dir == 'w' )
+        direction = 'u';
+    else if (  dir == 's' )
+        direction = 'd';
+    else if ( dir == 'a' )
+        direction = 'l';
+    else if ( dir == 'd' )
+        direction = 'r';
+    else
+        return false;
     return inputChessInfo( name, direction );
 }
 
-bool chessMain::inputChessInfo( std::string name, char direction ) {
+bool chessMain::inputChessInfo( char name, char direction ) {
 
     if ( direction != 'u' && direction != 'd' && direction != 'l' && direction != 'r' ) {
         cout << "direction is " << direction << endl;
         cout << "error input in direction" << endl;
-        // chessControl::display();
         return false;
     }
 
     chessDirection dir( 0, 0 );
-    // cout << "doing info" << endl;
     switch ( direction ) {
     case 'u':
         dir = dir_up;
@@ -47,30 +60,29 @@ bool chessMain::inputChessInfo( std::string name, char direction ) {
         break;
     default:
         cout << "错误输入指令" << endl;
-        // chessControl::display();
         return false;
     }
 
     bool if_move = true;
-    if ( name == "cc" ) {
+    if ( name == 'c' ) {
         if_move = cc.chessCorChange( dir );
-    } else if ( name == "f" ) {
+    } else if ( name == 'f' ) {
         if_move = zf.chessCorChange( dir );
-    } else if ( name == "m" ) {
+    } else if ( name == 'm' ) {
         if_move = mc.chessCorChange( dir );
-    } else if ( name == "g" ) {
+    } else if ( name == 'g' ) {
         if_move = gy.chessCorChange( dir );
-    } else if ( name == "y" ) {
+    } else if ( name == 'y' ) {
         if_move = zy.chessCorChange( dir );
-    } else if ( name == "h" ) {
+    } else if ( name == 'h' ) {
         if_move = hz.chessCorChange( dir );
-    } else if ( name == "a" ) {
+    } else if ( name == '1' ) {
         if_move = bA.chessCorChange( dir );
-    } else if ( name == "b" ) {
+    } else if ( name == '2' ) {
         if_move = bB.chessCorChange( dir );
-    } else if ( name == "c" ) {
+    } else if ( name == '3' ) {
         if_move = bC.chessCorChange( dir );
-    } else if ( name == "d" ) {
+    } else if ( name == '4' ) {
         if_move = bD.chessCorChange( dir );
     }
     if ( !Recorder.if_UR && if_move )
@@ -105,7 +117,7 @@ bool chessMain::chessReset( std::string chessBoardName ) {
 }
 
 bool chessMain::chessRedu() {
-    string name;
+    char name;
     char dir;
     if ( !Recorder.pullChessMoveNext( name, dir ) ) {
         return false;
@@ -120,7 +132,7 @@ bool chessMain::chessRedu() {
 }
 
 bool chessMain::chessUndo() {
-    std::string name;
+    char name;
     char dir;
     if ( !Recorder.pullChessMoveLast( name, dir ) ) {
         // cout << "cannot undo." << endl;
