@@ -21,11 +21,20 @@ void chessDisplay::display( char name ) {
     enter_print( up_down_space );
     space_print( left_right_space );
     printf( "┏━━━━┳━━━━┳━━━━┳━━━━┓" );
-    space_print( left_right_space );
     printf( "\n" );
     int CC = 0, ZF = 0, ZY = 0, GY = 0, MC = 0, HZ = 0;
     for ( int i = 0; i < row; i++ ) {
-        space_print( left_right_space );
+        space_print( left_right_space - 23 );
+        if ( i == 0 )
+            printf( "↑ ↓ ← →     选择棋子   " );
+        else if ( i == 1 )
+            printf( "W A S D     移动棋子   " );
+        else if ( i == 2 )
+            printf( "N + (0~4)   重置棋盘   " );
+        else if ( i == 3 )
+            printf( "  U/R       撤销/恢复  " );
+        else if ( i == 4 )
+            printf( "   Q        退出       " );
         printf( "┃" );
         for ( int j = 0; j < line; j++ ) {
             if ( chessBoard[ j ][ i ].occ ) {
@@ -159,12 +168,12 @@ void chessDisplay::display( char name ) {
             } else {
                 if ( chessBoard[ j ][ i ].name == 'p' ) {
                     if ( name == 'p' )
-                        printf( "\033[1;30m ██ \033[0m" );
+                        printf( "\033[1;47m [] \033[0m" );
                     else
                         printf( "\033[1;30m    \033[0m" );
                 } else if ( chessBoard[ j ][ i ].name == 'q' ) {
                     if ( name == 'q' )
-                        printf( "\033[1;30m ██ \033[0m" );
+                        printf( "\033[1;47m [] \033[0m" );
                     else
                         printf( "\033[1;30m    \033[0m" );
                 }
@@ -180,4 +189,16 @@ void chessDisplay::display( char name ) {
             printf( "┗━━━━┻━━━━┻━━━━┻━━━━┛\n" );
         }
     }
+}
+
+bool windowDetect() {
+    struct winsize size;
+    ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
+    printf( "%s%d%s%d\n", "当前窗口大小为：", size.ws_col, " × ", size.ws_row );
+    if ( size.ws_row < 16 )
+        return false;
+    else if ( size.ws_col < 70 )
+        return false;
+    else
+        return true;
 }

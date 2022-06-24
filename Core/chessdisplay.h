@@ -10,4 +10,6 @@ public:
     static void enter_print( int number );
 };
 
+bool windowDetect();
+
 #endif

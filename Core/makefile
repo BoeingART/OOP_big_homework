@@ -1,7 +1,7 @@
 Sources = $(wildcard *.cpp)#源文件名称
 Headers = $(wildcard *.h)#头文件名称
 Objects = $(Sources:%.cpp=%.o)
-exec = testRun#可执行文件的名称
+exec = Kilotski#可执行文件的名称
 
 $(exec): $(Objects)
 	$(CXX) $^ -o $@	--std=c++11 

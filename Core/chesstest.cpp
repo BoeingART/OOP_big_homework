@@ -2,13 +2,15 @@
 
 using namespace std;
 
-
-
 int main() {
+    if ( !windowDetect() ) {
+        cerr << "窗口大小至少为：70 × 16" << endl;
+        return 0;
+    }
     printf( "\033[?25l" );
     chessMain test;
-    char chessName = 'f';
     test.chessReset();
+    char chessName = 'f';
     chessDisplay::display( chessName );
     while ( true ) {
         char input;
