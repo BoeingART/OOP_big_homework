@@ -27,6 +27,17 @@ private:
     bool inputChessInfo( char name, char direction );
     void dirChange( char& Dir );
     char chessName;
+    chessControlSize4* cc;
+    chessControlSize2* zf;
+    chessControlSize2* hz;
+    chessControlSize2* gy;
+    chessControlSize2* mc;
+    chessControlSize2* zy;
+    chessControlSize1* bA;
+    chessControlSize1* bB;
+    chessControlSize1* bC;
+    chessControlSize1* bD;
+    chessMoveRecorder* Recorder;
 };
 
 int scanKeyboard();

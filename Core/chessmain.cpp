@@ -2,29 +2,28 @@
 #include "chessmain.h"
 using namespace std;
 
-chessControlSize4 cc( 'c' );
-chessControlSize2 zf( 'f' );
-chessControlSize2 hz( 'h' );
-chessControlSize2 gy( 'g' );
-chessControlSize2 mc( 'm' );
-chessControlSize2 zy( 'y' );
-chessControlSize1 bA( '1' );
-chessControlSize1 bB( '2' );
-chessControlSize1 bC( '3' );
-chessControlSize1 bD( '4' );
-
-chessMoveRecorder Recorder;
-
 chessMain::chessMain()
-    : chessName( 'c' ) {}
+    : chessName( 'c' ) {
+    cc = new chessControlSize4( 'c' );
+    zf = new chessControlSize2( 'f' );
+    hz = new chessControlSize2( 'h' );
+    gy = new chessControlSize2( 'g' );
+    mc = new chessControlSize2( 'm' );
+    zy = new chessControlSize2( 'y' );
+    bA = new chessControlSize1( '1' );
+    bB = new chessControlSize1( '2' );
+    bC = new chessControlSize1( '3' );
+    bD = new chessControlSize1( '4' );
+    Recorder = new chessMoveRecorder();
+}
 
 void chessMain::chessHighLight( char name ) {
     chessDisplay::display( name );
 }
 
 bool chessMain::chessMove( char name, char dir ) {
-    if ( Recorder.last_undo )
-        Recorder.stepListClearPart();
+    if ( Recorder->last_undo )
+        Recorder->stepListClearPart();
     char direction;
     if ( dir == 'w' )
         direction = 'u';
@@ -58,30 +57,30 @@ bool chessMain::inputChessInfo( char name, char direction ) {
 
     bool if_move = true;
     if ( name == 'c' )
-        if_move = cc.chessCorChange( dir );
+        if_move = cc->chessCorChange( dir );
     else if ( name == 'f' )
-        if_move = zf.chessCorChange( dir );
+        if_move = zf->chessCorChange( dir );
     else if ( name == 'm' )
-        if_move = mc.chessCorChange( dir );
+        if_move = mc->chessCorChange( dir );
     else if ( name == 'g' )
-        if_move = gy.chessCorChange( dir );
+        if_move = gy->chessCorChange( dir );
     else if ( name == 'y' )
-        if_move = zy.chessCorChange( dir );
+        if_move = zy->chessCorChange( dir );
     else if ( name == 'h' )
-        if_move = hz.chessCorChange( dir );
+        if_move = hz->chessCorChange( dir );
     else if ( name == '1' )
-        if_move = bA.chessCorChange( dir );
+        if_move = bA->chessCorChange( dir );
     else if ( name == '2' )
-        if_move = bB.chessCorChange( dir );
+        if_move = bB->chessCorChange( dir );
     else if ( name == '3' )
-        if_move = bC.chessCorChange( dir );
+        if_move = bC->chessCorChange( dir );
     else if ( name == '4' )
-        if_move = bD.chessCorChange( dir );
+        if_move = bD->chessCorChange( dir );
     else
         return false;
-    if ( !Recorder.if_UR && if_move )
-        Recorder.pushChessMove( name, direction );
-    Recorder.if_UR = false;
+    if ( !Recorder->if_UR && if_move )
+        Recorder->pushChessMove( name, direction );
+    Recorder->if_UR = false;
     if ( if_move ) {
         return true;
     } else {
@@ -107,17 +106,17 @@ bool chessMain::chessReset( char chessBoardNumber ) {
         else
             chessBoardName = "horizontal_knife";
         chessControl::chessBoardReset( chessBoardName );
-        cc.chessReset();
-        zf.chessReset();
-        mc.chessReset();
-        gy.chessReset();
-        zy.chessReset();
-        hz.chessReset();
-        bA.chessReset();
-        bB.chessReset();
-        bC.chessReset();
-        bD.chessReset();
-        Recorder.stepListClear();
+        cc->chessReset();
+        zf->chessReset();
+        mc->chessReset();
+        gy->chessReset();
+        zy->chessReset();
+        hz->chessReset();
+        bA->chessReset();
+        bB->chessReset();
+        bC->chessReset();
+        bD->chessReset();
+        Recorder->stepListClear();
         return true;
     }
     catch ( ... ) {
@@ -128,10 +127,10 @@ bool chessMain::chessReset( char chessBoardNumber ) {
 bool chessMain::chessRedu() {
     char name;
     char dir;
-    if ( !Recorder.pullChessMoveNext( name, dir ) ) {
+    if ( !Recorder->pullChessMoveNext( name, dir ) ) {
         return false;
     } else {
-        Recorder.if_UR = true;
+        Recorder->if_UR = true;
         if ( inputChessInfo( name, dir ) ) {
             return true;
         } else {
@@ -143,11 +142,11 @@ bool chessMain::chessRedu() {
 bool chessMain::chessUndo() {
     char name;
     char dir;
-    if ( !Recorder.pullChessMoveLast( name, dir ) ) {
+    if ( !Recorder->pullChessMoveLast( name, dir ) ) {
         return false;
     } else {
-        Recorder.if_UR = true;
-        Recorder.last_undo = true;
+        Recorder->if_UR = true;
+        Recorder->last_undo = true;
         dirChange( dir );
     }
     if ( inputChessInfo( name, dir ) ) {
@@ -162,7 +161,7 @@ void chessMain::chessEnd() {
 }
 
 bool chessMain::chessReachDestination() {
-    if ( cc.reachDestination() ) {
+    if ( cc->reachDestination() ) {
         printf( "到达世界最高城——理塘！\n" );
         printf( "太美丽啦理塘\n" );
         printf( "诶，这不是丁真吗\n" );
