@@ -21,6 +21,7 @@ public:
     bool chessUndo();
     bool chessReachDestination();
     void chessEnd();
+    globalConflict chessBoardInfo( int i, int j );  //获取棋盘上第i行第j列的元素信息
 
 private:
     bool inputChessInfo( char name, char direction );

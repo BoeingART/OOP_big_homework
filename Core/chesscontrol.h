@@ -12,8 +12,8 @@ public:
     bool chessCorChange( chessDirection direction );            //移动棋子的函数，如果可以移动棋子则返回true，否则返回false
     void chessReset();                                          //重置棋子
     static void chessBoardReset( std::string chessBoardName );  //重置棋盘
-    // static void display( char name = '\0' );                    //控制栏输出
     static char chooseChess( char dir );                        //选择棋子
+    static globalConflict chessBoardInfo( int i, int j );       //返回(i, j)处的棋子信息
     const static int line = 4;                                  //棋盘的列数
     const static int row = 5;                                   //棋盘的行数
 

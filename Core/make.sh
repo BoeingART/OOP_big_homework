@@ -1,2 +1,1 @@
-make -j10
-./testRun
+./kilotski

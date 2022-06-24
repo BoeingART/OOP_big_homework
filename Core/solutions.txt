@@ -1,7 +1,4 @@
 reset
-g u
-b u
-c u
 d l
 y d
 g r

@@ -21,6 +21,10 @@ chessControl::~chessControl() {
     delete[] chessCurrentCor;
 }
 
+globalConflict chessControl::chessBoardInfo(int i, int j){
+    return chessControl::chessBoard[ i ][ j ];
+}
+
 bool chessControl::chessCorChange( chessDirection direction ) {
     bool onSide = whetherOnSide( direction );
     if ( onSide )

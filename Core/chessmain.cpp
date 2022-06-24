@@ -191,6 +191,10 @@ void chessMain::dirChange( char& Dir ) {
     }
 }
 
+globalConflict chessMain::chessBoardInfo( int i, int j ) {
+    return chessControl::chessBoardInfo( i, j );
+}
+
 int scanKeyboard() {
     int input;
     struct termios new_settings;
