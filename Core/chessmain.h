@@ -14,6 +14,7 @@
 class chessMain {
 public:
     chessMain();
+    ~chessMain();
     void chessHighLight( char name );
     bool chessMove( char name, char directionn );
     bool chessReset( char chessBoardNumber = '0' );

@@ -17,6 +17,20 @@ chessMain::chessMain()
     Recorder = new chessMoveRecorder();
 }
 
+chessMain::~chessMain() {
+    delete cc;
+    delete zf;
+    delete hz;
+    delete gy;
+    delete mc;
+    delete zy;
+    delete bA;
+    delete bB;
+    delete bC;
+    delete bD;
+    delete Recorder;
+}
+
 void chessMain::chessHighLight( char name ) {
     chessDisplay::display( name );
 }
