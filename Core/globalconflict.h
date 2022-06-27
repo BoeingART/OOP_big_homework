@@ -6,6 +6,22 @@
 struct Cor {
     int x;
     int y;
+    void operator=( const Cor& another ) {
+        x = another.x;
+        y = another.y;
+    }
+    void operator+=( const Cor& another ) {
+        x += another.x;
+        y += another.y;
+    }
+};
+
+struct UR_operation {
+    char chessName;
+    char direction;
+    UR_operation( char name, char dir )
+        : chessName( name )
+        , direction( dir ) {}
 };
 
 class globalConflict {

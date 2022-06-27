@@ -9,7 +9,7 @@ public:
     Cor dir;
 
 public:
-    chessDirection( int _x, int _y ) {
+    chessDirection( const int& _x, const int& _y ) {
         dir.x = _x;
         dir.y = _y;
     }

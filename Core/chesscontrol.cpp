@@ -21,14 +21,14 @@ chessControl::~chessControl() {
     delete[] chessCurrentCor;
 }
 
-globalConflict chessControl::chessBoardInfo(int i, int j){
+globalConflict chessControl::chessBoardInfo( int i, int j ) {
     return chessControl::chessBoard[ i ][ j ];
 }
 
 bool chessControl::chessCorChange( chessDirection direction ) {
     bool onSide = whetherOnSide( direction );
     if ( onSide )
-        return false;
+        return false;  //如果棋子在边缘则不可移动，返回false
     return whetherMove( direction );
 }
 
@@ -42,16 +42,14 @@ bool chessControl::whetherMove( chessDirection& direction ) {
         chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = false;
         chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = ' ';
     }
-    //将棋子坐标向该方向移动
 
-    for ( int i = 0; i < size; i++ ) {
-        tempCor[ i ].x += direction.dir.x;
-        tempCor[ i ].y += direction.dir.y;
-    }
+    //将棋子坐标向该方向移动
+    for ( int i = 0; i < size; i++ )
+        tempCor[ i ] += direction.dir;
 
     //判断新的位置占用处是否有棋子被占用
-
     for ( int i = 0; i < size; i++ ) {
+        //如果有棋子占用则返回当前坐标，同时将图中的信息进行添加，返回false
         if ( chessBoard[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].occ ) {
             for ( int j = 0; j < size; j++ ) {
                 chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].occ = true;
@@ -61,17 +59,15 @@ bool chessControl::whetherMove( chessDirection& direction ) {
             return false;
         }
     }
-    //如果有棋子占用则返回当前坐标，同时将图中的信息进行添加，返回false
 
+    //如果没有棋子占用则直接更新类中的坐标信息，并同时更新图的信息，返回true
     for ( int i = 0; i < size; i++ ) {
         chessCurrentCor[ i ] = tempCor[ i ];
         chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = true;
         chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = this->chessName;
     }
-    //如果没有棋子占用则直接更新类中的坐标信息，并同时更新图的信息，返回true
     namedSpace();
-    currentFocus.x += direction.dir.x;
-    currentFocus.y += direction.dir.y;
+    currentFocus += direction.dir;
     return true;
 }
 
@@ -86,26 +82,20 @@ void chessControl::namedSpace() {
 }
 
 bool chessControl::whetherOnSide( chessDirection direction ) {
-    bool onSide = false;
-    if ( direction == dir_left )  //向左方
-    {
+    if ( direction == dir_left ) {
         if ( chessCurrentCor[ 0 ].x <= 1 )
-            onSide = true;
-    } else if ( direction == dir_right )  //向右方
-    {
-        if ( chessCurrentCor[ size - 1 ].x >= line ) {
-            onSide = true;
-        }
-    } else if ( direction == dir_up )  //向上方
-    {
+            return true;
+    } else if ( direction == dir_right ) {
+        if ( chessCurrentCor[ size - 1 ].x >= line )
+            return true;
+    } else if ( direction == dir_up ) {
         if ( chessCurrentCor[ 0 ].y <= 1 )
-            onSide = true;
-    } else if ( direction == dir_down )  //向下方
-    {
+            return true;
+    } else if ( direction == dir_down ) {
         if ( chessCurrentCor[ size - 1 ].y >= row )
-            onSide = true;
+            return true;
     }
-    return onSide;
+    return false;
 }
 
 void chessControl::chessReset() {

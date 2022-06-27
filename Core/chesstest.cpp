@@ -24,7 +24,7 @@ int main() {
             chessDisplay::display();
             continue;
         } else if ( input == 'r' ) {
-            test.chessRedu();
+            test.chessRedo();
             chessDisplay::display();
             continue;
         } else if ( input == 'n' ) {

@@ -4,10 +4,7 @@
 #include "chessglobal.h"
 #include "globalconflict.h"
 
-/**
- * @brief 初始棋子坐标 \n(换行)
- * 类内记录了各种棋子的初始坐标，并同时记录了多种初始局面可以进行更换
- */
+// 初始棋子坐标 
 class originChessCor {
     Cor* cc;  //曹操
     Cor* zf;  //张飞

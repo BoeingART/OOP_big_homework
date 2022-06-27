@@ -4,10 +4,10 @@ Objects = $(Sources:%.cpp=%.o)
 exec = Kilotski#可执行文件的名称
 
 $(exec): $(Objects)
-	$(CXX) $^ -o $@	--std=c++11 
+	$(CXX) $^ -o $@	--std=c++11 -O2
 
 $(Objects): %.o: %.cpp $(Headers)
-	$(CXX) -c $< -o $@ --std=c++11 
+	$(CXX) -c $< -o $@ --std=c++11 -O2
 
 clean: 
 	rm *.o $(exec)

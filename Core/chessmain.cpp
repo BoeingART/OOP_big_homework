@@ -4,6 +4,7 @@ using namespace std;
 
 chessMain::chessMain()
     : chessName( 'c' ) {
+    //初始化各种棋子
     cc = new chessControlSize4( 'c' );
     zf = new chessControlSize2( 'f' );
     hz = new chessControlSize2( 'h' );
@@ -14,6 +15,7 @@ chessMain::chessMain()
     bB = new chessControlSize1( '2' );
     bC = new chessControlSize1( '3' );
     bD = new chessControlSize1( '4' );
+    //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
 }
 
@@ -31,14 +33,16 @@ chessMain::~chessMain() {
     delete Recorder;
 }
 
-void chessMain::chessHighLight( char name ) {
+void chessMain::chessHighLight( const char& name ) {
     chessDisplay::display( name );
 }
 
 bool chessMain::chessMove( char name, char dir ) {
+    //如果上一次是undo而本次移动了，则将移动部分的步骤列表进行清除
     if ( Recorder->last_undo )
         Recorder->stepListClearPart();
     char direction;
+    //对方向进行转换（出于一些历史原因）
     if ( dir == 'w' )
         direction = 'u';
     else if ( dir == 's' )
@@ -52,6 +56,7 @@ bool chessMain::chessMove( char name, char dir ) {
 
 bool chessMain::inputChessInfo( char name, char direction ) {
     chessDirection dir( 0, 0 );
+    //将字符方向转换为Cor类型
     switch ( direction ) {
     case 'u':
         dir = dir_up;
@@ -92,14 +97,14 @@ bool chessMain::inputChessInfo( char name, char direction ) {
         if_move = bD->chessCorChange( dir );
     else
         return false;
+    //如果可以棋子可以移动且不是undo
     if ( !Recorder->if_UR && if_move )
         Recorder->pushChessMove( name, direction );
     Recorder->if_UR = false;
-    if ( if_move ) {
+    if ( if_move )
         return true;
-    } else {
+    else
         return false;
-    }
 }
 
 bool chessMain::chessReset( char chessBoardNumber ) {
@@ -138,35 +143,40 @@ bool chessMain::chessReset( char chessBoardNumber ) {
     }
 }
 
-bool chessMain::chessRedu() {
+UR_operation chessMain::chessRedo() {
     char name;
     char dir;
     if ( !Recorder->pullChessMoveNext( name, dir ) ) {
-        return false;
+        UR_operation output( '\0', '\0' );
+        return output;
     } else {
         Recorder->if_UR = true;
         if ( inputChessInfo( name, dir ) ) {
-            return true;
+            UR_operation output( name, dir );
+            return output;
         } else {
-            return false;
+            UR_operation output( '\0', '\0' );
+            return output;
         }
     }
 }
 
-bool chessMain::chessUndo() {
-    char name;
-    char dir;
+UR_operation chessMain::chessUndo() {
+    char name, dir;
     if ( !Recorder->pullChessMoveLast( name, dir ) ) {
-        return false;
+        UR_operation output( '\0', '\0' );
+        return output;
     } else {
         Recorder->if_UR = true;
         Recorder->last_undo = true;
         dirChange( dir );
     }
     if ( inputChessInfo( name, dir ) ) {
-        return true;
+        UR_operation output( name, dir );
+        return output;
     } else {
-        return false;
+        UR_operation output( '\0', '\0' );
+        return output;
     }
 }
 
@@ -204,7 +214,7 @@ void chessMain::dirChange( char& Dir ) {
     }
 }
 
-globalConflict chessMain::chessBoardInfo( int i, int j ) {
+globalConflict chessMain::chessBoardInfo( const int& i, const int& j ) {
     return chessControl::chessBoardInfo( i, j );
 }
 
