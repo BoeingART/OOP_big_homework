@@ -40,7 +40,7 @@ Cor* originChessCor::chessPlace( char chessName ) {
         return nullptr;
 }
 
-globalConflict originChessCor::chessBoard( std::string chessBoardName, int i, int j ) {
+chessConflict originChessCor::chessBoard( std::string chessBoardName, int i, int j ) {
     if ( chessBoardName == "horizontal_knife" )
         return chessBoard_horizontal_knife[ i ][ j ];
     else if ( chessBoardName == "neck_and_neck" )
@@ -58,7 +58,7 @@ globalConflict originChessCor::chessBoard( std::string chessBoardName, int i, in
 }
 
 void originChessCor::changeChessPlace( std::string chessBoardName ) {
-    globalConflict chessBoardTemp[ 4 ][ 5 ];
+    chessConflict chessBoardTemp[ 4 ][ 5 ];
     if ( chessBoardName == "horizontal_knife" ) {
         for ( int i = 0; i < 4; i++ ) {
             for ( int j = 0; j < 5; j++ ) {

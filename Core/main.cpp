@@ -8,8 +8,8 @@ int main() {
         return 0;
     }
     printf( "\033[?25l" );
-    chessMain test;
-    test.chessReset();
+    chessMain* game = new chessMain();
+    game->chessReset();
     char chessName = 'f';
     chessDisplay::display( chessName );
     while ( true ) {
@@ -17,31 +17,33 @@ int main() {
         input = scanKeyboard();
         printf( "\n" );
         if ( input == 'q' ) {
-            test.chessEnd();
+            game->chessEnd();
             break;
         } else if ( input == 'u' ) {
-            test.chessUndo();
+            game->chessUndo();
             chessDisplay::display();
             continue;
         } else if ( input == 'r' ) {
-            test.chessRedo();
+            game->chessRedo();
             chessDisplay::display();
             continue;
         } else if ( input == 'n' ) {
             char chessBoardNumber = scanKeyboard();
-            test.chessReset( chessBoardNumber );
+            game->chessReset( chessBoardNumber );
             chessDisplay::display();
             continue;
         } else if ( input == 'w' || input == 'a' || input == 's' || input == 'd' ) {
-            test.chessMove( chessName, input );
+            game->chessMove( chessName, input );
             chessDisplay::display( chessName );
         } else if ( input == 'A' || input == 'B' || input == 'C' || input == 'D' ) {
             chessName = chessControl::chooseChess( input );
             chessDisplay::display( chessName );
         }
-        if ( test.chessReachDestination() )
+        if ( game->chessReachDestination() )
             break;
     }
+
+
     printf( "\033[?25h" );
     printf( "\033c" );
     return 0;

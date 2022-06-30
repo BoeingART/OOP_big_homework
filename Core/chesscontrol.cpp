@@ -3,7 +3,7 @@
 
 using namespace std;
 
-globalConflict chessControl::chessBoard[ 4 ][ 5 ];  //棋盘局面的全局变量
+chessBoard chessControl::chessComplexion;  //棋盘局面的全局变量
 
 originChessCor chessControl::chessCorRecorder;  //初始局面记录
 
@@ -21,10 +21,6 @@ chessControl::~chessControl() {
     delete[] chessCurrentCor;
 }
 
-globalConflict chessControl::chessBoardInfo( int i, int j ) {
-    return chessControl::chessBoard[ i ][ j ];
-}
-
 bool chessControl::chessCorChange( chessDirection direction ) {
     bool onSide = whetherOnSide( direction );
     if ( onSide )
@@ -39,8 +35,8 @@ bool chessControl::whetherMove( chessDirection& direction ) {
         tempCor[ i ] = chessCurrentCor[ i ];
     }
     for ( int i = 0; i < size; i++ ) {
-        chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = false;
-        chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = ' ';
+        chessComplexion[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = false;
+        chessComplexion[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = ' ';
     }
 
     //将棋子坐标向该方向移动
@@ -50,10 +46,10 @@ bool chessControl::whetherMove( chessDirection& direction ) {
     //判断新的位置占用处是否有棋子被占用
     for ( int i = 0; i < size; i++ ) {
         //如果有棋子占用则返回当前坐标，同时将图中的信息进行添加，返回false
-        if ( chessBoard[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].occ ) {
+        if ( chessComplexion[ tempCor[ i ].x - 1 ][ tempCor[ i ].y - 1 ].occ ) {
             for ( int j = 0; j < size; j++ ) {
-                chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].occ = true;
-                chessBoard[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].name = this->chessName;
+                chessComplexion[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].occ = true;
+                chessComplexion[ chessCurrentCor[ j ].x - 1 ][ chessCurrentCor[ j ].y - 1 ].name = this->chessName;
             }
             namedSpace();
             return false;
@@ -63,8 +59,8 @@ bool chessControl::whetherMove( chessDirection& direction ) {
     //如果没有棋子占用则直接更新类中的坐标信息，并同时更新图的信息，返回true
     for ( int i = 0; i < size; i++ ) {
         chessCurrentCor[ i ] = tempCor[ i ];
-        chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = true;
-        chessBoard[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = this->chessName;
+        chessComplexion[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].occ = true;
+        chessComplexion[ chessCurrentCor[ i ].x - 1 ][ chessCurrentCor[ i ].y - 1 ].name = this->chessName;
     }
     namedSpace();
     currentFocus += direction.dir;
@@ -75,8 +71,8 @@ void chessControl::namedSpace() {
     char tag = 'p';
     for ( int i = 0; i < line; i++ ) {
         for ( int j = 0; j < row; j++ ) {
-            if ( chessBoard[ i ][ j ].name == ' ' || chessBoard[ i ][ j ].name == 'p' || chessBoard[ i ][ j ].name == 'q' )
-                chessBoard[ i ][ j ].name = tag++;
+            if ( chessComplexion[ i ][ j ].name == ' ' || chessComplexion[ i ][ j ].name == 'p' || chessComplexion[ i ][ j ].name == 'q' )
+                chessComplexion[ i ][ j ].name = tag++;
         }
     }
 }
@@ -106,7 +102,7 @@ void chessControl::chessBoardReset( std::string chessBoardName ) {
     chessCorRecorder.changeChessPlace( chessBoardName );
     for ( int i = 0; i < 4; i++ ) {
         for ( int j = 0; j < 5; j++ )
-            chessBoard[ i ][ j ] = chessCorRecorder.chessBoard( chessBoardName, i, j );
+            chessComplexion[ i ][ j ] = chessCorRecorder.chessBoard( chessBoardName, i, j );
     }
 }
 
@@ -124,7 +120,7 @@ bool chessControl::onside( Cor cor, char dir ) {
 }
 
 char chessControl::chooseChess( char dir ) {
-    char name_pre = chessBoard[ currentFocus.x ][ currentFocus.y ].name;
+    char name_pre = chessComplexion[ currentFocus.x ][ currentFocus.y ].name;
     if ( !onside( currentFocus, dir ) ) {
         if ( dir == 'A' )
             currentFocus.y -= 1;
@@ -136,10 +132,10 @@ char chessControl::chooseChess( char dir ) {
             currentFocus.x -= 1;
     } else
         return name_pre;
-    if ( name_pre == chessBoard[ currentFocus.x ][ currentFocus.y ].name && !onside( currentFocus, dir ) )
+    if ( name_pre == chessComplexion[ currentFocus.x ][ currentFocus.y ].name && !onside( currentFocus, dir ) )
         return chooseChess( dir );
     else
-        return chessBoard[ currentFocus.x ][ currentFocus.y ].name;
+        return chessComplexion[ currentFocus.x ][ currentFocus.y ].name;
 }
 
 bool chessControl::checkCor( int x, int y ) {
@@ -149,4 +145,8 @@ bool chessControl::checkCor( int x, int y ) {
         }
     }
     return false;
+}
+
+chessConflict chessControl::chessCurrentComplextion( int i, int j ) {
+    return chessComplexion[ i ][ j ];
 }

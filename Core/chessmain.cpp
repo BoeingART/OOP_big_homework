@@ -143,41 +143,33 @@ bool chessMain::chessReset( char chessBoardNumber ) {
     }
 }
 
-UR_operation chessMain::chessRedo() {
+bool chessMain::chessRedo() {
     char name;
     char dir;
-    if ( !Recorder->pullChessMoveNext( name, dir ) ) {
-        UR_operation output( '\0', '\0' );
-        return output;
-    } else {
+    if ( !Recorder->pullChessMoveNext( name, dir ) )
+        return false;
+    else {
         Recorder->if_UR = true;
-        if ( inputChessInfo( name, dir ) ) {
-            UR_operation output( name, dir );
-            return output;
-        } else {
-            UR_operation output( '\0', '\0' );
-            return output;
-        }
+        if ( inputChessInfo( name, dir ) )
+            return true;
+        else
+            return false;
     }
 }
 
-UR_operation chessMain::chessUndo() {
+bool chessMain::chessUndo() {
     char name, dir;
-    if ( !Recorder->pullChessMoveLast( name, dir ) ) {
-        UR_operation output( '\0', '\0' );
-        return output;
-    } else {
+    if ( !Recorder->pullChessMoveLast( name, dir ) )
+        return false;
+    else {
         Recorder->if_UR = true;
         Recorder->last_undo = true;
         dirChange( dir );
     }
-    if ( inputChessInfo( name, dir ) ) {
-        UR_operation output( name, dir );
-        return output;
-    } else {
-        UR_operation output( '\0', '\0' );
-        return output;
-    }
+    if ( inputChessInfo( name, dir ) )
+        return true;
+    else
+        return false;
 }
 
 void chessMain::chessEnd() {
@@ -214,8 +206,16 @@ void chessMain::dirChange( char& Dir ) {
     }
 }
 
-globalConflict chessMain::chessBoardInfo( const int& i, const int& j ) {
-    return chessControl::chessBoardInfo( i, j );
+chessConflict chessMain::chessBoardInfo( const int i, const int j ) {
+    return chessControl::chessCurrentComplextion( i, j );
+}
+
+int chessMain::line() {
+    return chessControl::line;
+}
+
+int chessMain::row() {
+    return chessControl::row;
 }
 
 int scanKeyboard() {

@@ -2,7 +2,7 @@
 #define CHESSDIRECTION_H
 
 #include "chessglobal.h"
-#include "globalconflict.h"
+#include "chessconflict.h"
 
 class chessDirection {
 public:
