@@ -4,47 +4,54 @@
 using namespace std;
 
 int main() {
-    setlocale( LC_ALL, "" );  //同步终端字符库
-    initscr();                // 初始化并进入curses 模式
-    cbreak();                 // 行缓冲禁止，传递所有控制信息
     if ( !windowDetect() ) {
-        printw( "窗口大小至少为：70 × 16" );
-        refresh();
-        getch();
-        endwin();
+        printf( "窗口大小不够大\n" );
         return 0;
     }
+
+    setlocale( LC_ALL, "" );  //同步终端字符库
+    initscr();                // 初始化并进入curses 模式
+    if ( has_colors() == false )
+        return 0;
+    noecho();
+    start_color();
+    cbreak();  // 行缓冲禁止，传递所有控制信息
     chessMain* game = new chessMain();
+    keypad( game->globalDisplay->chessGameBoard, true );
     game->chessReset();
     char chessName = 'f';
-    chessDisplay::display( chessName );
+    game->globalDisplay->test_display( "test..." );
+    game->globalDisplay->display();
     while ( true ) {
-        char input;
-        input = scanKeyboard();
-        printf( "\n" );
+        int input = wgetch( game->globalDisplay->chessGameBoard );
         if ( input == 'q' ) {
             game->chessEnd();
             break;
         } else if ( input == 'u' ) {
             game->chessUndo();
-            chessDisplay::display();
+            game->globalDisplay->display();
             continue;
         } else if ( input == 'r' ) {
             game->chessRedo();
-            chessDisplay::display();
+            game->globalDisplay->display();
             continue;
         } else if ( input == 'n' ) {
             char chessBoardNumber = scanKeyboard();
             game->chessReset( chessBoardNumber );
-            chessDisplay::display();
+            game->globalDisplay->display();
             continue;
         } else if ( input == 'w' || input == 'a' || input == 's' || input == 'd' ) {
             game->chessMove( chessName, input );
-            chessDisplay::display( chessName );
-        } else if ( input == 'A' || input == 'B' || input == 'C' || input == 'D' ) {
+            char temp[ 2 ] = { chessName, '\0' };
+            game->globalDisplay->test_display( temp );
+            game->globalDisplay->display( chessName );
+        } else if ( input == KEY_LEFT || input == KEY_RIGHT || input == KEY_UP || input == KEY_DOWN ) {
             chessName = chessControl::chooseChess( input );
-            chessDisplay::display( chessName );
-        }
+            char temp[ 2 ] = { chessName, '\0' };
+            game->globalDisplay->test_display( temp );
+            game->globalDisplay->display( chessName );
+        } else if ( input == KEY_F( 2 ) )
+            game->globalDisplay->test_display( "strange" );
         if ( game->chessReachDestination() )
             break;
     }

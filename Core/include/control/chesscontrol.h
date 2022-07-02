@@ -13,7 +13,7 @@ public:
     bool chessCorChange( chessDirection direction );               //移动棋子的函数，如果可以移动棋子则返回true，否则返回false
     void chessReset();                                             //重置棋子
     static void chessBoardReset( std::string chessBoardName );     //重置棋盘
-    static char chooseChess( char dir );                           //选择棋子
+    static char chooseChess( int dir );                           //选择棋子
     const static int line = 4;                                     //棋盘的列数
     const static int row = 5;                                      //棋盘的行数
     static chessConflict chessCurrentComplextion( int i, int j );  //返回棋盘当前的局面
@@ -31,7 +31,7 @@ protected:
 
 private:
     static Cor currentFocus;
-    static bool onside( Cor cor, char dir );
+    static bool onside( Cor cor, int dir );
 };
 
 #endif  // CHESSCONTROL_H

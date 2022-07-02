@@ -36,7 +36,7 @@ chessMain::~chessMain() {
 }
 
 void chessMain::chessHighLight( const char& name ) {
-    chessDisplay::display( name );
+    this->globalDisplay->display(name);
 }
 
 bool chessMain::chessMove( char name, char dir ) {

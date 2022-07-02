@@ -26,7 +26,7 @@ $(exec): $(Objects) $(Include)
 
 $(object_dir)/%.o: $(control_source_dir)/%.cpp $(Include)
 	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2
+	$(CC) -c $< -o $@ --std=c++11 -O2 -l $(Library)
 
 $(object_dir)/%.o: $(display_source_dir)/%.cpp $(Include)
 	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"

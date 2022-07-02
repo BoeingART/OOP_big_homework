@@ -1,4 +1,4 @@
-#include "../../include/control/chesscontrol.h"  
+#include "../../include/control/chesscontrol.h"
 #include "../../include/control/chessdirection.h"
 
 using namespace std;
@@ -106,29 +106,29 @@ void chessControl::chessBoardReset( std::string chessBoardName ) {
     }
 }
 
-bool chessControl::onside( Cor cor, char dir ) {
-    if ( cor.y == 0 && dir == 'A' )
+bool chessControl::onside( Cor cor, int dir ) {
+    if ( cor.y == 0 && dir == KEY_UP )
         return true;
-    else if ( cor.y == row - 1 && dir == 'B' )
+    else if ( cor.y == row - 1 && dir == KEY_DOWN )
         return true;
-    else if ( cor.x == line - 1 && dir == 'C' )
+    else if ( cor.x == line - 1 && dir == KEY_RIGHT )
         return true;
-    else if ( cor.x == 0 && dir == 'D' )
+    else if ( cor.x == 0 && dir == KEY_LEFT )
         return true;
     else
         return false;
 }
 
-char chessControl::chooseChess( char dir ) {
+char chessControl::chooseChess( int dir ) {
     char name_pre = chessComplexion[ currentFocus.x ][ currentFocus.y ].name;
     if ( !onside( currentFocus, dir ) ) {
-        if ( dir == 'A' )
+        if ( dir == KEY_UP )
             currentFocus.y -= 1;
-        else if ( dir == 'B' )
+        else if ( dir == KEY_DOWN )
             currentFocus.y += 1;
-        else if ( dir == 'C' )
+        else if ( dir == KEY_RIGHT )
             currentFocus.x += 1;
-        else if ( dir == 'D' )
+        else if ( dir == KEY_LEFT )
             currentFocus.x -= 1;
     } else
         return name_pre;
