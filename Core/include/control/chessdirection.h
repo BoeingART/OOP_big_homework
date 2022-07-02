@@ -1,7 +1,7 @@
 #ifndef CHESSDIRECTION_H
 #define CHESSDIRECTION_H
 
-#include "chessglobal.h"
+#include "../chessglobal.h"
 #include "chessconflict.h"
 
 class chessDirection {

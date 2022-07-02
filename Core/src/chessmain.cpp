@@ -1,5 +1,5 @@
 
-#include "chessmain.h"
+#include "../include/chessmain.h"
 using namespace std;
 
 chessMain::chessMain()
@@ -17,6 +17,7 @@ chessMain::chessMain()
     bD = new chessControlSize1( '4' );
     //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
+    globalDisplay = new chessDisplay();
 }
 
 chessMain::~chessMain() {
@@ -31,6 +32,7 @@ chessMain::~chessMain() {
     delete bC;
     delete bD;
     delete Recorder;
+    delete globalDisplay;
 }
 
 void chessMain::chessHighLight( const char& name ) {

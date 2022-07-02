@@ -1,4 +1,4 @@
-#include "chesscontrolsize4.h"
+#include "../../include/control/chesscontrolsize4.h"
 using namespace std;
 
 chessControlSize4::chessControlSize4( char name )
@@ -7,13 +7,6 @@ chessControlSize4::chessControlSize4( char name )
     chessCurrentCor = new Cor[ size ];
     for ( int i = 0; i < size; i++ )
         chessCurrentCor[ i ] = chessCorRecorder.chessPlace( name )[ i ];
-    // if ( name == "cc" ) {
-    //     for ( int i = 0; i < size; i++ ) {
-    //         chessCurrentCor[ i ] = cor_cc[ i ];
-    //     }
-    // } else {
-    //     cerr << "error" << endl;
-    // }
 }
 
 bool chessControlSize4::reachDestination() {

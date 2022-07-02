@@ -1,4 +1,4 @@
-#include "originchessboard.h"
+#include "../../include/control/originchessboard.h"
 using namespace std;
 
 originChessCor::originChessCor() {

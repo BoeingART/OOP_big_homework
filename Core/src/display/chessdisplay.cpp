@@ -1,4 +1,8 @@
-#include "chessdisplay.h"
+#include "../../include/display/chessdisplay.h"
+
+chessDisplay::chessDisplay(){
+    
+}
 
 void chessDisplay::space_print( int number ) {
     for ( int i = 0; i < number; i++ ) {
@@ -13,6 +17,8 @@ void chessDisplay::enter_print( int number ) {
 }
 
 void chessDisplay::display( char name ) {
+    /*
+    
     system( "clear" );
     struct winsize size;
     ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
@@ -189,6 +195,7 @@ void chessDisplay::display( char name ) {
             printf( "┗━━━━┻━━━━┻━━━━┻━━━━┛\n" );
         }
     }
+    */
 }
 
 bool windowDetect() {

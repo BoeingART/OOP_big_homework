@@ -1,4 +1,4 @@
-#include "chesscontrolsize1.h"
+#include "../../include/control/chesscontrolsize1.h"
 using namespace std;
 
 chessControlSize1::chessControlSize1( char name )

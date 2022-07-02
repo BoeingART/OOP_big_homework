@@ -1,13 +1,19 @@
-#include "chessmain.h"
+#include "../include/chessmain.h"
+#include <ncurses.h>
 
 using namespace std;
 
 int main() {
+    setlocale( LC_ALL, "" );  //同步终端字符库
+    initscr();                // 初始化并进入curses 模式
+    cbreak();                 // 行缓冲禁止，传递所有控制信息
     if ( !windowDetect() ) {
-        cerr << "窗口大小至少为：70 × 16" << endl;
+        printw( "窗口大小至少为：70 × 16" );
+        refresh();
+        getch();
+        endwin();
         return 0;
     }
-    printf( "\033[?25l" );
     chessMain* game = new chessMain();
     game->chessReset();
     char chessName = 'f';
@@ -43,8 +49,6 @@ int main() {
             break;
     }
 
-
-    printf( "\033[?25h" );
-    printf( "\033c" );
+    endwin();
     return 0;
 }

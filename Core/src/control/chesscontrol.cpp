@@ -1,5 +1,5 @@
-#include "chesscontrol.h"
-#include "chessdirection.h"
+#include "../../include/control/chesscontrol.h"  
+#include "../../include/control/chessdirection.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #define CHESSCONTROL_H
 
 #include "chessdirection.h"
-#include "chessglobal.h"
+#include "../chessglobal.h"
 #include "originchessboard.h"
 
 //棋子控制类

@@ -1,7 +1,7 @@
 #ifndef ORIGINCHESSBOARD_H
 #define ORIGINCHESSBOARD_H
 
-#include "chessglobal.h"
+#include "../chessglobal.h"
 #include "chessconflict.h"
 
 // 初始棋子坐标 

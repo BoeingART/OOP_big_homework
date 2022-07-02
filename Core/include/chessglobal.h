@@ -3,6 +3,7 @@
 
 #include <cstring>
 #include <iostream>
+#include <ncurses.h>
 #include <stack>
 #include <sys/ioctl.h>
 #include <sys/types.h>

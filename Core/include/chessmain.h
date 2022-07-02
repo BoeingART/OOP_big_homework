@@ -1,15 +1,14 @@
 #ifndef CHESSMAIN_H
 #define CHESSMAIN_H
 
-#include "chesscontrol.h"
-#include "chesscontrolsize1.h"
-#include "chesscontrolsize2.h"
-#include "chesscontrolsize4.h"
-#include "chessdirection.h"
-#include "chessdisplay.h"
 #include "chessglobal.h"
-#include "chessmoverecorder.h"
-#include <stdio.h>
+#include "control/chesscontrol.h"
+#include "control/chesscontrolsize1.h"
+#include "control/chesscontrolsize2.h"
+#include "control/chesscontrolsize4.h"
+#include "control/chessdirection.h"
+#include "control/chessmoverecorder.h"
+#include "display/chessdisplay.h"
 
 class chessMain {
 public:
@@ -18,13 +17,14 @@ public:
     void chessHighLight( const char& name );                          //输出高亮棋子
     bool chessMove( char name, char directionn );                     //移动棋子
     bool chessReset( char chessBoardNumber = '0' );                   //重置棋盘
-    bool chessRedo();                                         //重做上一步
-    bool chessUndo();                                         //撤回上一步
+    bool chessRedo();                                                 //重做上一步
+    bool chessUndo();                                                 //撤回上一步
     bool chessReachDestination();                                     //棋子到达终点
     void chessEnd();                                                  //游戏结束
     static chessConflict chessBoardInfo( const int i, const int j );  //获取棋盘上第i行第j列的元素信息
     static int line();
     static int row();
+    chessDisplay* globalDisplay;
 
 private:
     bool inputChessInfo( char name, char direction );  //输入棋子信息

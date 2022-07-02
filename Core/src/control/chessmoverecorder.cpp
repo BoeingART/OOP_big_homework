@@ -1,4 +1,4 @@
-#include "chessmoverecorder.h"
+#include "../../include/control/chessmoverecorder.h"
 using namespace std;
 
 chessMoveRecorder::chessMoveRecorder() {
