@@ -48,7 +48,7 @@ int main() {
         if ( game->chessReachDestination() )
             break;
     }
-
+    curs_set( 1 );
     endwin();
     return 0;
 }

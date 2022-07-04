@@ -20,11 +20,11 @@ public:
     WINDOW* chessGameHelp;
 
 private:
-    const int line_times = 5;
-    const int row_times = 2;
+    const int row_times = 9;
+    const int column_times = 4;
 
-    const int row_number = 11;
-    const int column_number = 21;
+    const int row_number = row_times * 4 + 1 + 4;
+    const int column_number = column_times * 5 + 1 + 2;
 
     bool boardLine[ 3 ][ 5 ];
     bool boardRow[ 4 ][ 4 ];
