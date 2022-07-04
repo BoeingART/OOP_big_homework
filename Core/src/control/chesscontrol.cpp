@@ -147,6 +147,6 @@ bool chessControl::checkCor( int x, int y ) {
     return false;
 }
 
-chessConflict chessControl::chessCurrentComplextion( int i, int j ) {
-    return chessComplexion[ i ][ j ];
+chessConflict chessControl::chessCurrentComplextion( int x, int y ) {
+    return chessComplexion[ x ][ y ];
 }

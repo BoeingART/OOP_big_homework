@@ -36,7 +36,7 @@ chessMain::~chessMain() {
 }
 
 void chessMain::chessHighLight( const char& name ) {
-    this->globalDisplay->display(name);
+    this->globalDisplay->display( name );
 }
 
 bool chessMain::chessMove( char name, char dir ) {
@@ -208,8 +208,70 @@ void chessMain::dirChange( char& Dir ) {
     }
 }
 
-chessConflict chessMain::chessBoardInfo( const int i, const int j ) {
-    return chessControl::chessCurrentComplextion( i, j );
+const char* chessMain::chessBoardInfo( const int line, const int row, const int charNumber ) {
+    switch ( chessControl::chessCurrentComplextion( line, row ).name ) {
+    case 'c':
+        switch ( charNumber ) {
+        case 0:
+            return "曹";
+        case 1:
+            return "曹";
+        case 2:
+            return "操";
+        case 3:
+            return "操";
+        }
+    case 'f':
+        switch ( charNumber ) {
+        case 0:
+            return "张";
+        case 1:
+            return "飞";
+        }
+    case 'g':
+        switch ( charNumber ) {
+        case 0:
+            return "关";
+        case 1:
+            return "羽";
+        }
+    case 'y':
+        switch ( charNumber ) {
+        case 0:
+            return "赵";
+        case 1:
+            return "云";
+        }
+    case 'm':
+        switch ( charNumber ) {
+        case 0:
+            return "马";
+        case 1:
+            return "超";
+        }
+    case 'h':
+        switch ( charNumber ) {
+        case 0:
+            return "黄";
+        case 1:
+            return "忠";
+        }
+    case '1':
+        return "兵";
+    case '2':
+        return "兵";
+    case '3':
+        return "兵";
+    case '4':
+        return "兵";
+    case 'p':
+        return "  ";
+    case 'q':
+        return "  ";
+    default:
+        return "\0\0";
+        break;
+    }
 }
 
 int chessMain::line() {

@@ -9,11 +9,6 @@ public:
     chessDisplay();
     void test_display( char* out ) {
         werase( chessGameHelp );
-        init_pair( 1, COLOR_RED, COLOR_WHITE );
-        attron( COLOR_PAIR( 1 ) );
-        wprintw( chessGameHelp, out );
-        attroff( COLOR_PAIR( 1 ) );
-        wrefresh( chessGameHelp );
     }
     void display( char chessName = '\0' );
     static void space_print( int number );
@@ -22,6 +17,23 @@ public:
     WINDOW* chessGameBoard;
     WINDOW* chessGameControl;
     WINDOW* chessGameHelp;
+
+private:
+    const int line_times = 5;
+    const int row_times = 2;
+
+    const int row_number = 21;
+    const int line_number = 11;
+
+    bool boardLine[ 3 ][ 5 ];
+    bool boardRow[ 4 ][ 4 ];
+
+    int crossJudge( int x, int y );
+    bool sameChess( int x1, int y1, int x2, int y2 );
+    int chooseShowChess( int x, int y, int ( &chessNumber )[ 12 ] );
+    void displayChess( char chessName );
+    void displayBoard();
+    bool highlight( char name, int x, int y );
 };
 
 bool windowDetect();

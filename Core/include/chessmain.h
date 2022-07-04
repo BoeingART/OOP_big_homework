@@ -14,16 +14,16 @@ class chessMain {
 public:
     chessMain();
     ~chessMain();
-    void chessHighLight( const char& name );                          //输出高亮棋子
-    bool chessMove( char name, char directionn );                     //移动棋子
-    bool chessReset( char chessBoardNumber = '0' );                   //重置棋盘
-    bool chessRedo();                                                 //重做上一步
-    bool chessUndo();                                                 //撤回上一步
-    bool chessReachDestination();                                     //棋子到达终点
-    void chessEnd();                                                  //游戏结束
-    static chessConflict chessBoardInfo( const int i, const int j );  //获取棋盘上第i行第j列的元素信息
-    static int line();
-    static int row();
+    void chessHighLight( const char& name );                                     //输出高亮棋子
+    bool chessMove( char name, char directionn );                                //移动棋子
+    bool chessReset( char chessBoardNumber = '0' );                              //重置棋盘
+    bool chessRedo();                                                            //重做上一步
+    bool chessUndo();                                                            //撤回上一步
+    bool chessReachDestination();                                                //棋子到达终点
+    void chessEnd();                                                             //游戏结束
+    static const char* chessBoardInfo( const int i, const int j, const int n );  //获取棋盘上第i行第j列的元素信息
+    static int line();                                                           //棋盘的列数 = 4
+    static int row();                                                            //棋盘的行数 = 5
     chessDisplay* globalDisplay;
 
 private:
