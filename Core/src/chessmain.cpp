@@ -18,6 +18,7 @@ chessMain::chessMain()
     //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
     globalDisplay = new chessDisplay();
+    keypad( globalDisplay->chessGameBoard, true );
 }
 
 chessMain::~chessMain() {
@@ -282,20 +283,6 @@ int chessMain::row() {
     return chessControl::row;
 }
 
-int scanKeyboard() {
-    int input;
-    struct termios new_settings;
-    struct termios stored_settings;
-    tcgetattr( 0, &stored_settings );
-    new_settings = stored_settings;
-    new_settings.c_lflag &= ( ~ICANON );
-    new_settings.c_cc[ VTIME ] = 0;
-    tcgetattr( 0, &stored_settings );
-    new_settings.c_cc[ VMIN ] = 1;
-    tcsetattr( 0, TCSANOW, &new_settings );
-    system( "stty -echo" );
-    input = getchar();
-    system( "stty echo" );
-    tcsetattr( 0, TCSANOW, &stored_settings );
-    return input;
+int chessMain::getInput() {
+    return globalDisplay->gameBoardInput();
 }

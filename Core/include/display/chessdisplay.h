@@ -13,6 +13,7 @@ public:
     void display( char chessName = '\0' );
     static void space_print( int number );
     static void enter_print( int number );
+    int gameBoardInput();
 
     WINDOW* chessGameBoard;
     WINDOW* chessGameControl;
@@ -22,8 +23,8 @@ private:
     const int line_times = 5;
     const int row_times = 2;
 
-    const int row_number = 21;
-    const int line_number = 11;
+    const int row_number = 11;
+    const int column_number = 21;
 
     bool boardLine[ 3 ][ 5 ];
     bool boardRow[ 4 ][ 4 ];
@@ -37,5 +38,6 @@ private:
 };
 
 bool windowDetect();
+bool GUI_init();
 
 #endif

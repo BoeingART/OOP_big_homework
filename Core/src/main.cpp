@@ -8,22 +8,15 @@ int main() {
         printf( "窗口大小不够大\n" );
         return 0;
     }
-
-    setlocale( LC_ALL, "" );  //同步终端字符库
-    initscr();                // 初始化并进入curses 模式
-    if ( has_colors() == false )
+    if ( !GUI_init() )
         return 0;
-    noecho();
-    start_color();
-    cbreak();  // 行缓冲禁止，传递所有控制信息
     chessMain* game = new chessMain();
-    keypad( game->globalDisplay->chessGameBoard, true );
     game->chessReset();
     char chessName = 'f';
-    game->globalDisplay->test_display( "test..." );
-    game->globalDisplay->display();
+    game->globalDisplay->display( 'c' );
     while ( true ) {
-        int input = wgetch( game->globalDisplay->chessGameBoard );
+        int input = game->getInput();
+        // int input = wgetch( game->globalDisplay->chessGameBoard );
         if ( input == 'q' ) {
             game->chessEnd();
             break;
@@ -36,7 +29,8 @@ int main() {
             game->globalDisplay->display();
             continue;
         } else if ( input == 'n' ) {
-            char chessBoardNumber = scanKeyboard();
+            char chessBoardNumber = game->getInput();
+            // char chessBoardNumber = wgetch( game->globalDisplay->chessGameBoard );
             game->chessReset( chessBoardNumber );
             game->globalDisplay->display();
             continue;
@@ -50,8 +44,7 @@ int main() {
             char temp[ 2 ] = { chessName, '\0' };
             game->globalDisplay->test_display( temp );
             game->globalDisplay->display( chessName );
-        } else if ( input == KEY_F( 2 ) )
-            game->globalDisplay->test_display( "strange" );
+        }
         if ( game->chessReachDestination() )
             break;
     }

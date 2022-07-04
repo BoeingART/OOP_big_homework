@@ -26,15 +26,15 @@ $(exec): $(Objects) $(Include)
 
 $(object_dir)/%.o: $(control_source_dir)/%.cpp $(Include)
 	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2 -l $(Library)
+	$(CC) -c $< -o $@ --std=c++11 -O2
 
 $(object_dir)/%.o: $(display_source_dir)/%.cpp $(Include)
 	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2 -l $(Library)
+	$(CC) -c $< -o $@ --std=c++11 -O2 
 
 $(object_dir)/%.o: $(global_source_dir)/%.cpp $(Include)
 	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2 -l $(Library)
+	$(CC) -c $< -o $@ --std=c++11 -O2
 
 clean: 
 	rm -r $(Objects) $(exec)

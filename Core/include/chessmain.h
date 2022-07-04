@@ -25,6 +25,7 @@ public:
     static int line();                                                           //棋盘的列数 = 4
     static int row();                                                            //棋盘的行数 = 5
     chessDisplay* globalDisplay;
+    int getInput();
 
 private:
     bool inputChessInfo( char name, char direction );  //输入棋子信息
@@ -43,5 +44,4 @@ private:
     chessMoveRecorder* Recorder;
 };
 
-int scanKeyboard();
 #endif
