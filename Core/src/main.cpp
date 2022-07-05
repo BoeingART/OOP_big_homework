@@ -9,13 +9,6 @@ int main() {
         printf( "窗口大小不够大\n" );
         return 0;
     }
-    char temp;
-    cin >> temp;
-    if ( temp == 't' ) {
-        chessMain* game = new chessMain( temp );
-        getchar();
-        return 0;
-    }
     if ( !GUI_init() )
         return 0;
     chessMain* game = new chessMain();

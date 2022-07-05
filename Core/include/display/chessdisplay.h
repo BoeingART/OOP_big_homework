@@ -32,9 +32,11 @@ private:
     int crossJudge( int x, int y );
     bool sameChess( int x1, int y1, int x2, int y2 );
     int chooseShowChess( int x, int y, int ( &chessNumber )[ 12 ] );
-    void displayChess( char chessName );
+    void displayChess( char );
+    void highlightCurrentChess( char );
     void displayBoard();
     bool highlight( char name, int x, int y );
+    Cor getHighlight( char );
 };
 
 bool windowDetect();

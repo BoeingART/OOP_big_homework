@@ -233,11 +233,11 @@ const char* chessMain::chessBoardInfo( const int line, const int row, const int 
         case 0:
             return "曹";
         case 1:
-            return "曹";
+            return "";
         case 2:
             return "操";
         case 3:
-            return "操";
+            return "";
         }
     case 'f':
         switch ( charNumber ) {

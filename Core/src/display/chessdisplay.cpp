@@ -52,16 +52,17 @@ void chessDisplay::displayChess( char name ) {
             int k = chooseShowChess( i, j, chessChooseNumber );
 
             if ( highlight( name, i, j ) )
-                wattron( chessGameBoard, A_BOLD );
+                wattron( chessGameBoard, A_STANDOUT );
             wattron( chessGameBoard, COLOR_PAIR( k + 1 ) );
 
-            if ( ( name == 'p' ^ name == 'q' ) && highlight( name, i, j ) ) {
+            if ( ( name == 'p' || name == 'q' ) && highlight( name, i, j ) )
                 mvwprintw( chessGameBoard, 3 + column_times * j, 6 + row_times * i, "[]" );
-            } else
+            else if ( chessControl::chessCurrentComplextion( i, j ).name == 'c' )
+                mvwprintw( chessGameBoard, 5 + column_times * j, 6 + row_times * i, chessMain::chessBoardInfo( i, j, chessChooseNumber[ k ] ) );
+            else
                 mvwprintw( chessGameBoard, 3 + column_times * j, 6 + row_times * i, chessMain::chessBoardInfo( i, j, chessChooseNumber[ k ] ) );
-
             if ( highlight( name, i, j ) )
-                wattroff( chessGameBoard, A_BOLD );
+                wattroff( chessGameBoard, A_STANDOUT );
             wattroff( chessGameBoard, COLOR_PAIR( k + 1 ) );
         }
     }
@@ -183,11 +184,39 @@ void chessDisplay::displayBoard() {
     }
 }
 
+void chessDisplay::highlightCurrentChess( char name ) {
+    Cor highlightChessCor = getHighlight( name );
+    Cor k;
+    if ( name == 'c' )
+        k = { 1, 1 };
+    if ( name == 'g' )
+        k = { 1, 0 };
+    if ( name == 'f' || name == 'y' || name == 'm' || name == 'h' )
+        k = { 0, 1 };
+    if ( ( '1' <= name && name <= '4' ) || name == 'p' || name == 'q' )
+        k = { 0, 0 };
+
+    mvwprintw( chessGameBoard, 2 + column_times * highlightChessCor.y, 4 + row_times * highlightChessCor.x, "╭" );  //│╭─╮╰╯
+    mvwprintw( chessGameBoard, 2 + column_times * highlightChessCor.y, 9 + row_times * ( highlightChessCor.x + k.x ), "╮" );
+    mvwprintw( chessGameBoard, 4 + column_times * ( highlightChessCor.y + k.y ), 4 + row_times * highlightChessCor.x, "╰" );
+    mvwprintw( chessGameBoard, 4 + column_times * ( highlightChessCor.y + k.y ), 9 + row_times * ( highlightChessCor.x + k.x ), "╯" );
+
+    for ( int i = 1; i <= k.x * row_times + 4; i++ ) {
+        mvwprintw( chessGameBoard, 2 + column_times * highlightChessCor.y, i + 4 + row_times * highlightChessCor.x, "─" );
+        mvwprintw( chessGameBoard, 4 + column_times * ( highlightChessCor.y + k.y ), i + 4 + row_times * highlightChessCor.x, "─" );
+    }
+    for ( int j = 1; j <= k.y * column_times + 1; j++ ) {
+        mvwprintw( chessGameBoard, j + 2 + column_times * highlightChessCor.y, 4 + row_times * highlightChessCor.x, "│" );
+        mvwprintw( chessGameBoard, j + 2 + column_times * highlightChessCor.y, 9 + row_times * ( highlightChessCor.x + k.x ), "│" );
+    }
+}
+
 void chessDisplay::display( char name ) {
     curs_set( 0 );
     werase( chessGameBoard );
     displayChess( name );
     displayBoard();
+    highlightCurrentChess( name );
     wrefresh( chessGameBoard );
 }
 
@@ -303,4 +332,14 @@ bool GUI_init() {
     start_color();
     cbreak();  // 行缓冲禁止，传递所有控制信息
     return true;
+}
+
+Cor chessDisplay::getHighlight( char name ) {
+    for ( int i = 0; i < chessMain::line(); i++ ) {
+        for ( int j = 0; j < chessMain::row(); j++ ) {
+            if ( highlight( name, i, j ) ) {
+                return { i, j };
+            }
+        }
+    }
 }
