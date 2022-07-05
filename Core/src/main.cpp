@@ -1,4 +1,5 @@
 #include "../include/chessmain.h"
+#include <iostream>
 #include <ncurses.h>
 
 using namespace std;
@@ -6,6 +7,13 @@ using namespace std;
 int main() {
     if ( !windowDetect() ) {
         printf( "窗口大小不够大\n" );
+        return 0;
+    }
+    char temp;
+    cin >> temp;
+    if ( temp == 't' ) {
+        chessMain* game = new chessMain( temp );
+        getchar();
         return 0;
     }
     if ( !GUI_init() )
@@ -16,7 +24,6 @@ int main() {
     game->globalDisplay->display( 'c' );
     while ( true ) {
         int input = game->getInput();
-        // int input = wgetch( game->globalDisplay->chessGameBoard );
         if ( input == 'q' ) {
             game->chessEnd();
             break;
@@ -30,7 +37,6 @@ int main() {
             continue;
         } else if ( input == 'n' ) {
             char chessBoardNumber = game->getInput();
-            // char chessBoardNumber = wgetch( game->globalDisplay->chessGameBoard );
             game->chessReset( chessBoardNumber );
             game->globalDisplay->display();
             continue;

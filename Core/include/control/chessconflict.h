@@ -37,6 +37,7 @@ public:
     chessBoard();
     void chessBoardChange( const chessConflict board[ 4 ][ 5 ] );
     chessConflict* const operator[]( const int i );
+    void operator=( chessBoard another );
 };
 
 #endif

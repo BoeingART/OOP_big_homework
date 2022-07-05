@@ -4,7 +4,7 @@
 #include "../chessglobal.h"
 #include "chessconflict.h"
 
-// 初始棋子坐标 
+// 初始棋子坐标
 class originChessCor {
     Cor* cc;  //曹操
     Cor* zf;  //张飞
@@ -18,9 +18,9 @@ class originChessCor {
     Cor* bd;  //兵D
 
 public:
-    originChessCor();                                             //构造函数
-    Cor* chessPlace( char chessName );                            //返回指定棋子名的坐标
-    void changeChessPlace( std::string chessBoardName );          //改变初始棋盘局面
+    originChessCor();                                            //构造函数
+    Cor* chessPlace( char chessName );                           //返回指定棋子名的坐标
+    void changeChessPlace( std::string chessBoardName );         //改变初始棋盘局面
     chessConflict chessBoard( std::string name, int i, int j );  //返回棋盘指定位置的占用情况
 
     //横刀立马

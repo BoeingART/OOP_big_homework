@@ -2,8 +2,7 @@
 #include "../include/chessmain.h"
 using namespace std;
 
-chessMain::chessMain()
-    : chessName( 'c' ) {
+chessMain::chessMain() : chessName( 'c' ) {
     //初始化各种棋子
     cc = new chessControlSize4( 'c' );
     zf = new chessControlSize2( 'f' );
@@ -18,7 +17,25 @@ chessMain::chessMain()
     //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
     globalDisplay = new chessDisplay();
+    globalSolute = new chessSolute();
     keypad( globalDisplay->chessGameBoard, true );
+}
+
+chessMain::chessMain( char test ) {
+    //初始化各种棋子
+    cc = new chessControlSize4( 'c' );
+    zf = new chessControlSize2( 'f' );
+    hz = new chessControlSize2( 'h' );
+    gy = new chessControlSize2( 'g' );
+    mc = new chessControlSize2( 'm' );
+    zy = new chessControlSize2( 'y' );
+    bA = new chessControlSize1( '1' );
+    bB = new chessControlSize1( '2' );
+    bC = new chessControlSize1( '3' );
+    bD = new chessControlSize1( '4' );
+    Recorder = new chessMoveRecorder();
+    chessReset();
+    globalSolute = new chessSolute();
 }
 
 chessMain::~chessMain() {

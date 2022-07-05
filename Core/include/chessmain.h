@@ -9,10 +9,12 @@
 #include "control/chessdirection.h"
 #include "control/chessmoverecorder.h"
 #include "display/chessdisplay.h"
+#include "solute/chesssolute.h"
 
 class chessMain {
 public:
     chessMain();
+    chessMain( char test );
     ~chessMain();
     void chessHighLight( const char& name );                                     //输出高亮棋子
     bool chessMove( char name, char directionn );                                //移动棋子
@@ -25,6 +27,7 @@ public:
     static int line();                                                           //棋盘的列数 = 4
     static int row();                                                            //棋盘的行数 = 5
     chessDisplay* globalDisplay;
+    chessSolute* globalSolute;
     int getInput();
 
 private:
