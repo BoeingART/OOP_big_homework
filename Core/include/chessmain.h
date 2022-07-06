@@ -18,9 +18,9 @@ public:
     ~chessMain();
     void chessHighLight( const char& name );                                     //输出高亮棋子
     bool chessMove( char name, char directionn );                                //移动棋子
-    bool chessReset( char chessBoardNumber = '0' );                              //重置棋盘
-    bool chessRedo();                                                            //重做上一步
-    bool chessUndo();                                                            //撤回上一步
+    char chessReset( char chessBoardNumber = '0' );                              //重置棋盘
+    char chessRedo( char& name );                                                //重做上一步
+    char chessUndo( char& name );                                                //撤回上一步
     bool chessReachDestination();                                                //棋子到达终点
     void chessEnd();                                                             //游戏结束
     static const char* chessBoardInfo( const int i, const int j, const int n );  //获取棋盘上第i行第j列的元素信息
@@ -34,6 +34,7 @@ private:
     bool inputChessInfo( char name, char direction );  //输入棋子信息
     void dirChange( char& Dir );                       //改变棋子方向（主要是undo时）
     char chessName;
+    Cor getFocusCor( char );
     chessControlSize4* cc;
     chessControlSize2* zf;
     chessControlSize2* hz;

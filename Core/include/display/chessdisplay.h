@@ -10,7 +10,7 @@ public:
     void test_display( char* out ) {
         werase( chessGameHelp );
     }
-    void display( char chessName = '\0' );
+    void display( char chessName = 'c' );
     static void space_print( int number );
     static void enter_print( int number );
     int gameBoardInput();

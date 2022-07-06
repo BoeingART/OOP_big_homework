@@ -127,58 +127,63 @@ bool chessMain::inputChessInfo( char name, char direction ) {
         return false;
 }
 
-bool chessMain::chessReset( char chessBoardNumber ) {
-    try {
-        std::string chessBoardName;
-        if ( chessBoardNumber == '0' )
-            chessBoardName = "horizontal_knife";
-        else if ( chessBoardNumber == '1' )
-            chessBoardName = "neck_and_neck";
-        else if ( chessBoardNumber == '2' )
-            chessBoardName = "three_road";
-        else if ( chessBoardNumber == '3' )
-            chessBoardName = "station_troops";
-        else if ( chessBoardNumber == '4' )
-            chessBoardName = "left_and_right";
-        else if ( chessBoardNumber == '~' )
-            chessBoardName = "test";
-        else
-            chessBoardName = "horizontal_knife";
-        chessControl::chessBoardReset( chessBoardName );
-        cc->chessReset();
-        zf->chessReset();
-        mc->chessReset();
-        gy->chessReset();
-        zy->chessReset();
-        hz->chessReset();
-        bA->chessReset();
-        bB->chessReset();
-        bC->chessReset();
-        bD->chessReset();
-        Recorder->stepListClear();
-        return true;
-    }
-    catch ( ... ) {
-        return false;
+char chessMain::chessReset( char chessBoardNumber ) {
+    std::string chessBoardName;
+    if ( chessBoardNumber == '0' )
+        chessBoardName = "horizontal_knife";
+    else if ( chessBoardNumber == '1' )
+        chessBoardName = "neck_and_neck";
+    else if ( chessBoardNumber == '2' )
+        chessBoardName = "three_road";
+    else if ( chessBoardNumber == '3' )
+        chessBoardName = "station_troops";
+    else if ( chessBoardNumber == '4' )
+        chessBoardName = "left_and_right";
+    else if ( chessBoardNumber == '~' )
+        chessBoardName = "test";
+    else
+        return '\0';
+    chessControl::chessBoardReset( chessBoardName );
+    cc->chessReset();
+    zf->chessReset();
+    mc->chessReset();
+    gy->chessReset();
+    zy->chessReset();
+    hz->chessReset();
+    bA->chessReset();
+    bB->chessReset();
+    bC->chessReset();
+    bD->chessReset();
+    Recorder->stepListClear();
+    chessControl::currentFocus = getFocusCor( 'c' );
+    return 'c';
+}
+
+Cor chessMain::getFocusCor( char name ) {
+    for ( int i = 0; i < chessMain::line(); i++ ) {
+        for ( int j = 0; j < chessMain::row(); j++ ) {
+            if ( chessControl::chessCurrentComplextion( i, j ).name == name )
+                return { i, j };
+        }
     }
 }
 
-bool chessMain::chessRedo() {
-    char name;
+char chessMain::chessRedo( char& name ) {
     char dir;
     if ( !Recorder->pullChessMoveNext( name, dir ) )
         return false;
     else {
         Recorder->if_UR = true;
-        if ( inputChessInfo( name, dir ) )
-            return true;
-        else
+        if ( inputChessInfo( name, dir ) ) {
+            chessControl::currentFocus = getFocusCor( name );
+            return name;
+        } else
             return false;
     }
 }
 
-bool chessMain::chessUndo() {
-    char name, dir;
+char chessMain::chessUndo( char& name ) {
+    char dir;
     if ( !Recorder->pullChessMoveLast( name, dir ) )
         return false;
     else {
@@ -186,9 +191,10 @@ bool chessMain::chessUndo() {
         Recorder->last_undo = true;
         dirChange( dir );
     }
-    if ( inputChessInfo( name, dir ) )
-        return true;
-    else
+    if ( inputChessInfo( name, dir ) ) {
+        chessControl::currentFocus = getFocusCor( name );
+        return name;
+    } else
         return false;
 }
 

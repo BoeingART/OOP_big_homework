@@ -1,8 +1,8 @@
 #ifndef CHESSCONTROL_H
 #define CHESSCONTROL_H
 
-#include "chessdirection.h"
 #include "../chessglobal.h"
+#include "chessdirection.h"
 #include "originchessboard.h"
 
 //棋子控制类
@@ -13,10 +13,11 @@ public:
     bool chessCorChange( chessDirection direction );               //移动棋子的函数，如果可以移动棋子则返回true，否则返回false
     void chessReset();                                             //重置棋子
     static void chessBoardReset( std::string chessBoardName );     //重置棋盘
-    static char chooseChess( int dir );                           //选择棋子
+    static char chooseChess( int dir );                            //选择棋子
     const static int line = 4;                                     //棋盘的列数
     const static int row = 5;                                      //棋盘的行数
     static chessConflict chessCurrentComplextion( int i, int j );  //返回棋盘当前的局面
+    static Cor currentFocus;
 
 protected:
     int size;                                //棋子的大小
@@ -30,7 +31,6 @@ protected:
     bool checkCor( int x, int y );                   //检查该坐标是否是棋子的坐标
 
 private:
-    static Cor currentFocus;
     static bool onside( Cor cor, int dir );
 };
 
