@@ -57,6 +57,10 @@ void chessMain::chessHighLight( const char& name ) {
     this->globalDisplay->display( name );
 }
 
+int chessMain::chessChoose( int input ) {
+    return chessControl::chooseChess( input );
+}
+
 bool chessMain::chessMove( char name, char dir ) {
     //如果上一次是undo而本次移动了，则将移动部分的步骤列表进行清除
     if ( Recorder->last_undo )
@@ -166,6 +170,7 @@ Cor chessMain::getFocusCor( char name ) {
                 return { i, j };
         }
     }
+    return { 0, 0 };
 }
 
 char chessMain::chessRedo( char& name ) {

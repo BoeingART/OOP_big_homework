@@ -19,6 +19,7 @@ public:
     void chessHighLight( const char& name );                                     //输出高亮棋子
     bool chessMove( char name, char directionn );                                //移动棋子
     char chessReset( char chessBoardNumber = '0' );                              //重置棋盘
+    int chessChoose( int input );                                                //选择棋子
     char chessRedo( char& name );                                                //重做上一步
     char chessUndo( char& name );                                                //撤回上一步
     bool chessReachDestination();                                                //棋子到达终点
@@ -26,6 +27,7 @@ public:
     static const char* chessBoardInfo( const int i, const int j, const int n );  //获取棋盘上第i行第j列的元素信息
     static int line();                                                           //棋盘的列数 = 4
     static int row();                                                            //棋盘的行数 = 5
+
     chessDisplay* globalDisplay;
     chessSolute* globalSolute;
     int getInput();

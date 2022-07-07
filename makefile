@@ -24,26 +24,28 @@ CFLAGS = --std=c++11 -O2
 CC = g++
 
 $(exec): $(Objects) $(Include)
-	$(CC) $(Objects) -o $@ $(CFLAGS) -l $(Library)
+	@echo "linking \033[32;1m $(notdir $@) \033[0;m from \033[30;1m $(notdir $(Objects)) \033[0;m..."
+	@$(CC) $(Objects) -o $@ $(CFLAGS) -l $(Library)
 
 $(object_dir)/%.o: $(control_source_dir)/%.cpp $(Include)
-	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2
+	@echo "compiling \033[30;1m $(notdir $@) \033[0;m from \033[35;1m $(notdir $<)  \033[0;m..."
+	@$(CC) -c $< -o $@ --std=c++11 -O2
 
 $(object_dir)/%.o: $(display_source_dir)/%.cpp $(Include)
-	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2 
+	@echo "compiling \033[30;1m $(notdir $@) \033[0;m from \033[35;1m $(notdir $<) \033[0;m..."
+	@$(CC) -c $< -o $@ --std=c++11 -O2 
 
 $(object_dir)/%.o: $(global_source_dir)/%.cpp $(Include)
-	@echo "compiling... $(object_dir)/%.o from $(control_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2
+	@echo "compiling \033[30;1m $(notdir $@) \033[0;m from \033[35;1m $(notdir $<) \033[0;m..."
+	@$(CC) -c $< -o $@ --std=c++11 -O2
 
 $(object_dir)/%.o: $(solute_source_dir)/%.cpp $(Include)
-	@echo "compiling... $(object_dir)/%.o from $(solute_dir)/%.cpp"
-	$(CC) -c $< -o $@ --std=c++11 -O2
+	@echo "compiling \033[30;1m $(notdir $@) \033[0;m from \033[35;1m $(notdir $<) \033[0;m..."
+	@$(CC) -c $< -o $@ --std=c++11 -O2
 
-clean: 
-	rm -r $(Objects) $(exec)
+clean:
+	@echo "clean \032[33;1m $(notdir $(exec)) \033[0;m and \033[30;1m $(notdir $(Objects)) \033[0;m" 
+	@rm -r $(Objects) $(exec)
 
 rebuild: clean $(exec)
 

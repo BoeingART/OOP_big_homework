@@ -21,11 +21,7 @@ chessDisplay::chessDisplay() {
     chessGameBoard = newwin( column_number, row_number, size.ws_row / 2 - column_number / 2, size.ws_col / 2 - row_number / 2 );
     chessGameControl = newwin( 0, 0, 0, 0 );
     chessGameHelp = newwin( 2, 10, 1, 1 );
-    box( chessGameBoard, 0, 0 );
-    // box( chessGameControl, 0, 0 );
-    box( chessGameHelp, 0, 0 );
     wrefresh( chessGameBoard );
-    // wrefresh( chessGameControl );
     wrefresh( chessGameHelp );
 
     init_pair( CC_, COLOR_RED, COLOR_BLACK );
@@ -344,4 +340,5 @@ Cor chessDisplay::getHighlight( char name ) {
             }
         }
     }
+    return { 0, 0 };
 }
