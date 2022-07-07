@@ -15,26 +15,6 @@
 #define SQ_ 12
 #define HIGH_LIGHT 99
 
-#define TIMES_ ( 1000 / 255 )
-
-#define STANDARD_RED 229 , 136 , 130 
-#define STANDARD_BLUE 118 * TIMES_, 173 * TIMES_, 241 * TIMES_
-#define STANDARD_CYAN 128 * TIMES_, 203 * TIMES_, 222 * TIMES_
-#define STANDARD_GREEN 141 * TIMES_, 193 * TIMES_, 131 * TIMES_
-#define STANDARD_MAGENTA 183 * TIMES_, 122 * TIMES_, 201 * TIMES_
-#define STANDARD_YELLOW 253 * TIMES_, 241 * TIMES_, 136 * TIMES_
-#define STANDARD_ORANGE 245 * TIMES_, 192 * TIMES_, 116 * TIMES_
-#define STANDARD_WHITE 46 * TIMES_, 48 * TIMES_, 61 * TIMES_
-
-#define HIGHLIGHT_RED 239 * TIMES_, 108 * TIMES_, 122 * TIMES_
-#define HIGHLIGHT_BLUE 127 * TIMES_, 163 * TIMES_, 249 * TIMES_
-#define HIGHLIGHT_CYAN 126 * TIMES_, 201 * TIMES_, 221 * TIMES_
-#define HIGHLIGHT_GREEN 131 * TIMES_, 211 * TIMES_, 136 * TIMES_
-#define HIGHLIGHT_MAGENTA 218 * TIMES_, 122 * TIMES_, 246 * TIMES_
-#define HIGHLIGHT_YELLOW 250 * TIMES_, 225 * TIMES_, 118 * TIMES_
-#define HIGHLIGHT_ORANGE 240 * TIMES_, 150 * TIMES_, 55 * TIMES_
-#define HIGHLIGHT_WHITE 46 * TIMES_, 48 * TIMES_, 61 * TIMES_
-
 chessDisplay::chessDisplay() {
     struct winsize size;
     ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
@@ -58,8 +38,6 @@ chessDisplay::chessDisplay() {
     init_pair( BB_, COLOR_WHITE, COLOR_BLACK );
     init_pair( BC_, COLOR_WHITE, COLOR_BLACK );
     init_pair( BD_, COLOR_WHITE, COLOR_BLACK );
-    init_pair( SP_, COLOR_WHITE, COLOR_BLACK );
-    init_pair( SQ_, COLOR_WHITE, COLOR_BLACK );
 }
 
 void chessDisplay::displayChess( char name ) {
@@ -74,9 +52,8 @@ void chessDisplay::displayChess( char name ) {
             int k = chooseShowChess( i, j, chessChooseNumber );
 
             if ( highlight( name, i, j ) )
-                highlightOn( name );
-            else
-                standardOn( name );
+                wattron( chessGameBoard, A_BOLD );
+            wattron( chessGameBoard, COLOR_PAIR( k + 1 ) );
 
             if ( ( name == 'p' || name == 'q' ) && highlight( name, i, j ) )
                 mvwprintw( chessGameBoard, 3 + column_times * j, 6 + row_times * i, "[]" );
@@ -86,9 +63,8 @@ void chessDisplay::displayChess( char name ) {
                 mvwprintw( chessGameBoard, 3 + column_times * j, 6 + row_times * i, chessMain::chessBoardInfo( i, j, chessChooseNumber[ k ] ) );
 
             if ( highlight( name, i, j ) )
-                highlightOff( name );
-            else
-                standardOff( name );
+                wattroff( chessGameBoard, A_BOLD );
+            wattroff( chessGameBoard, COLOR_PAIR( k + 1 ) );
         }
     }
 }
@@ -367,193 +343,5 @@ Cor chessDisplay::getHighlight( char name ) {
                 return { i, j };
             }
         }
-    }
-}
-
-void chessDisplay::highlightOn( char name ) {
-    switch ( name ) {
-    case 'c':
-        init_color( COLOR_RED, 0,);
-        wattron( chessGameBoard, COLOR_RED );
-        break;
-    case 'g':
-        init_color( COLOR_BLUE, HIGHLIGHT_BLUE );
-        wattron( chessGameBoard, COLOR_BLUE );
-        break;
-    case 'f':
-        init_color( COLOR_CYAN, HIGHLIGHT_CYAN );
-        wattron( chessGameBoard, COLOR_CYAN );
-        break;
-    case 'y':
-        init_color( COLOR_GREEN, HIGHLIGHT_GREEN );
-        wattron( chessGameBoard, COLOR_GREEN );
-        break;
-    case 'h':
-        init_color( COLOR_MAGENTA, HIGHLIGHT_MAGENTA );
-        wattron( chessGameBoard, COLOR_MAGENTA );
-        break;
-    case 'm':
-        init_color( COLOR_YELLOW, HIGHLIGHT_YELLOW );
-        wattron( chessGameBoard, COLOR_YELLOW );
-        break;
-    case '1':
-        init_color( COLOR_WHITE, HIGHLIGHT_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case '2':
-        init_color( COLOR_WHITE, HIGHLIGHT_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case '3':
-        init_color( COLOR_WHITE, HIGHLIGHT_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case '4':
-        init_color( COLOR_WHITE, HIGHLIGHT_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'p':
-        init_color( COLOR_WHITE, HIGHLIGHT_WHITE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'q':
-        init_color( COLOR_WHITE, HIGHLIGHT_WHITE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    }
-}
-
-void chessDisplay::standardOn( char name ) {
-    switch ( name ) {
-    case 'c':
-        init_color( COLOR_RED, STANDARD_RED );
-        wattron( chessGameBoard, COLOR_RED );
-        break;
-    case 'g':
-        init_color( COLOR_BLUE, STANDARD_BLUE );
-        wattron( chessGameBoard, COLOR_BLUE );
-        break;
-    case 'f':
-        init_color( COLOR_CYAN, STANDARD_CYAN );
-        wattron( chessGameBoard, COLOR_CYAN );
-        break;
-    case 'y':
-        init_color( COLOR_GREEN, STANDARD_GREEN );
-        wattron( chessGameBoard, COLOR_GREEN );
-        break;
-    case 'h':
-        init_color( COLOR_MAGENTA, STANDARD_MAGENTA );
-        wattron( chessGameBoard, COLOR_MAGENTA );
-        break;
-    case 'm':
-        init_color( COLOR_YELLOW, STANDARD_YELLOW );
-        wattron( chessGameBoard, COLOR_YELLOW );
-        break;
-    case '1':
-        init_color( COLOR_WHITE, STANDARD_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case '2':
-        init_color( COLOR_WHITE, STANDARD_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case '3':
-        init_color( COLOR_WHITE, STANDARD_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case '4':
-        init_color( COLOR_WHITE, STANDARD_ORANGE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'p':
-        init_color( COLOR_WHITE, STANDARD_WHITE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'q':
-        init_color( COLOR_WHITE, STANDARD_WHITE );
-        wattron( chessGameBoard, COLOR_WHITE );
-        break;
-    }
-}
-
-void chessDisplay::highlightOff( char name ) {
-    switch ( name ) {
-    case 'c':
-        wattroff( chessGameBoard, COLOR_RED );
-        break;
-    case 'g':
-        wattroff( chessGameBoard, COLOR_BLUE );
-        break;
-    case 'f':
-        wattroff( chessGameBoard, COLOR_CYAN );
-        break;
-    case 'y':
-        wattroff( chessGameBoard, COLOR_GREEN );
-        break;
-    case 'h':
-        wattroff( chessGameBoard, COLOR_MAGENTA );
-        break;
-    case 'm':
-        wattroff( chessGameBoard, COLOR_YELLOW );
-        break;
-    case '1':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case '2':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case '3':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case '4':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'p':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'q':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    }
-}
-
-void chessDisplay::standardOff( char name ) {
-    switch ( name ) {
-    case 'c':
-        wattroff( chessGameBoard, COLOR_RED );
-        break;
-    case 'g':
-        wattroff( chessGameBoard, COLOR_BLUE );
-        break;
-    case 'f':
-        wattroff( chessGameBoard, COLOR_CYAN );
-        break;
-    case 'y':
-        wattroff( chessGameBoard, COLOR_GREEN );
-        break;
-    case 'h':
-        wattroff( chessGameBoard, COLOR_MAGENTA );
-        break;
-    case 'm':
-        wattroff( chessGameBoard, COLOR_YELLOW );
-        break;
-    case '1':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case '2':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case '3':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case '4':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'p':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
-    case 'q':
-        wattroff( chessGameBoard, COLOR_WHITE );
-        break;
     }
 }
