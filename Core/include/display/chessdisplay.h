@@ -37,6 +37,10 @@ private:
     void displayBoard();
     bool highlight( char name, int x, int y );
     Cor getHighlight( char );
+    void standardOn(char);
+    void highlightOn(char);
+    void standardOff(char);
+    void highlightOff(char);
 };
 
 bool windowDetect();
