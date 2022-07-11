@@ -5,7 +5,6 @@
 using namespace std;
 
 int main() {
-
     if ( !windowDetect() ) {
         printf( "窗口大小不够大\n" );
         return 0;
