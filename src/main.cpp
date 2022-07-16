@@ -9,8 +9,10 @@ int main() {
         printf( "窗口大小不够大\n" );
         return 0;
     }
-    if ( !GUI_init() )
+    if ( !GUI_init() ) {
+        printf( "无法启动图形化界面\n" );
         return 0;
+    }
     chessMain* game = new chessMain();
     char chessName = game->chessReset();
     game->globalDisplay->display( chessName );
@@ -43,9 +45,11 @@ int main() {
             continue;
         }
         if ( game->chessReachDestination() )
+            
             break;
     }
     curs_set( 1 );
     endwin();
+    printf( "游戏结束\n" );
     return 0;
 }

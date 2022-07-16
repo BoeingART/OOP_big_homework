@@ -16,6 +16,7 @@ public:
     chessMain();
     chessMain( char test );
     ~chessMain();
+    void showExitWindow();
     void chessHighLight( const char& name );                                     //输出高亮棋子
     bool chessMove( char name, char directionn );                                //移动棋子
     char chessReset( char chessBoardNumber = '0' );                              //重置棋盘

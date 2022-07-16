@@ -204,7 +204,7 @@ char chessMain::chessUndo( char& name ) {
 }
 
 void chessMain::chessEnd() {
-    printf( "游戏结束\n" );
+    
 }
 
 bool chessMain::chessReachDestination() {

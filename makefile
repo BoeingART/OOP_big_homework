@@ -24,7 +24,7 @@ CFLAGS = --std=c++11 -O2
 CC = g++
 
 $(exec): $(Objects) $(Include)
-	@echo "linking \033[32;1m $(notdir $@) \033[0;m from \033[30;1m $(notdir $(Objects)) \033[0;m..."
+	@echo "linking \033[33;1m $(notdir $@) \033[0;m from \033[30;1m $(notdir $(Objects)) \033[0;m..."
 	@$(CC) $(Objects) -o $@ $(CFLAGS) -l $(Library)
 
 $(object_dir)/%.o: $(control_source_dir)/%.cpp $(Include)
