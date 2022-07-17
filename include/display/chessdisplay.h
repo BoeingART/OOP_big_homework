@@ -15,6 +15,7 @@ public:
     static void enter_print( int number );
     int gameBoardInput();
 
+private:
     WINDOW* chessGameBoard;
     WINDOW* chessGameControl;
     WINDOW* chessGameHelp;

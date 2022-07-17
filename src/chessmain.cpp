@@ -18,7 +18,6 @@ chessMain::chessMain() : chessName( 'c' ) {
     Recorder = new chessMoveRecorder();
     globalDisplay = new chessDisplay();
     globalSolute = new chessSolute();
-    keypad( globalDisplay->chessGameBoard, true );
 }
 
 chessMain::chessMain( char test ) {

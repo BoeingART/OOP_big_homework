@@ -34,6 +34,8 @@ chessDisplay::chessDisplay() {
     init_pair( BB_, COLOR_WHITE, COLOR_BLACK );
     init_pair( BC_, COLOR_WHITE, COLOR_BLACK );
     init_pair( BD_, COLOR_WHITE, COLOR_BLACK );
+
+    keypad( chessGameBoard, true );
 }
 
 void chessDisplay::displayChess( char name ) {
