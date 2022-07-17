@@ -16,7 +16,8 @@ chessMain::chessMain() : chessName( 'c' ) {
     bD = new chessControlSize1( '4' );
     //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
-    globalDisplay = new chessDisplay();
+    globalBegin = new chessBeginWindow();
+    globalDisplay = new chessBoardWindow();
     globalSolute = new chessSolute();
 }
 

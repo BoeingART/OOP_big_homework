@@ -4,6 +4,9 @@
 
 using namespace std;
 
+void gameBegin();
+void gameBoard();
+
 int main() {
     if ( !windowDetect() ) {
         printf( "窗口大小不够大\n" );
@@ -14,6 +17,7 @@ int main() {
         return 0;
     }
     chessMain* game = new chessMain();
+    game->globalBegin->display( 0 );
     char chessName = game->chessReset();
     game->globalDisplay->display( chessName );
     while ( true ) {
@@ -53,3 +57,4 @@ int main() {
     printf( "游戏结束\n" );
     return 0;
 }
+

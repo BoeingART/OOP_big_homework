@@ -8,7 +8,8 @@
 #include "control/chesscontrolsize4.h"
 #include "control/chessdirection.h"
 #include "control/chessmoverecorder.h"
-#include "display/chessdisplay.h"
+#include "display/chessbeginwindow.h"
+#include "display/chessboardwindow.h"
 #include "solute/chesssolute.h"
 
 class chessMain {
@@ -29,7 +30,8 @@ public:
     static int line();                                                           //棋盘的列数 = 4
     static int row();                                                            //棋盘的行数 = 5
 
-    chessDisplay* globalDisplay;
+    chessBeginWindow* globalBegin;
+    chessBoardWindow* globalDisplay;
     chessSolute* globalSolute;
     int getInput();
 

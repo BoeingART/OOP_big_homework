@@ -1,4 +1,4 @@
-#include "../../include/display/chessdisplay.h"
+#include "../../include/display/chessboardwindow.h"
 #include "../../include/chessmain.h"
 
 #define CC_ 1
@@ -15,7 +15,7 @@
 #define SQ_ 12
 #define HIGH_LIGHT 99
 
-chessDisplay::chessDisplay() {
+chessBoardWindow::chessBoardWindow() {
     struct winsize size;
     ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
     chessGameBoard = newwin( column_number, row_number, size.ws_row / 2 - column_number / 2, size.ws_col / 2 - row_number / 2 );
@@ -38,7 +38,7 @@ chessDisplay::chessDisplay() {
     keypad( chessGameBoard, true );
 }
 
-void chessDisplay::displayChess( char name ) {
+void chessBoardWindow::displayChess( char name ) {
     int chessChooseNumber[ 12 ];
     for ( int i = 0; i < 12; i++ ) {
         chessChooseNumber[ i ] = -1;
@@ -67,7 +67,7 @@ void chessDisplay::displayChess( char name ) {
     }
 }
 
-void chessDisplay::displayBoard() {
+void chessBoardWindow::displayBoard() {
     init_color( COLOR_WHITE, 1000, 1000, 1000 );
     // edge of board
     mvwprintw( chessGameBoard, 0, 0, "╔" );
@@ -184,7 +184,7 @@ void chessDisplay::displayBoard() {
     }
 }
 
-void chessDisplay::highlightCurrentChess( char name ) {
+void chessBoardWindow::highlightCurrentChess( char name ) {
     Cor highlightChessCor = getHighlight( name );
     Cor k;
     if ( name == 'c' )
@@ -211,7 +211,7 @@ void chessDisplay::highlightCurrentChess( char name ) {
     }
 }
 
-void chessDisplay::display( char name ) {
+void chessBoardWindow::display( char name ) {
     curs_set( 0 );
     werase( chessGameBoard );
     displayChess( name );
@@ -232,7 +232,7 @@ bool windowDetect() {
         return true;
 }
 
-int chessDisplay::chooseShowChess( int x, int y, int ( &chessNumber )[ 12 ] ) {
+int chessBoardWindow::chooseShowChess( int x, int y, int ( &chessNumber )[ 12 ] ) {
     switch ( chessControl::chessCurrentComplextion( x, y ).name ) {
     case 'c':
         chessNumber[ 0 ]++;
@@ -287,11 +287,11 @@ int chessDisplay::chooseShowChess( int x, int y, int ( &chessNumber )[ 12 ] ) {
     }
 }
 
-bool chessDisplay::highlight( char name, int x, int y ) {
+bool chessBoardWindow::highlight( char name, int x, int y ) {
     return ( name == chessControl::chessCurrentComplextion( x, y ).name );
 }
 
-bool chessDisplay::sameChess( int x1, int y1, int x2, int y2 ) {
+bool chessBoardWindow::sameChess( int x1, int y1, int x2, int y2 ) {
     if ( chessControl::chessCurrentComplextion( x1, y1 ).name == 'p' && chessControl::chessCurrentComplextion( x2, y2 ).name == 'q' )
         return true;
     if ( chessControl::chessCurrentComplextion( x1, y1 ).name == 'q' && chessControl::chessCurrentComplextion( x2, y2 ).name == 'p' )
@@ -299,7 +299,7 @@ bool chessDisplay::sameChess( int x1, int y1, int x2, int y2 ) {
     return chessControl::chessCurrentComplextion( x1, y1 ).name == chessControl::chessCurrentComplextion( x2, y2 ).name;
 }
 
-int chessDisplay::crossJudge( int x, int y ) {
+int chessBoardWindow::crossJudge( int x, int y ) {
     if ( boardLine[ x ][ y ] && boardLine[ x ][ y + 1 ] && boardRow[ x ][ y ] && boardRow[ x + 1 ][ y ] )
         return 0;
     if ( !boardLine[ x ][ y ] && boardLine[ x ][ y + 1 ] && boardRow[ x ][ y ] && boardRow[ x + 1 ][ y ] )
@@ -319,7 +319,7 @@ int chessDisplay::crossJudge( int x, int y ) {
     return -1;
 }
 
-int chessDisplay::gameBoardInput() {
+int chessBoardWindow::gameBoardInput() {
     return wgetch( chessGameBoard );
 }
 
@@ -334,7 +334,7 @@ bool GUI_init() {
     return true;
 }
 
-Cor chessDisplay::getHighlight( char name ) {
+Cor chessBoardWindow::getHighlight( char name ) {
     for ( int i = 0; i < chessMain::line(); i++ ) {
         for ( int j = 0; j < chessMain::row(); j++ ) {
             if ( highlight( name, i, j ) ) {

@@ -4,9 +4,9 @@
 #include "../chessglobal.h"
 #include "../control/chesscontrol.h"
 
-class chessDisplay {
+class chessBoardWindow {
 public:
-    chessDisplay();
+    chessBoardWindow();
     void test_display( char* out ) {
         werase( chessGameHelp );
     }

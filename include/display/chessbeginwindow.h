@@ -3,13 +3,15 @@
 
 #include "../chessglobal.h"
 
-class chessBegin {
+class chessBeginWindow {
 public:
-    chessBegin();
-    void display(int input);
-    
+    chessBeginWindow();
+    void display( int input );
+
 private:
-    WINDOW* chessBeginWindow;
+    const int column_number = 5;
+    const int row_number = 10;
+    WINDOW* beginWindow;
 };
 
 #endif
