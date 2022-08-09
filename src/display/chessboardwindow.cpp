@@ -21,6 +21,7 @@ chessBoardWindow::chessBoardWindow() {
     chessGameBoard = newwin( column_number, row_number, size.ws_row / 2 - column_number / 2, size.ws_col / 2 - row_number / 2 );
     chessGameControl = newwin( 0, 0, 0, 0 );
     chessGameHelp = newwin( 2, 10, 1, 1 );
+    chessWin = newwin( 30, 6, size.ws_row / 2 - 15, size.ws_col / 2 - 3 );
     wrefresh( chessGameBoard );
     wrefresh( chessGameHelp );
 
@@ -68,7 +69,6 @@ void chessBoardWindow::displayChess( char name ) {
 }
 
 void chessBoardWindow::displayBoard() {
-    init_color( COLOR_WHITE, 1000, 1000, 1000 );
     // edge of board
     mvwprintw( chessGameBoard, 0, 0, "╔" );
     mvwprintw( chessGameBoard, 0, row_number - 1, "╗" );
@@ -330,7 +330,9 @@ bool GUI_init() {
         return false;
     noecho();
     start_color();
-    cbreak();  // 行缓冲禁止，传递所有控制信息
+    keypad( stdscr, true );  //允许使用特殊功能键
+    cbreak();                // 行缓冲禁止，传递所有控制信息
+    curs_set( 0 );
     return true;
 }
 
@@ -343,4 +345,11 @@ Cor chessBoardWindow::getHighlight( char name ) {
         }
     }
     return { 0, 0 };
+}
+
+void chessBoardWindow::clean() {
+    wclear( chessGameBoard );
+    wclear( chessGameControl );
+    wclear( chessGameHelp );
+    wclear( chessWin );
 }

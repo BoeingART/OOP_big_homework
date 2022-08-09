@@ -209,10 +209,7 @@ void chessMain::chessEnd() {
 
 bool chessMain::chessReachDestination() {
     if ( cc->reachDestination() ) {
-        printf( "到达世界最高城——理塘！\n" );
-        printf( "太美丽啦理塘\n" );
-        printf( "诶，这不是丁真吗\n" );
-        printf( "还是再看看远处的雪山吧家人们\n" );
+        
         return true;
     } else
         return false;
@@ -301,6 +298,10 @@ const char* chessMain::chessBoardInfo( const int line, const int row, const int 
         return "\0\0";
         break;
     }
+}
+
+void chessMain::chessSelect(int input){
+
 }
 
 int chessMain::line() {

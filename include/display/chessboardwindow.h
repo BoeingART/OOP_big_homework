@@ -14,11 +14,13 @@ public:
     static void space_print( int number );
     static void enter_print( int number );
     int gameBoardInput();
+    void clean();
 
 private:
     WINDOW* chessGameBoard;
     WINDOW* chessGameControl;
     WINDOW* chessGameHelp;
+    WINDOW* chessWin;
 
 private:
     const int row_times = 9;
@@ -38,10 +40,10 @@ private:
     void displayBoard();
     bool highlight( char name, int x, int y );
     Cor getHighlight( char );
-    void standardOn(char);
-    void highlightOn(char);
-    void standardOff(char);
-    void highlightOff(char);
+    void standardOn( char );
+    void highlightOn( char );
+    void standardOff( char );
+    void highlightOff( char );
 };
 
 bool windowDetect();

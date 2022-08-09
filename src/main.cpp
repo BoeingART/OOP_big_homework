@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void gameBegin();
-void gameBoard();
+int gameBegin( chessMain* game );
+void gameBoard( chessMain* game );
 
 int main() {
     if ( !windowDetect() ) {
@@ -17,7 +17,62 @@ int main() {
         return 0;
     }
     chessMain* game = new chessMain();
+    while ( true ) {
+        int result = gameBegin( game );
+        if ( result == 0 )
+            gameBoard( game );
+        if ( result == -1 )
+            break;
+    }
+    curs_set( 1 );
+    endwin();
+    printf( "游戏结束\n" );
+    return 0;
+}
+
+int gameBegin( chessMain* game ) {
+    game->globalDisplay->clean();
     game->globalBegin->display( 0 );
+    int output = 0;
+    while ( true ) {
+        int input = game->getInput();
+        switch ( input ) {
+        case KEY_DOWN:
+            game->globalBegin->display( input );
+            break;
+        case KEY_UP:
+            game->globalBegin->display( input );
+            break;
+        case 'q':
+            return -1;
+        case KEY_ENTER:
+            output = game->globalBegin->Selector();
+            if ( output == 0 )
+                return 0;
+            if ( output == 1 )
+                game->globalBegin->helpDisplay();
+            if ( output == 2 )
+                game->globalBegin->settingDisplay();
+            if ( output == 3 )
+                return -1;
+            break;
+        case 10:  // 在mac上代表enter键
+            output = game->globalBegin->Selector();
+            if ( output == 0 )
+                return 0;
+            if ( output == 1 )
+                game->globalBegin->helpDisplay();
+            if ( output == 2 )
+                game->globalBegin->settingDisplay();
+            if ( output == 3 )
+                return -1;
+            break;
+        }
+    }
+}
+
+void gameBoard( chessMain* game ) {
+    game->globalBegin->clean();
     char chessName = game->chessReset();
     game->globalDisplay->display( chessName );
     while ( true ) {
@@ -49,12 +104,6 @@ int main() {
             continue;
         }
         if ( game->chessReachDestination() )
-            
             break;
     }
-    curs_set( 1 );
-    endwin();
-    printf( "游戏结束\n" );
-    return 0;
 }
-
