@@ -32,10 +32,10 @@ int main() {
 
 int gameBegin( chessMain* game ) {
     game->globalBoard->clean();
-    game->globalBegin->display( KEY_UP );
+    game->globalBegin->display( 0 );
     int output = 0;
     while ( true ) {
-        int input = game->getInput();
+        int input = game->getSelectorInput();
         switch ( input ) {
         case KEY_DOWN:
             game->globalBegin->display( input );
@@ -76,7 +76,7 @@ void gameBoard( chessMain* game ) {
     char chessName = game->chessReset();
     game->globalBoard->display( chessName );
     while ( true ) {
-        int input = game->getInput();
+        int input = game->getBoardInput();
         if ( input == 'q' ) {
             game->chessEnd();
             break;
@@ -89,7 +89,7 @@ void gameBoard( chessMain* game ) {
             game->globalBoard->display( chessName );
             continue;
         } else if ( input == 'n' ) {
-            char chessBoardNumber = game->getInput();
+            char chessBoardNumber = game->getBoardInput();
             char temp = game->chessReset( chessBoardNumber );
             if ( temp != '\0' )
                 chessName = temp;

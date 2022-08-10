@@ -28,13 +28,17 @@ public:
     void chessEnd();                                                             //游戏结束
     void chessSelect( int input );                                               //在开始界面选择棋子
     static const char* chessBoardInfo( const int i, const int j, const int n );  //获取棋盘上第i行第j列的元素信息
-    static int line();                                                           //棋盘的列数 = 4
+    static int col();                                                            //棋盘的列数 = 4
     static int row();                                                            //棋盘的行数 = 5
 
     chessBeginWindow* globalBegin;
     chessBoardWindow* globalBoard;
     chessSolute* globalSolute;
-    int getInput();
+
+    int getSelectorInput();
+    int getSettingInput();
+    int getHelpInput();
+    int getBoardInput();
 
 private:
     bool inputChessInfo( char name, char direction );  //输入棋子信息

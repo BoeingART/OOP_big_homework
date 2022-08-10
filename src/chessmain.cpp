@@ -164,7 +164,7 @@ char chessMain::chessReset( char chessBoardNumber ) {
 }
 
 Cor chessMain::getFocusCor( char name ) {
-    for ( int i = 0; i < chessMain::line(); i++ ) {
+    for ( int i = 0; i < chessMain::col(); i++ ) {
         for ( int j = 0; j < chessMain::row(); j++ ) {
             if ( chessControl::chessCurrentComplextion( i, j ).name == name )
                 return { i, j };
@@ -203,13 +203,11 @@ char chessMain::chessUndo( char& name ) {
         return false;
 }
 
-void chessMain::chessEnd() {
-    
-}
+void chessMain::chessEnd() {}
 
 bool chessMain::chessReachDestination() {
     if ( cc->reachDestination() ) {
-        
+
         return true;
     } else
         return false;
@@ -300,18 +298,28 @@ const char* chessMain::chessBoardInfo( const int line, const int row, const int 
     }
 }
 
-void chessMain::chessSelect(int input){
+void chessMain::chessSelect( int input ) {}
 
-}
-
-int chessMain::line() {
-    return chessControl::line;
+int chessMain::col() {
+    return chessControl::col;
 }
 
 int chessMain::row() {
     return chessControl::row;
 }
 
-int chessMain::getInput() {
+int chessMain::getSelectorInput() {
+    return globalBegin->getSelectorInput();
+}
+
+int chessMain::getHelpInput() {
+    return globalBegin->getHelpInput();
+}
+
+int chessMain::getSettingInput() {
+    return globalBegin->getSettingInput();
+}
+
+int chessMain::getBoardInput() {
     return globalBoard->gameBoardInput();
 }

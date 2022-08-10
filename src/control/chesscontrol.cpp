@@ -69,7 +69,7 @@ bool chessControl::whetherMove( chessDirection& direction ) {
 
 void chessControl::namedSpace() {
     char tag = 'p';
-    for ( int i = 0; i < line; i++ ) {
+    for ( int i = 0; i < col; i++ ) {
         for ( int j = 0; j < row; j++ ) {
             if ( chessComplexion[ i ][ j ].name == ' ' || chessComplexion[ i ][ j ].name == 'p' || chessComplexion[ i ][ j ].name == 'q' )
                 chessComplexion[ i ][ j ].name = tag++;
@@ -82,7 +82,7 @@ bool chessControl::whetherOnSide( chessDirection direction ) {
         if ( chessCurrentCor[ 0 ].x <= 1 )
             return true;
     } else if ( direction == dir_right ) {
-        if ( chessCurrentCor[ size - 1 ].x >= line )
+        if ( chessCurrentCor[ size - 1 ].x >= col )
             return true;
     } else if ( direction == dir_up ) {
         if ( chessCurrentCor[ 0 ].y <= 1 )
@@ -111,7 +111,7 @@ bool chessControl::onside( Cor cor, int dir ) {
         return true;
     else if ( cor.y == row - 1 && dir == KEY_DOWN )
         return true;
-    else if ( cor.x == line - 1 && dir == KEY_RIGHT )
+    else if ( cor.x == col - 1 && dir == KEY_RIGHT )
         return true;
     else if ( cor.x == 0 && dir == KEY_LEFT )
         return true;

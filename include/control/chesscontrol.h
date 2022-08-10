@@ -14,7 +14,7 @@ public:
     void chessReset();                                             //重置棋子
     static void chessBoardReset( std::string chessBoardName );     //重置棋盘
     static char chooseChess( int dir );                            //选择棋子
-    const static int line = 4;                                     //棋盘的列数
+    const static int col = 4;                                      //棋盘的列数
     const static int row = 5;                                      //棋盘的行数
     static chessConflict chessCurrentComplextion( int i, int j );  //返回棋盘当前的局面
     static Cor currentFocus;

@@ -10,6 +10,8 @@ chessBeginWindow::chessBeginWindow() {
     srand( time( 0 ) );
     init_pair( SELECTED, rand() % 7 + 1, COLOR_BLACK );
     init_pair( TITLE, rand() % 7 + 1, COLOR_BLACK );
+
+    keypad( selectWindow, true );
 }
 
 void chessBeginWindow::display( int input ) {
@@ -93,6 +95,18 @@ void chessBeginWindow::moveSelector( int input ) {
 
 int chessBeginWindow::Selector() {
     return selector;
+}
+
+int chessBeginWindow::getSelectorInput() {
+    return wgetch( selectWindow );
+}
+
+int chessBeginWindow::getSettingInput() {
+    return wgetch( settingWindow );
+}
+
+int chessBeginWindow::getHelpInput() {
+    return wgetch( helpWindow );
 }
 
 void chessBeginWindow::clean() {

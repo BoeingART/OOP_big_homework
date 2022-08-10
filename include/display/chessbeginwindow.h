@@ -10,6 +10,10 @@ public:
     int Selector();
     void helpDisplay();
     void settingDisplay();
+
+    int getSelectorInput();
+    int getSettingInput();
+    int getHelpInput();
     void clean();
 
 private:
@@ -25,6 +29,8 @@ private:
 
     WINDOW* beginWindow;
     WINDOW* selectWindow;
+    WINDOW* settingWindow;
+    WINDOW* helpWindow;
 
     const char* gameTitle = "\
   ██╗  ██╗██╗      ██████╗ ████████╗███████╗██╗  ██╗██╗\n\
