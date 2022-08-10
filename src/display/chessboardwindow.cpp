@@ -18,8 +18,8 @@
 chessBoardWindow::chessBoardWindow() {
     struct winsize size;
     ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
-    gameBoardWindow = newwin( board_col_number, board_row_number, size.ws_row / 2 - board_col_number / 2, ( size.ws_col + side_col_number ) / 2 - board_row_number / 2 );
-    gameSideWindow = newwin( side_col_number, side_row_number, size.ws_row / 2 - side_col_number / 2, ( size.ws_col - side_col_number ) / 2 - board_row_number / 2 );
+    gameBoardWindow = newwin( board_col_number, board_row_number, size.ws_row / 2 - board_col_number / 2, ( size.ws_col + side_row_number ) / 2 - board_row_number / 2 );
+    gameSideWindow = newwin( side_col_number, side_row_number, size.ws_row / 2 - side_col_number / 2, ( size.ws_col - side_row_number ) / 2 - board_row_number / 2 );
     gameWinWindow = newwin( 30, 6, size.ws_row / 2 - 15, size.ws_col / 2 - 3 );
 
     init_pair( CC_, COLOR_RED, COLOR_BLACK );
@@ -182,7 +182,25 @@ void chessBoardWindow::displayBoard() {
 }
 
 void chessBoardWindow::displaySide() {
-    box( gameSideWindow, 0, 0 );
+    mvwprintw( gameSideWindow, 0, 0, "╔" );
+    mvwprintw( gameSideWindow, 0, side_row_number - 1, "╗" );
+    mvwprintw( gameSideWindow, side_col_number - 1, 0, "╚" );
+    mvwprintw( gameSideWindow, side_col_number - 1, side_row_number - 1, "╝" );
+
+    for ( int i = 1; i < side_row_number - 1; i++ ) {
+        mvwprintw( gameSideWindow, 0, i, "═" );
+        mvwprintw( gameSideWindow, side_col_number - 1, i, "═" );
+        mvwprintw( gameSideWindow, side_col_number / 2, i, "─" );
+    }
+    for ( int j = 1; j < side_col_number - 1; j++ ) {
+        if ( j == side_col_number / 2 ) {
+            mvwprintw( gameSideWindow, j, 0, "╟" );
+            mvwprintw( gameSideWindow, j, side_row_number - 1, "╢" );
+        } else {
+            mvwprintw( gameSideWindow, j, 0, "║" );
+            mvwprintw( gameSideWindow, j, side_row_number - 1, "║" );
+        }
+    }
 }
 
 void chessBoardWindow::highlightCurrentChess( char name ) {
