@@ -23,7 +23,7 @@ private:
     const int col_times = 4;                             //列的间隔倍数= 4
     const int board_row_number = row_times * 4 + 1 + 4;  // 棋盘上行的宽度 = 41
     const int board_col_number = col_times * 5 + 1 + 2;  // 棋盘上列的宽度 = 23
-    const int side_row_number = 12;                      //侧边栏行的宽度 = 12
+    const int side_row_number = 15;                      //侧边栏行的宽度 = 15
     const int side_col_number = board_col_number;        // 侧边栏列的宽度 = 23
 
     bool boardLine[ 3 ][ 5 ];
