@@ -31,8 +31,8 @@ int main() {
 }
 
 int gameBegin( chessMain* game ) {
-    game->globalDisplay->clean();
-    game->globalBegin->display( 0 );
+    game->globalBoard->clean();
+    game->globalBegin->display( KEY_UP );
     int output = 0;
     while ( true ) {
         int input = game->getInput();
@@ -74,7 +74,7 @@ int gameBegin( chessMain* game ) {
 void gameBoard( chessMain* game ) {
     game->globalBegin->clean();
     char chessName = game->chessReset();
-    game->globalDisplay->display( chessName );
+    game->globalBoard->display( chessName );
     while ( true ) {
         int input = game->getInput();
         if ( input == 'q' ) {
@@ -82,25 +82,25 @@ void gameBoard( chessMain* game ) {
             break;
         } else if ( input == 'u' ) {
             game->chessUndo( chessName );
-            game->globalDisplay->display( chessName );
+            game->globalBoard->display( chessName );
             continue;
         } else if ( input == 'r' ) {
             game->chessRedo( chessName );
-            game->globalDisplay->display( chessName );
+            game->globalBoard->display( chessName );
             continue;
         } else if ( input == 'n' ) {
             char chessBoardNumber = game->getInput();
             char temp = game->chessReset( chessBoardNumber );
             if ( temp != '\0' )
                 chessName = temp;
-            game->globalDisplay->display( chessName );
+            game->globalBoard->display( chessName );
             continue;
         } else if ( input == 'w' || input == 'a' || input == 's' || input == 'd' ) {
             game->chessMove( chessName, input );
-            game->globalDisplay->display( chessName );
+            game->globalBoard->display( chessName );
         } else if ( input == KEY_LEFT || input == KEY_RIGHT || input == KEY_UP || input == KEY_DOWN ) {
             chessName = chessControl::chooseChess( input );
-            game->globalDisplay->display( chessName );
+            game->globalBoard->display( chessName );
             continue;
         }
         if ( game->chessReachDestination() )

@@ -17,7 +17,7 @@ chessMain::chessMain() : chessName( 'c' ) {
     //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
     globalBegin = new chessBeginWindow();
-    globalDisplay = new chessBoardWindow();
+    globalBoard = new chessBoardWindow();
     globalSolute = new chessSolute();
 }
 
@@ -50,11 +50,11 @@ chessMain::~chessMain() {
     delete bC;
     delete bD;
     delete Recorder;
-    delete globalDisplay;
+    delete globalBoard;
 }
 
 void chessMain::chessHighLight( const char& name ) {
-    this->globalDisplay->display( name );
+    this->globalBoard->display( name );
 }
 
 int chessMain::chessChoose( int input ) {
@@ -313,5 +313,5 @@ int chessMain::row() {
 }
 
 int chessMain::getInput() {
-    return globalDisplay->gameBoardInput();
+    return globalBoard->gameBoardInput();
 }

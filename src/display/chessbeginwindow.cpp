@@ -98,4 +98,6 @@ int chessBeginWindow::Selector() {
 void chessBeginWindow::clean() {
     wclear( beginWindow );
     wclear( selectWindow );
+    wrefresh( beginWindow );
+    wrefresh( selectWindow );
 }

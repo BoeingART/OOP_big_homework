@@ -32,7 +32,7 @@ public:
     static int row();                                                            //棋盘的行数 = 5
 
     chessBeginWindow* globalBegin;
-    chessBoardWindow* globalDisplay;
+    chessBoardWindow* globalBoard;
     chessSolute* globalSolute;
     int getInput();
 

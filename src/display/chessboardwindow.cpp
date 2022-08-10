@@ -352,4 +352,9 @@ void chessBoardWindow::clean() {
     wclear( chessGameControl );
     wclear( chessGameHelp );
     wclear( chessWin );
+
+    wrefresh( chessGameBoard );
+    wrefresh( chessGameControl );
+    wrefresh( chessGameHelp );
+    wrefresh( chessWin );
 }

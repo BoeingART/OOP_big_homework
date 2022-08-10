@@ -11,16 +11,13 @@ int main() {
     start_color();
     cbreak();  // 行缓冲禁止，传递所有控制信息
     curs_set( 0 );
-    WINDOW* output = newwin( 0, 0, 20, 10 );
-    while ( true ) {
-        int input = wgetch( output );
-        wclear( output );
-        if ( input == 'q' )
-            break;
-        std::string temp = std::to_string( input );
-        const char* result = temp.c_str();
-        wprintw( output, result );
-    }
+    WINDOW* test1 = newwin( 10, 10, 10, 10 );
+    WINDOW* test2 = newwin( 10, 10, 11, 11 );
+    box( test1, 0, 0 );
+    box( test2, 0, 0 );
+    wrefresh( test1 );
+    wrefresh( test2 );
+    getch();
     curs_set( 1 );
     endwin();
     return 0;
