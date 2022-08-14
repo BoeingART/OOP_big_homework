@@ -182,6 +182,8 @@ void chessBoardWindow::displayBoard() {
 }
 
 void chessBoardWindow::displaySide() {
+
+    // print side
     mvwprintw( gameSideWindow, 0, 0, "╔" );
     mvwprintw( gameSideWindow, 0, side_row_number - 1, "╗" );
     mvwprintw( gameSideWindow, side_col_number - 1, 0, "╚" );
@@ -201,6 +203,15 @@ void chessBoardWindow::displaySide() {
             mvwprintw( gameSideWindow, j, side_row_number - 1, "║" );
         }
     }
+
+    // print selection
+    for ( int i = 1; i < 10; i += 2 )
+        mvwprintw( gameSideWindow, i, 1, "─ ─ ─ ─ ─ ─ ─" );
+    mvwprintw( gameSideWindow, 2, 1, " 重 新 开 始 " );
+    mvwprintw( gameSideWindow, 4, 1, "   暂   停   " );
+    mvwprintw( gameSideWindow, 6, 1, " 退 出 游 戏 " );
+    mvwprintw( gameSideWindow, 8, 1, "   撤   销   " );
+    mvwprintw( gameSideWindow, 10, 1, "   重   做  " );
 }
 
 void chessBoardWindow::highlightCurrentChess( char name ) {
