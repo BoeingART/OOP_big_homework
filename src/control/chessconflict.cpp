@@ -10,13 +10,13 @@ void chessConflict::operator=( chessConflict another ) {
 }
 
 chessBoard::chessBoard() {
-    chessComplexion = new chessConflict*[ line ];
-    for ( int i = 0; i < line; i++ )
+    chessComplexion = new chessConflict*[ col ];
+    for ( int i = 0; i < col; i++ )
         chessComplexion[ i ] = new chessConflict[ row ];
 }
 
 void chessBoard::chessBoardChange( const chessConflict board[ 4 ][ 5 ] ) {
-    for ( int i = 0; i < line; i++ ) {
+    for ( int i = 0; i < col; i++ ) {
         for ( int j = 0; j < row; j++ ) {
             chessComplexion[ i ][ j ] = board[ i ][ j ];
         }
@@ -28,7 +28,7 @@ chessConflict* const chessBoard::operator[]( const int i ) {
 }
 
 void chessBoard::operator=( chessBoard another ) {
-    for ( int i = 0; i < line; i++ ) {
+    for ( int i = 0; i < col; i++ ) {
         for ( int j = 0; j < row; j++ ) {
             chessComplexion[ i ][ j ] = another[ i ][ j ];
         }
