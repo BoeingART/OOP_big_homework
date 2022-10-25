@@ -2,6 +2,95 @@
 #include "../include/chessmain.h"
 using namespace std;
 
+int gameBegin( chessMain* game ) {
+    game->globalBoard->clean();
+    game->globalBegin->display( 0 );
+    int output = 0;
+    while ( true ) {
+        int input = game->getSelectorInput();
+        switch ( input ) {
+        case KEY_DOWN:
+            game->globalBegin->display( input );
+            break;
+        case KEY_UP:
+            game->globalBegin->display( input );
+            break;
+        case 'q':
+            return -1;
+        case KEY_ENTER:
+            output = game->globalBegin->Selector();
+            if ( output == 0 )
+                return 0;
+            if ( output == 1 )
+                game->globalBegin->helpDisplay();
+            if ( output == 2 )
+                game->globalBegin->settingDisplay();
+            if ( output == 3 )
+                return -1;
+            break;
+        case 10:  // 在mac上代表enter键
+            output = game->globalBegin->Selector();
+            if ( output == 0 )
+                return 0;
+            if ( output == 1 )
+                game->globalBegin->helpDisplay();
+            if ( output == 2 )
+                game->globalBegin->settingDisplay();
+            if ( output == 3 )
+                return -1;
+            break;
+        }
+    }
+}
+
+void gameBoard( chessMain* game ) {
+    game->globalBegin->clean();
+    char chessName = game->chessReset();
+    game->globalBoard->display( chessName );
+
+    // game->showTips();
+    while ( true ) {
+        int input = game->getBoardInput();
+        if ( input == 'q' ) {
+            game->chessEnd();
+            break;
+        } else if ( input == 'u' ) {
+            game->chessUndo( chessName );
+            game->globalBoard->display( chessName );
+            continue;
+        } else if ( input == 'r' ) {
+            game->chessRedo( chessName );
+            game->globalBoard->display( chessName );
+            continue;
+        } else if ( input == 'n' ) {
+            char chessBoardNumber = game->getBoardInput();
+            char temp = game->chessReset( chessBoardNumber );
+            if ( temp != '\0' )
+                chessName = temp;
+            game->globalBoard->display( chessName );
+            continue;
+        } else if ( input == 'w' || input == 'a' || input == 's' || input == 'd' ) {
+            game->chessMove( chessName, input );
+            game->globalBoard->display( chessName );
+        } else if ( input == KEY_LEFT || input == KEY_RIGHT || input == KEY_UP || input == KEY_DOWN ) {
+            chessName = chessControl::chooseChess( input );
+            game->globalBoard->display( chessName );
+            continue;
+        }
+        if ( game->chessReachDestination() ) {
+            if ( game->showTips() == true )  // TODO 解决现在第一次到达终点时会黑屏的情况
+                break;
+            else {
+                char temp = game->chessReset( '0' );
+                if ( temp != '\0' )
+                    chessName = temp;
+                game->globalBoard->display( chessName );
+                continue;
+            }
+        }
+    }
+}
+
 chessMain::chessMain() : chessName( 'c' ) {
     //初始化各种棋子
     cc = new chessControlSize4( 'c' );
@@ -19,6 +108,7 @@ chessMain::chessMain() : chessName( 'c' ) {
     globalBegin = new chessBeginWindow();
     globalBoard = new chessBoardWindow();
     globalSolute = new chessSolute();
+    end = new chessEndWindow();
 }
 
 chessMain::chessMain( char test ) {
@@ -203,7 +293,15 @@ char chessMain::chessUndo( char& name ) {
         return false;
 }
 
-void chessMain::chessEnd() {}
+bool chessMain::chessEnd() {
+    // TODO 设计一个结束界面，并显示出来(这里的结束是中途退出)
+    // chessEndWindow* end = new chessEndWindow;
+    // char output = end->display();
+    // if ( output == 'y' )
+    //     return false;
+    // else
+    //     return true;
+}
 
 bool chessMain::chessReachDestination() {
     if ( cc->reachDestination() ) {
@@ -296,6 +394,14 @@ const char* chessMain::chessBoardInfo( const int line, const int row, const int 
         return "\0\0";
         break;
     }
+}
+
+bool chessMain::showTips() {
+
+    if ( this->end->display() == 'y' )
+        return true;
+    else
+        return false;
 }
 
 void chessMain::chessSelect( int input ) {}
