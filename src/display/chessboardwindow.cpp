@@ -20,7 +20,7 @@ chessBoardWindow::chessBoardWindow() {
     ioctl( STDIN_FILENO, TIOCGWINSZ, &size );
     gameBoardWindow = newwin( board_col_number, board_row_number, size.ws_row / 2 - board_col_number / 2, ( size.ws_col + side_row_number ) / 2 - board_row_number / 2 );
     gameSideWindow = newwin( side_col_number, side_row_number, size.ws_row / 2 - side_col_number / 2, ( size.ws_col - side_row_number ) / 2 - board_row_number / 2 );
-    gameWinWindow = newwin( 30, 6, size.ws_row / 2 - 15, size.ws_col / 2 - 3 );
+    gameWinWindow = newwin( 10, 30, size.ws_row / 2 - 10 / 2, size.ws_col / 2 - 30 / 2 );
 
     init_pair( CC_, COLOR_RED, COLOR_BLACK );
     init_pair( ZF_, COLOR_BLUE, COLOR_BLACK );
@@ -212,6 +212,28 @@ void chessBoardWindow::displaySide() {
     mvwprintw( gameSideWindow, 6, 1, " 退 出 游 戏 " );
     mvwprintw( gameSideWindow, 8, 1, "   撤   销   " );
     mvwprintw( gameSideWindow, 10, 1, "   重   做  " );
+}
+
+bool chessBoardWindow::displayWin() {
+    werase( gameWinWindow );
+    wprintw( gameWinWindow, "hello, world!" );
+
+    box( gameWinWindow, 0, 0 );
+
+    mvwprintw( gameWinWindow, 2, 1, "   到达世界最高城—— 理塘！" );
+    mvwprintw( gameWinWindow, 4, 1, "   请问是否重新开始？" );
+    mvwprintw( gameWinWindow, 7, 1, "     是(y)     否(n) " );
+
+    wrefresh( gameWinWindow );
+    while ( true ) {
+        char temp = wgetch( gameWinWindow );
+        if ( temp == 'n' )
+            return true;
+        else if ( temp == 'y' )
+            return false;
+
+        // TODO 增加键盘左右选择的功能
+    }
 }
 
 void chessBoardWindow::highlightCurrentChess( char name ) {

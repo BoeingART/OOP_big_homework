@@ -10,7 +10,6 @@
 #include "control/chessmoverecorder.h"
 #include "display/chessbeginwindow.h"
 #include "display/chessboardwindow.h"
-#include "display/chessendwindow.h"
 #include "solute/chesssolute.h"
 
 class chessMain {
@@ -35,8 +34,8 @@ public:
 
     chessBeginWindow* globalBegin;
     chessBoardWindow* globalBoard;
+
     chessSolute* globalSolute;
-    chessEndWindow* end;
 
     int getSelectorInput();
     int getSettingInput();

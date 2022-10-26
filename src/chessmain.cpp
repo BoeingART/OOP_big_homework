@@ -5,6 +5,7 @@ using namespace std;
 int gameBegin( chessMain* game ) {
     game->globalBoard->clean();
     game->globalBegin->display( 0 );
+
     int output = 0;
     while ( true ) {
         int input = game->getSelectorInput();
@@ -47,8 +48,6 @@ void gameBoard( chessMain* game ) {
     game->globalBegin->clean();
     char chessName = game->chessReset();
     game->globalBoard->display( chessName );
-
-    // game->showTips();
     while ( true ) {
         int input = game->getBoardInput();
         if ( input == 'q' ) {
@@ -78,7 +77,7 @@ void gameBoard( chessMain* game ) {
             continue;
         }
         if ( game->chessReachDestination() ) {
-            if ( game->showTips() == true )  // TODO 解决现在第一次到达终点时会黑屏的情况
+            if ( game->showTips() == true )
                 break;
             else {
                 char temp = game->chessReset( '0' );
@@ -105,10 +104,11 @@ chessMain::chessMain() : chessName( 'c' ) {
     bD = new chessControlSize1( '4' );
     //初始化棋子移动记录器
     Recorder = new chessMoveRecorder();
+    //初始化棋盘的UI界面
     globalBegin = new chessBeginWindow();
     globalBoard = new chessBoardWindow();
+    //初始化棋盘解法
     globalSolute = new chessSolute();
-    end = new chessEndWindow();
 }
 
 chessMain::chessMain( char test ) {
@@ -398,7 +398,7 @@ const char* chessMain::chessBoardInfo( const int line, const int row, const int 
 
 bool chessMain::showTips() {
 
-    if ( this->end->display() == 'y' )
+    if ( globalBoard->displayWin() )
         return true;
     else
         return false;

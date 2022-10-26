@@ -8,6 +8,7 @@ class chessBoardWindow {
 public:
     chessBoardWindow();
     void display( char chessName = 'c' );
+    bool displayWin();
     static void space_print( int number );
     static void enter_print( int number );
     int gameBoardInput();
